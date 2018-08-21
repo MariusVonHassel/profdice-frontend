@@ -1,6 +1,6 @@
 {
-  "name": "wh40k-analytics",
-  "version": "0.1.0",
+  "name": "profdice-frontend",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "@types/jquery": "^3.3.2",
