@@ -1,0 +1,58 @@
+.breadcrumb {
+  margin: 0 ;
+  padding: 0;
+  height: 26px;
+  list-style: none;
+
+  .breadcrumb-item {
+    float: left;
+    color: $black;
+
+    .breadcrumb-link {
+      height: 26px;
+      padding: 0 10px 0 30px;
+      color: white;
+      text-decoration: none;
+      background: $black;
+      position: relative;
+      display: block;
+      float: left;
+
+      &.breadcrumb-link--first {
+        padding: 0 10px 0 20px;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid transparent;
+        border-bottom: 13px solid transparent;
+        border-left: 16px solid $black;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 2;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid transparent;
+        border-bottom: 13px solid transparent;
+        border-left: 16px solid white;
+        position: absolute;
+        top: 0;
+        margin-left: 1px;
+        left: 100%;
+        z-index: 1;
+      }
+
+    }
+
+  }
+
+}

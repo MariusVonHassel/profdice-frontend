@@ -1,0 +1,36 @@
+.singleProject {
+  margin-bottom: 20px;
+  border: 1px solid $border;
+
+  .singleProject-imageWrapper {
+
+    .singleProject-image {
+      width: 100%;
+      height: auto;
+    }
+
+  }
+
+  .singleProject-content {
+
+    .singleProject-headline {
+      text-align: center;
+    }
+
+    .singleProject-text {
+      text-align: center;
+
+    }
+
+  }
+
+  .singleProject-naviBar {
+    padding: 0 3px 0 0;
+    text-align: right;
+  }
+
+  .row {
+    margin: 10px 0;
+  }
+
+}
