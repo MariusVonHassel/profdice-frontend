@@ -1,6 +1,6 @@
 {
   "name": "profdice-frontend",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": true,
   "dependencies": {
     "@types/jquery": "^3.3.2",
