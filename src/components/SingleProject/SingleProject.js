@@ -50,7 +50,7 @@ export class SingleProject extends Component {
 
                     </div>
 
-                </div> so
+                </div>
 
             </div>
 
