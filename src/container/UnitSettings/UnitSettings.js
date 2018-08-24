@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Collapsible, CollapsibleItem, Input } from 'react-materialize';
-import { Link } from 'react-router-dom';
 
 import IconButton from "../../components/Buttons/IconButton";
 import SubmitButton from '../../components/Buttons/SubmitButton';
@@ -113,18 +112,13 @@ export class UnitSettings extends Component {
 
                 </div>
 
-                <Link to="/summary">
-
-                    <SubmitButton
-                        className=' btn unitSettings-submit'
-                        onClick={()=>{this.props.onSetPageType('summary')}}
-
-                    >
-                        {this.context.t('confirmSelection')}
-                    </SubmitButton>
-
-                </Link>
-
+                <SubmitButton
+                    className=' btn unitSettings-submit'
+                    onClick={()=>{this.props.onSetPageType('summary')}}
+                    path="/summary"
+                >
+                    {this.context.t('confirmSelection')}
+                </SubmitButton>
             </div>
         );
     }

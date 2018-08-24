@@ -81,15 +81,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/MariusVonHassel/wh40k-analytics.git"
+    "url": "git+https://github.com/MariusVonHassel/profdice-frontend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/MariusVonHassel/wh40k-analytics/issues"
+    "url": "https://github.com/MariusVonHassel/profdice-frontend/issues"
   },
-  "homepage": "https://gitlab.com/MariusVonHassel/wh40k-analytics#README",
+  "homepage": "https://github.com/MariusVonHassel/profdice-frontend",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
