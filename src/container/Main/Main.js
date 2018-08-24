@@ -8,7 +8,7 @@ import Projects from "../../components/Projects/Projects";
 import NewCalc from "../../container/NewCalc/NewCalc";
 import UnitSettings from "../../container/UnitSettings/UnitSettings";
 import LegalNotice from "../../container/LegalNotice/LegalNotice";
-import AboutThisWebside from "../../container/AboutThisWebside/AboutThisWebside";
+import AboutThisWebsite from "../AboutThisWebsite/AboutThisWebsite";
 import Summary from '../../container/Summary/Summary';
 import { setPageType } from "../../actions/pageTypeActions";
 
@@ -29,7 +29,7 @@ export class Main extends Component {
                         <Route exact path='/unit-settings' component={UnitSettings} />
                         <Route exact path='/summary' component={Summary} />
                         <Route exact path='/legal-notice' component={LegalNotice} />
-                        <Route exact path='/about-this-webside' component={AboutThisWebside} />
+                        <Route exact path='/about-this-website' component={AboutThisWebsite} />
 
                     </Switch>
 
