@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default class SubmitButton extends Component {
 
     render() {
 
         const {
-            className='',
-            children='',
-            onClick='',
-            path=''
+            className="",
+            children="",
+            onClick="",
+            path=""
         } = this.props;
 
 
@@ -17,7 +17,7 @@ export default class SubmitButton extends Component {
 
             <Link to={path}className="clearfix">
 
-                <span className={'button button--submit' + className} onClick={onClick}>{children}</span>
+                <span className={"button button--submit" + className} onClick={onClick}>{children}</span>
 
             </Link>
 
