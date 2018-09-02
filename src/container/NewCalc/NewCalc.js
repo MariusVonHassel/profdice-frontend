@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { setPageType } from "../../actions/pageTypeActions";
 import { setAttackerRace, setAttackerUnit } from "../../actions/attackerActions"
 import { setDefenderRace, setDefenderUnit } from "../../actions/defenderActions"

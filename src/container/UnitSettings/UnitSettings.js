@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Collapsible, CollapsibleItem, Input } from 'react-materialize';
+import { Collapsible, CollapsibleItem, Input } from "react-materialize";
 
 import IconButton from "../../components/Buttons/IconButton";
-import SubmitButton from '../../components/Buttons/SubmitButton';
+import SubmitButton from "../../components/Buttons/SubmitButton";
 import { setPageType } from "../../actions/pageTypeActions";
 import InputSelect from "../../components/InputSelect/InputSelect";
-import { defaultValuesAttacker } from '../../defaults/defaults';
-import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
+import { defaultValuesAttacker } from "../../defaults/defaults";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 
 export class UnitSettings extends Component {
 
@@ -32,7 +32,7 @@ export class UnitSettings extends Component {
         };
 
         return(
-            <div className='unitSettings'>
+            <div className="unitSettings">
 
                 <Breadcrumb />
 
