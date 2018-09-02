@@ -1,6 +1,6 @@
 {
   "name": "profdice-frontend",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "private": true,
   "dependencies": {
     "@types/jquery": "^3.3.2",
@@ -33,6 +33,7 @@
     "jest": "20.0.4",
     "jquery": "^3.3.1",
     "material-icons": "^0.2.3",
+    "materialize-css": "^0.100.2",
     "node-sass": "^4.9.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -46,6 +47,7 @@
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.4.0",
     "react-hot-loader": "^4.0.0",
+    "react-materialize": "^2.4.5",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -66,8 +68,7 @@
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.4",
     "webpack-manifest-plugin": "1.3.2",
-    "whatwg-fetch": "2.0.3",
-    "materialize-css": "^0.100.2"
+    "whatwg-fetch": "2.0.3"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -77,19 +78,18 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/MariusVonHassel/wh40k-analytics.git"
+    "url": "git+https://github.com/MariusVonHassel/profdice-frontend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/MariusVonHassel/wh40k-analytics/issues"
+    "url": "https://github.com/MariusVonHassel/profdice-frontend/issues"
   },
-  "homepage": "https://gitlab.com/MariusVonHassel/wh40k-analytics#README",
+  "homepage": "https://github.com/MariusVonHassel/profdice-frontend",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"

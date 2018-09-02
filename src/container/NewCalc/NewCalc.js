@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link } from 'react-router-dom';
 
-import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { setPageType } from "../../actions/pageTypeActions";
 import { setAttackerRace, setAttackerUnit } from "../../actions/attackerActions"
 import { setDefenderRace, setDefenderUnit } from "../../actions/defenderActions"
@@ -90,17 +89,14 @@ export class NewCalc extends Component {
                     ]}
                 />
 
-                <Link to="/unit-settings">
-
                     <SubmitButton
                         className=' btn newCalc-submit'
                         onClick={()=>{this.props.onSetPageType('unitSettings')}}
+                        path="/unit-settings"
 
                     >
                     {this.context.t('confirmSelection')}
                     </SubmitButton>
-
-                </Link>
 
             </div>
 
