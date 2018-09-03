@@ -15,7 +15,7 @@ export default class SubmitButton extends Component {
 
         return(
 
-            <Link to={path}className="clearfix">
+            <Link to={path} className="clearfix">
 
                 <span className={"button button--submit" + className} onClick={onClick}>{children}</span>
 
