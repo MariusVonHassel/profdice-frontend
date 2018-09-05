@@ -31,6 +31,7 @@ export const translations = {
         'shortCutWounds': 'LP',
         'specialUnitSettings': 'Sonderregeln',
         'stratagems': 'Stratageme',
+        'summary': 'Auswertung',
         'unit': 'Einheit',
         'unitCount': 'Anzahl der Figuren',
         'units': 'Einheiten',

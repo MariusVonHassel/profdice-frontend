@@ -5,7 +5,7 @@ import { defaultValuesAttacker } from '../../defaults/defaults';
 import { setPageType } from '../../actions/pageTypeActions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import DropdownMenuHeader from './DropdownMenuHeader';
+import SelectionMenuHeadline from './SelectionMenuHeadline';
 
 class DropdownMenu extends Component {
 
@@ -32,7 +32,7 @@ class DropdownMenu extends Component {
 
             <div className='dropdownMenu'>
 
-                <DropdownMenuHeader
+                <SelectionMenuHeadline
                 iconName='colorize'
                 headlineText={this.context.t('attacker')}
                 buttonType='button--attacker'
@@ -92,7 +92,7 @@ class DropdownMenu extends Component {
 
                 </Collapsible>
 
-                <DropdownMenuHeader
+                <SelectionMenuHeadline
                     iconName='security'
                     headlineText={this.context.t('defender')}
                     buttonType='button--defender'

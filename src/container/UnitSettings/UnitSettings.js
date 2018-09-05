@@ -11,6 +11,8 @@ class UnitSettings extends Component {
 
     render() {
 
+        this.props.onSetPageType('unitSettings');
+
         return(
             <div className='unitSettings'>
 

@@ -12,7 +12,7 @@ import AboutThisWebsite from '../AboutThisWebsite/AboutThisWebsite';
 import Summary from '../../container/Summary/Summary';
 import { setPageType } from '../../actions/pageTypeActions';
 
-export class Main extends Component {
+class Main extends Component {
 
     render() {
 

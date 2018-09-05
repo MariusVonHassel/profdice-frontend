@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { setPageType } from '../../actions/pageTypeActions';
 
@@ -26,8 +25,8 @@ export class Breadcrumb extends Component {
                 </li>
 
                 <li className='breadcrumb-item'>
-                    <Link className='breadcrumb-link' to='/summary' onClick={()=>{this.props.onSetPageType('unitStats')}}>
-                        {(this.props.pageType === 'unitStats') ? this.context.t('unitStats') : '3.'}
+                    <Link className='breadcrumb-link' to='/summary' onClick={()=>{this.props.onSetPageType('summary')}}>
+                        {(this.props.pageType === 'summary') ? this.context.t('summary') : '3.'}
                     </Link>
                 </li>
             </ul>
@@ -59,4 +58,4 @@ const mapStateToProps = state => ({
     pageType: state.pageTypeReducer.pageType,
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Breadcrumb));
+export default connect(mapStateToProps, mapDispatchToProps)(Breadcrumb);

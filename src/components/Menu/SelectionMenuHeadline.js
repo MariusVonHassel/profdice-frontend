@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import IconButton from '../Buttons/IconButton';
 
-export default class DropdownMenuHeader extends Component {
+export default class SelectionMenuHeadline extends Component {
 
     render() {
 
@@ -12,7 +12,7 @@ export default class DropdownMenuHeader extends Component {
         } = this.props;
 
         return (
-            <div className='dropDownMenu-headlineWrapper headline headline-1'>
+            <div className='headline headline-1'>
 
                 <IconButton
                     className={'headline-title button ' + buttonType}

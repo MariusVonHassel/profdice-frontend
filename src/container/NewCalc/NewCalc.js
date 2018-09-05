@@ -6,13 +6,15 @@ import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import { setPageType } from '../../actions/pageTypeActions';
 import { setAttackerRace, setAttackerUnit } from '../../actions/attackerActions'
 import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
-import IconButton from '../../components/Buttons/IconButton';
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import CalcContainer from '../../container/CalcContainer/CalcContainer';
+import SelectionMenuHeadline from "../../components/Menu/SelectionMenuHeadline";
 
 export class NewCalc extends Component {
 
     render() {
+
+        this.props.onSetPageType('newCalc');
 
         return (
 
@@ -20,16 +22,11 @@ export class NewCalc extends Component {
 
                 <Breadcrumb />
 
-                <div className='newCalc-titleWrapper headline headline-1'>
-
-                    <IconButton
-                        className='headline-title button button--attacker'
-                        iconClass='material-icons button-icon'
-                        iconName='colorize'
-                    >{this.context.t('attacker')}</IconButton>
-
-                </div>
-
+                <SelectionMenuHeadline
+                    iconName='colorize'
+                    headlineText={this.context.t('attacker')}
+                    buttonType='button--attacker'
+                />
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('races')}
@@ -55,15 +52,11 @@ export class NewCalc extends Component {
                     ]}
                 />
 
-                <div className='newCalc-titleWrapper headline headline-1'>
-
-                    <IconButton
-                        className='headline-title button button--defender'
-                        iconClass='material-icons button-icon'
-                        iconName='security'
-                    >{this.context.t('defender')}</IconButton>
-
-                </div>
+                <SelectionMenuHeadline
+                    iconName='security'
+                    headlineText={this.context.t('defender')}
+                    buttonType='button--defender'
+                />
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('race')}

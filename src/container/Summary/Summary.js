@@ -1,16 +1,44 @@
 import React, { Component } from 'react';
+import { setPageType } from "../../actions/pageTypeActions";
+
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
+import PropTypes from "prop-types";
+import connect from "react-redux/es/connect/connect";
 // import PropTypes from 'prop-types';
 
-export default class Summary extends Component {
+class Summary extends Component {
 
     render() {
+
+        this.props.onSetPageType('summary');
+
         return (
             <div className='summary'>
 
                 <Breadcrumb/>
 
+                summarry
+
             </div>
         );
     }
 }
+
+Summary.propTypes = {
+    pageType: PropTypes.string.isRequired
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSetPageType: (newState) => {
+            dispatch(setPageType(newState));
+        }
+    }
+};
+
+const mapStateToProps = state => ({
+    lang: state.i18nState.lang,
+    pageType: state.pageTypeReducer.pageType,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Summary);
