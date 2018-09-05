@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-// import IconButton from "../Buttons/IconButton";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import PropTypes from "prop-types";
-import { setPageType } from "../../actions/pageTypeActions";
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+import { setPageType } from '../../actions/pageTypeActions';
 
 export class Breadcrumb extends Component {
 
@@ -13,12 +12,24 @@ export class Breadcrumb extends Component {
 
         return(
 
-            <ul className="breadcrumb">
+            <ul className='breadcrumb'>
+                <li className='breadcrumb-item'>
+                    <Link className='breadcrumb-link' to='/new-calculation' onClick={()=>{this.props.onSetPageType('newCalc')}}>
+                        {(this.props.pageType === 'newCalc') ? this.context.t('newCalc') : '1.'}
+                    </Link>
+                </li>
 
-                <li className="breadcrumb-item"><Link className="breadcrumb-link breadcrumb-link--first" to="/new-calculation">{this.context.t('newCalc')}</Link></li>
-                <li className="breadcrumb-item"><Link className="breadcrumb-link" to="/unit-settings">{this.context.t('unitSettings')}</Link></li>
-                <li className="breadcrumb-item"><Link className="breadcrumb-link" to="/summary">{this.context.t('unitStats')}</Link></li>
+                <li className='breadcrumb-item'>
+                    <Link className='breadcrumb-link' to='/unit-settings' onClick={()=>{this.props.onSetPageType('unitSettings')}}>
+                        {(this.props.pageType === 'unitSettings') ? this.context.t('unitSettings') : '2.'}
+                    </Link>
+                </li>
 
+                <li className='breadcrumb-item'>
+                    <Link className='breadcrumb-link' to='/summary' onClick={()=>{this.props.onSetPageType('unitStats')}}>
+                        {(this.props.pageType === 'unitStats') ? this.context.t('unitStats') : '3.'}
+                    </Link>
+                </li>
             </ul>
 
         );

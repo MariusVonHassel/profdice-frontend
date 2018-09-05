@@ -1,4 +1,4 @@
-import { SET_DEFENDERRACE, SET_DEFENDERUNIT } from "../actions/types";
+import { SET_DEFENDERRACE, SET_DEFENDERUNIT } from '../actions/types';
 
 const initialState = {
 

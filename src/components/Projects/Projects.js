@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import SingleProject from "../SingleProject/SingleProject";
+import SingleProject from '../SingleProject/SingleProject';
 
 export class Projects extends Component {
 

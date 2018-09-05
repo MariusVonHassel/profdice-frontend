@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
-import { setPageType } from "../../actions/pageTypeActions";
-import { setAttackerRace, setAttackerUnit } from "../../actions/attackerActions"
-import { setDefenderRace, setDefenderUnit } from "../../actions/defenderActions"
-import IconButton from "../../components/Buttons/IconButton";
-import SubmitButton from "../../components/Buttons/SubmitButton";
-import CalcContainer from "../../container/CalcContainer/CalcContainer";
+import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
+import { setPageType } from '../../actions/pageTypeActions';
+import { setAttackerRace, setAttackerUnit } from '../../actions/attackerActions'
+import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
+import IconButton from '../../components/Buttons/IconButton';
+import SubmitButton from '../../components/Buttons/SubmitButton';
+import CalcContainer from '../../container/CalcContainer/CalcContainer';
 
 export class NewCalc extends Component {
 
@@ -16,16 +16,16 @@ export class NewCalc extends Component {
 
         return (
 
-            <div className="newCalc">
+            <div className='newCalc'>
 
                 <Breadcrumb />
 
-                <div className="newCalc-titleWrapper headline headline-1">
+                <div className='newCalc-titleWrapper headline headline-1'>
 
                     <IconButton
-                        className="headline-title button button--attacker"
-                        iconClass="material-icons button-icon"
-                        iconName="colorize"
+                        className='headline-title button button--attacker'
+                        iconClass='material-icons button-icon'
+                        iconName='colorize'
                     >{this.context.t('attacker')}</IconButton>
 
                 </div>
@@ -55,12 +55,12 @@ export class NewCalc extends Component {
                     ]}
                 />
 
-                <div className="newCalc-titleWrapper headline headline-1">
+                <div className='newCalc-titleWrapper headline headline-1'>
 
                     <IconButton
-                        className="headline-title button button--defender"
-                        iconClass="material-icons button-icon"
-                        iconName="security"
+                        className='headline-title button button--defender'
+                        iconClass='material-icons button-icon'
+                        iconName='security'
                     >{this.context.t('defender')}</IconButton>
 
                 </div>
@@ -92,7 +92,7 @@ export class NewCalc extends Component {
                     <SubmitButton
                         className=' btn newCalc-submit'
                         onClick={()=>{this.props.onSetPageType('unitSettings')}}
-                        path="/unit-settings"
+                        path='/unit-settings'
 
                     >
                     {this.context.t('confirmSelection')}

@@ -13,6 +13,6 @@ body {
   user-select: none;
 }
 
-[type="checkbox"].filled-in:checked+label:before, [type="checkbox"].filled-in:not(:checked)+label:before, [type="checkbox"].filled-in:checked+label:after, [type="checkbox"].filled-in:not(:checked)+label:after  {
+[type='checkbox'].filled-in:checked+label:before, [type='checkbox'].filled-in:not(:checked)+label:before, [type='checkbox'].filled-in:checked+label:after, [type='checkbox'].filled-in:not(:checked)+label:after  {
   top: 2px!important;
 }

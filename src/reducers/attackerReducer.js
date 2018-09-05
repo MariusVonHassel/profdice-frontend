@@ -1,4 +1,4 @@
-import { SET_ATTACKERRACE, SET_ATTACKERUNIT } from "../actions/types";
+import { SET_ATTACKERRACE, SET_ATTACKERUNIT } from '../actions/types';
 
 const initialState = {
     attackerRace: [],

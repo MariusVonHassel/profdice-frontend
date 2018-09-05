@@ -1,4 +1,4 @@
-import { SET_PAGETYPE } from "../actions/types";
+import { SET_PAGETYPE } from '../actions/types';
 
 const initialState = {
     pageType: 'home'
