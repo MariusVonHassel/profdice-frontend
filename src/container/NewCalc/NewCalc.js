@@ -9,12 +9,16 @@ import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import CalcContainer from '../../container/CalcContainer/CalcContainer';
 import SelectionMenuHeadline from "../../components/Menu/SelectionMenuHeadline";
+import { fetchForces } from "../../actions/forceAction";
 
 export class NewCalc extends Component {
 
-    render() {
-
+    componentWillMount() {
         this.props.onSetPageType('newCalc');
+        this.props.onFetchForces();
+    }
+
+    render() {
 
         return (
 
@@ -82,14 +86,14 @@ export class NewCalc extends Component {
                     ]}
                 />
 
-                    <SubmitButton
-                        className=' btn newCalc-submit'
-                        onClick={()=>{this.props.onSetPageType('unitSettings')}}
-                        path='/unit-settings'
+                <SubmitButton
+                    className=' btn newCalc-submit'
+                    onClick={()=>{this.props.onSetPageType('unitSettings')}}
+                    path='/unit-settings'
 
-                    >
-                    {this.context.t('confirmSelection')}
-                    </SubmitButton>
+                >
+                {this.context.t('confirmSelection')}
+                </SubmitButton>
 
             </div>
 
@@ -112,6 +116,7 @@ NewCalc.propTypes = {
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
+    forces: state.forcesReducer,
     attackerRace: state.attackerReducer.attackerRace,
     attackerUnit: state.attackerReducer.attackerUnit,
     defenderRace: state.defenderReducer.defenderRace,
@@ -134,6 +139,9 @@ const mapDispatchToProps = dispatch => {
         },
         onSetDefenderUnit: (newState) => {
             dispatch(setDefenderUnit(newState));
+        },
+        onFetchForces: () => {
+            dispatch(fetchForces());
         }
     }
 };

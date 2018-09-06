@@ -9,9 +9,11 @@ import DropdownMenu from '../../components/Menu/DropdownMenu';
 
 class UnitSettings extends Component {
 
-    render() {
-
+    componentWillMount() {
         this.props.onSetPageType('unitSettings');
+    }
+
+    render() {
 
         return(
             <div className='unitSettings'>

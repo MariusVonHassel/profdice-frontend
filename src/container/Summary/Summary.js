@@ -8,9 +8,11 @@ import connect from "react-redux/es/connect/connect";
 
 class Summary extends Component {
 
-    render() {
-
+    componentWillMount() {
         this.props.onSetPageType('summary');
+    }
+
+    render() {
 
         return (
             <div className='summary'>
