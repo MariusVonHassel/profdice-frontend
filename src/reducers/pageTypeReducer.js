@@ -4,7 +4,7 @@ const initialState = {
     pageType: 'home'
 };
 
-export default function pageTypeReducer(state=initialState, { type, payload }) {
+export default function (state=initialState, { type, payload }) {
 
     switch (type) {
         case SET_PAGETYPE: {

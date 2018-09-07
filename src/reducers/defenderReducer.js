@@ -6,7 +6,7 @@ const initialState = {
     defenderUnit: {}
 };
 
-export default function defenderReducer(state=initialState, { type, payload }) {
+export default function (state=initialState, { type, payload }) {
 
     switch (type) {
         case SET_DEFENDERRACE: {

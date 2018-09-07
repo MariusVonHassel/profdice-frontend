@@ -5,7 +5,7 @@ const initialState = {
     attackerUnit: []
 };
 
-export default function attackerReducer(state=initialState, { type, payload }) {
+export default function (state=initialState, { type, payload }) {
 
     switch (type) {
         case SET_ATTACKERRACE: {
