@@ -29,7 +29,6 @@ export class NewCalc extends Component {
 
         return options;
 
-
     }
 
     render() {
