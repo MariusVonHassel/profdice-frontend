@@ -19,7 +19,7 @@
       line-height: 26px;
       text-align: center;
       font-size: 14px;
-      color: white;
+      color: $white;
       text-decoration: none;
       background-color: $black;
 
@@ -44,7 +44,7 @@
         height: 0;
         border-top: 13px solid transparent;
         border-bottom: 13px solid transparent;
-        border-left: 16px solid white;
+        border-left: 16px solid $white;
         position: absolute;
         top: 0;
         margin-left: 1px;
