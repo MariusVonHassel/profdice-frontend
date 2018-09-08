@@ -1,19 +1,19 @@
-@import "scss/custom";
-@import "scss/functions";
-@import "scss/colors";
-@import "scss/fontstyles";
-@import "scss/fonts";
+@import 'scss/custom';
+@import 'scss/functions';
+@import 'scss/colors';
+@import 'scss/fontstyles';
+@import 'scss/fonts';
 
 .App {
-  @import "scss/button";
-  @import "scss/calcContainer";
-  @import "scss/collapsible";
-  @import "scss/header";
-  @import "scss/headline";
-  @import "scss/main";
-  @import "scss/footer";
-  @import "scss/newCalc";
-  @import "scss/singleProject";
-  @import "scss/unitSettings";
-  @import "scss/breadcrumb";
+  @import 'scss/button';
+  @import 'scss/calcContainer';
+  @import 'scss/collapsible';
+  @import 'scss/header';
+  @import 'scss/headline';
+  @import 'scss/main';
+  @import 'scss/footer';
+  @import 'scss/newCalc';
+  @import 'scss/singleProject';
+  @import 'scss/unitSettings';
+  @import 'scss/breadcrumb';
 }
