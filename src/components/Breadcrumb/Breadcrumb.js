@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setPageType } from '../../actions/pageTypeActions';
+import BreadcrumbItem from './BreadcrumbItem';
 
 export class Breadcrumb extends Component {
 
@@ -12,23 +12,25 @@ export class Breadcrumb extends Component {
         return(
 
             <ul className='breadcrumb'>
-                <li className='breadcrumb-item'>
-                    <Link className='breadcrumb-link' to='/new-calculation' onClick={()=>{this.props.onSetPageType('newCalc')}}>
-                        {(this.props.pageType === 'newCalc') ? this.context.t('newCalc') : '1.'}
-                    </Link>
-                </li>
 
-                <li className='breadcrumb-item'>
-                    <Link className='breadcrumb-link' to='/unit-settings' onClick={()=>{this.props.onSetPageType('unitSettings')}}>
-                        {(this.props.pageType === 'unitSettings') ? this.context.t('unitSettings') : '2.'}
-                    </Link>
-                </li>
+                <BreadcrumbItem
+                    pageTypeItem='newCalc'
+                    linkPath='new-calculation'
+                    title='1.'
+                />
 
-                <li className='breadcrumb-item'>
-                    <Link className='breadcrumb-link' to='/summary' onClick={()=>{this.props.onSetPageType('summary')}}>
-                        {(this.props.pageType === 'summary') ? this.context.t('summary') : '3.'}
-                    </Link>
-                </li>
+                <BreadcrumbItem
+                    pageTypeItem='unitSettings'
+                    linkPath='unit-settings'
+                    title='2.'
+                />
+
+                <BreadcrumbItem
+                    pageTypeItem='summary'
+                    linkPath='summary'
+                    title='3.'
+                />
+
             </ul>
 
         );

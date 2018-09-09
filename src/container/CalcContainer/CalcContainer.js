@@ -14,7 +14,7 @@ export class CalcContainer extends Component {
             value = '',
             onChange = '',
             selectDiscriptionHeadline,
-            multi=false
+            multi = false
 
         } = this.props;
 
