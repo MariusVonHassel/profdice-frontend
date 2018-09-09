@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import I18n from "redux-i18n"
+import I18n from 'redux-i18n'
 import { connect } from 'react-redux';
 import { translations } from './translations/translations';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router';
 
 import Header from './container/Header/Header.js';
 import Main from './container/Main/Main.js';

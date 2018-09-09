@@ -1,4 +1,4 @@
-import { SET_PAGETYPE } from "./types";
+import { SET_PAGETYPE } from './types';
 
 export function setPageType(pageType) {
     return {

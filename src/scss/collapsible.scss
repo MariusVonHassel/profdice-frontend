@@ -22,26 +22,13 @@
               .collapsible-select {
                 display: block;
                 padding: 2px;
-                text-align: center;
-                text-align-last: center;
-                text-align: -webkit-center;
                 height: 2rem;
-
-                /* for Firefox */
-                -moz-appearance: none;
-                /* for Chrome */
-                -webkit-appearance: none;
-              }
-
-              /* For IE10 */
-              select::-ms-expand {
-                display: none;
+                text-align: center;
               }
 
             }
 
           }
-
 
         }
 
@@ -52,19 +39,6 @@
             width: 80px;
             height: 2rem;
             text-align: center;
-            text-align-last: center;
-
-            /* for Firefox */
-            -moz-appearance: none;
-            /* for Chrome */
-            -webkit-appearance: none;
-
-            text-align: -webkit-center;
-
-          }
-
-          select::-ms-expand {
-            display: none;
           }
 
         }

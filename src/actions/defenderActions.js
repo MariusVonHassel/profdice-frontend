@@ -1,4 +1,4 @@
-import { SET_DEFENDERRACE, SET_DEFENDERUNIT } from "./types";
+import { SET_DEFENDERRACE, SET_DEFENDERUNIT } from './types';
 
 export function setDefenderRace(value) {
     return {

@@ -1,11 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 
-// import IconButton from "../Buttons/IconButton";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import PropTypes from "prop-types";
-import { setPageType } from "../../actions/pageTypeActions";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { setPageType } from '../../actions/pageTypeActions';
+import BreadcrumbItem from './BreadcrumbItem';
 
 export class Breadcrumb extends Component {
 
@@ -13,11 +11,25 @@ export class Breadcrumb extends Component {
 
         return(
 
-            <ul className="breadcrumb">
+            <ul className='breadcrumb'>
 
-                <li className="breadcrumb-item"><Link className="breadcrumb-link breadcrumb-link--first" to="/new-calculation">{this.context.t('newCalc')}</Link></li>
-                <li className="breadcrumb-item"><Link className="breadcrumb-link" to="/unit-settings">{this.context.t('unitSettings')}</Link></li>
-                <li className="breadcrumb-item"><Link className="breadcrumb-link" to="/summary">{this.context.t('unitStats')}</Link></li>
+                <BreadcrumbItem
+                    pageTypeItem='newCalc'
+                    linkPath='new-calculation'
+                    title='1.'
+                />
+
+                <BreadcrumbItem
+                    pageTypeItem='unitSettings'
+                    linkPath='unit-settings'
+                    title='2.'
+                />
+
+                <BreadcrumbItem
+                    pageTypeItem='summary'
+                    linkPath='summary'
+                    title='3.'
+                />
 
             </ul>
 
@@ -48,4 +60,4 @@ const mapStateToProps = state => ({
     pageType: state.pageTypeReducer.pageType,
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Breadcrumb));
+export default connect(mapStateToProps, mapDispatchToProps)(Breadcrumb);

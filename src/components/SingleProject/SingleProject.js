@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import IconButton from "../Buttons/IconButton";
-import { connect } from "react-redux";
-import { setPageType } from "../../actions/pageTypeActions";
+import IconButton from '../Buttons/IconButton';
+import { connect } from 'react-redux';
+import { setPageType } from '../../actions/pageTypeActions';
 
 export class SingleProject extends Component {
 
@@ -16,31 +16,31 @@ export class SingleProject extends Component {
 
         return (
 
-            <div className="singleProject">
+            <div className='singleProject'>
 
-                <div className="row">
+                <div className='row'>
 
-                    <div className="col s3 m2 singleProject-imageWrapper">
+                    <div className='col s3 m2 singleProject-imageWrapper'>
 
-                        <img className="singleProject-image" src="" alt={calculation.atackerRace}/>
-
-                    </div>
-
-                    <div className="col s5 m7 singleProject-content">
-
-                        <div className="singleProject-headline">{calculation.projectName}</div>
-
-                        <div className="singleProject-text">{calculation.atackerUnits[0]} {this.context.t('versus')} {calculation.defenderUnits[0]}</div>
+                        <img className='singleProject-image' src='' alt={calculation.atackerRace}/>
 
                     </div>
 
-                    <div className="col s3 m2 singleProject-imageWrapper">
+                    <div className='col s5 m7 singleProject-content'>
 
-                        <img className="singleProject-image" src="" alt={calculation.defenderRace}/>
+                        <div className='singleProject-headline'>{calculation.projectName}</div>
+
+                        <div className='singleProject-text'>{calculation.atackerUnits[0]} {this.context.t('versus')} {calculation.defenderUnits[0]}</div>
 
                     </div>
 
-                    <div className="col s1 singleProject-naviBar">
+                    <div className='col s3 m2 singleProject-imageWrapper'>
+
+                        <img className='singleProject-image' src='' alt={calculation.defenderRace}/>
+
+                    </div>
+
+                    <div className='col s1 singleProject-naviBar'>
 
                         <IconButton
                             className='button button--menu'

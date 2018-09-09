@@ -1,5 +1,5 @@
-export const FETCH_POSTS = 'FETCH_POSTS';
-export const NEW_POST = 'NEW_POST';
+export const FETCH_FORCES = 'FETCH_FORCES';
+export const FETCH_ALL_UNITS = 'FETCH_ALL_UNITS';
 export const SET_PAGETYPE = 'SET_PAGETYPE';
 export const SET_ATTACKERRACE = 'SET_ATTACKERRACE';
 export const SET_ATTACKERUNIT = 'SET_ATTACKERUNIT';

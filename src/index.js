@@ -4,18 +4,18 @@ import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 import { connectRouter } from 'connected-react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
-import "typeface-exo";
+import 'typeface-exo';
 
 
 import App from './App';
-import store from "./store";
+import store from './store';
 import registerServiceWorker from './registerServiceWorker';
 import './App.scss';
 import '../node_modules/materialize-css/dist/css/materialize.min.css';
 import '../node_modules/materialize-css/dist/js/materialize.min.js';
 import '../node_modules/react-select/dist/react-select.css';
 import '../node_modules/material-icons/iconfont/material-icons.css';
-import reducer from "./reducers";
+import reducer from './reducers';
 
 const history = createBrowserHistory();
 
