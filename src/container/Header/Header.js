@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import IconButton from '../../components/Buttons/IconButton';
-import { SideNavItem, SideNav } from 'react-materialize';
+import { SideNav } from 'react-materialize';
 import { setPageType } from '../../actions/pageTypeActions';
 
 class Header extends Component {
