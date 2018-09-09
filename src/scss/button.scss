@@ -42,11 +42,11 @@
 
     .button-icon {
       border-radius: 50%;
-      box-shadow: 0 2px 2px 0 rgba($button-shadow1...), 0 1px 5px 0 rgba($button-shadow2...), 0 3px 1px -2px rgba($button-shadow3...);
+      box-shadow: 0 2px 2px 0 rgba($black, .14), 0 1px 5px 0 rgba($black, .12), 0 3px 1px -2px rgba($black, .2);
       background-color: $actionColor;
 
       &:hover {
-        box-shadow: 0 3px 3px 0 rgba($button-shadow1...), 0 1px 7px 0 rgba($button-shadow2...), 0 3px 1px -1px rgba($button-shadow3...);
+        box-shadow: 0 3px 3px 0 rgba($black, .14), 0 1px 7px 0 rgba($black, .12), 0 3px 1px -1px rgba($black, .2);
         background-color: $actionColorLight;
       }
 
