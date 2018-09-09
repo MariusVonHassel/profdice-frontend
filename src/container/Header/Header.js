@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import IconButton from "../../components/Buttons/IconButton";
-import { SideNavItem, SideNav } from "react-materialize";
-import { setPageType } from "../../actions/pageTypeActions";
+import IconButton from '../../components/Buttons/IconButton';
+import { SideNav } from 'react-materialize';
+import { setPageType } from '../../actions/pageTypeActions';
 
-export class Header extends Component {
+class Header extends Component {
 
     render() {
         return (

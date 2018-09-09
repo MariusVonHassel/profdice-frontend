@@ -14,7 +14,7 @@ export default class AboutThisWebside extends Component {
                     Marius von Hassel<br />
                 </p><p><strong>Kontakt:</strong> <br />
                     E-Mail: <a href='mailto:mariusvonhassel@web.de'>mariusvonhassel@web.de</a><br /></p><br />
-                    Website Impressum erstellt durch <a href="https://www.impressum-generator.de">impressum-generator.de</a> von der <a href="https://www.kanzlei-hasselbach.de/">Kanzlei Hasselbach</a>
+                    Website Impressum erstellt durch <a href='https://www.impressum-generator.de'>impressum-generator.de</a> von der <a href='https://www.kanzlei-hasselbach.de/'>Kanzlei Hasselbach</a>
                 </div>
 
             </div>

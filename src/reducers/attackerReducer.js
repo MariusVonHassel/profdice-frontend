@@ -1,11 +1,11 @@
-import { SET_ATTACKERRACE, SET_ATTACKERUNIT } from "../actions/types";
+import { SET_ATTACKERRACE, SET_ATTACKERUNIT } from '../actions/types';
 
 const initialState = {
     attackerRace: [],
     attackerUnit: []
 };
 
-export default function attackerReducer(state=initialState, { type, payload }) {
+export default function (state=initialState, { type, payload }) {
 
     switch (type) {
         case SET_ATTACKERRACE: {

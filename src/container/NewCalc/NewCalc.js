@@ -1,35 +1,49 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
-import { setPageType } from "../../actions/pageTypeActions";
-import { setAttackerRace, setAttackerUnit } from "../../actions/attackerActions"
-import { setDefenderRace, setDefenderUnit } from "../../actions/defenderActions"
-import IconButton from "../../components/Buttons/IconButton";
-import SubmitButton from "../../components/Buttons/SubmitButton";
-import CalcContainer from "../../container/CalcContainer/CalcContainer";
+import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
+import { setPageType } from '../../actions/pageTypeActions';
+import { setAttackerRace, setAttackerUnit } from '../../actions/attackerActions'
+import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
+import SubmitButton from '../../components/Buttons/SubmitButton';
+import CalcContainer from '../../container/CalcContainer/CalcContainer';
+import SelectionMenuHeadline from "../../components/Menu/SelectionMenuHeadline";
+import { fetchForces } from "../../actions/forceAction";
+import { fetchAllUnits } from "../../actions/allUnitsAction";
 
 export class NewCalc extends Component {
+
+    componentWillMount() {
+        this.props.onSetPageType('newCalc');
+        this.props.onFetchForces();
+    }
+
+    configureOptions(values) {
+
+        let options = [];
+
+        values.forces.forEach((item) => {
+            options.push({value: item, label: this.context.t(item)});
+        });
+
+        return options;
+
+    }
 
     render() {
 
         return (
 
-            <div className="newCalc">
+            <div className='newCalc'>
 
                 <Breadcrumb />
 
-                <div className="newCalc-titleWrapper headline headline-1">
-
-                    <IconButton
-                        className="headline-title button button--attacker"
-                        iconClass="material-icons button-icon"
-                        iconName="colorize"
-                    >{this.context.t('attacker')}</IconButton>
-
-                </div>
-
+                <SelectionMenuHeadline
+                    iconName='colorize'
+                    headlineText={this.context.t('attacker')}
+                    buttonType='button--attacker'
+                />
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('races')}
@@ -37,10 +51,7 @@ export class NewCalc extends Component {
                     onChange={(value)=>{this.props.onSetAttackerRace({ value })}}
                     placeholder={this.context.t('selectYourRace')}
                     multi={true}
-                    options={[
-                        {value: 'Ultramarines', label: 'Ultramarines'},
-                        {value: 'Necrons', label: 'Necrons'},
-                    ]}
+                    options={(this.props.forces) ? this.configureOptions(this.props.forces) : null}
                 />
 
                 <CalcContainer
@@ -55,15 +66,11 @@ export class NewCalc extends Component {
                     ]}
                 />
 
-                <div className="newCalc-titleWrapper headline headline-1">
-
-                    <IconButton
-                        className="headline-title button button--defender"
-                        iconClass="material-icons button-icon"
-                        iconName="security"
-                    >{this.context.t('defender')}</IconButton>
-
-                </div>
+                <SelectionMenuHeadline
+                    iconName='security'
+                    headlineText={this.context.t('defender')}
+                    buttonType='button--defender'
+                />
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('race')}
@@ -89,14 +96,14 @@ export class NewCalc extends Component {
                     ]}
                 />
 
-                    <SubmitButton
-                        className=' btn newCalc-submit'
-                        onClick={()=>{this.props.onSetPageType('unitSettings')}}
-                        path="/unit-settings"
+                <SubmitButton
+                    className=' btn newCalc-submit'
+                    onClick={()=>{this.props.onSetPageType('unitSettings')}}
+                    path='/unit-settings'
 
-                    >
-                    {this.context.t('confirmSelection')}
-                    </SubmitButton>
+                >
+                {this.context.t('confirmSelection')}
+                </SubmitButton>
 
             </div>
 
@@ -113,12 +120,15 @@ NewCalc.propTypes = {
     attackerUnit: PropTypes.array.isRequired,
     defenderRace: PropTypes.object.isRequired,
     defenderUnit: PropTypes.object.isRequired,
+    forces: PropTypes.object,
     pageType: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
+    forces: state.forcesReducer.payload,
+    allUnits: state.allUnitsReducer,
     attackerRace: state.attackerReducer.attackerRace,
     attackerUnit: state.attackerReducer.attackerUnit,
     defenderRace: state.defenderReducer.defenderRace,
@@ -141,6 +151,12 @@ const mapDispatchToProps = dispatch => {
         },
         onSetDefenderUnit: (newState) => {
             dispatch(setDefenderUnit(newState));
+        },
+        onFetchForces: () => {
+            dispatch(fetchForces());
+        },
+        onFetchAllUnits: () => {
+            dispatch(fetchAllUnits());
         }
     }
 };

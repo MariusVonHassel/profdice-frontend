@@ -1,4 +1,4 @@
-import { SET_ATTACKERRACE, SET_ATTACKERUNIT } from "./types";
+import { SET_ATTACKERRACE, SET_ATTACKERUNIT } from './types';
 
 export function setAttackerRace(value) {
     return {

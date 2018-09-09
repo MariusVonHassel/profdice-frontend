@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import Select from "react-select";
-import { setPageType } from "../../actions/pageTypeActions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Select from 'react-select';
+import { setPageType } from '../../actions/pageTypeActions';
 
 export class CalcContainer extends Component {
 
@@ -14,18 +14,18 @@ export class CalcContainer extends Component {
             value = '',
             onChange = '',
             selectDiscriptionHeadline,
-            multi=false
+            multi = false
 
         } = this.props;
 
         return (
 
-            <div className="calcContainer">
+            <div className='calcContainer'>
 
-               <div className="calcContainer-headline">{selectDiscriptionHeadline}</div>
+               <div className='calcContainer-headline'>{selectDiscriptionHeadline}</div>
 
                 <Select
-                    name="selectAtackerRace"
+                    name='selectAtackerRace'
                     value={value}
                     onChange={onChange}
                     searchable={false}

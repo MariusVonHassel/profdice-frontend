@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import { Icon } from "react-materialize";
+import React, { Component } from 'react';
+import { Icon } from 'react-materialize';
 
 export default class IconButton extends Component {
 
     render() {
 
         const {
-            className = "",
-            iconClass = "",
-            iconName = "",
+            className = '',
+            iconClass = '',
+            iconName = '',
             // href = '#',
             // dataTag = '',
             // value = '',
             onClick = null,
-            children = ""
+            children = ''
         } = this.props;
 
         // const dataAttributes = {

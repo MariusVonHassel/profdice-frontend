@@ -3,9 +3,9 @@
   cursor: pointer;
 
   &.button--menu {
-    background-color: transparent;
     border-radius: 0;
     box-shadow: none;
+    background-color: transparent;
 
     .button-icon {
       color: $black;
@@ -18,8 +18,6 @@
 
     .button-icon {
       vertical-align: bottom;
-      -webkit-transform: rotateZ(90deg);
-      -moz-transform: rotateZ(90deg);
       transform: rotateZ(90deg);
     }
 
@@ -43,15 +41,13 @@
     color: $white;
 
     .button-icon {
-      background-color: $actionColor;
       border-radius: 50%;
-      -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 2px 0 rgba($black, .14), 0 1px 5px 0 rgba($black, .12), 0 3px 1px -2px rgba($black, .2);
+      background-color: $actionColor;
 
       &:hover {
+        box-shadow: 0 3px 3px 0 rgba($black, .14), 0 1px 7px 0 rgba($black, .12), 0 3px 1px -1px rgba($black, .2);
         background-color: $actionColorLight;
-        -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
-        box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2)
       }
 
     }
@@ -74,8 +70,6 @@
       line-height: 28px;
       width: 24px;
       font-size: 28px;
-      -webkit-transform: rotateZ(-90deg);
-      -moz-transform: rotateZ(-90deg);
       transform: rotateZ(-90deg);
     }
 

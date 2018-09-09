@@ -199,9 +199,6 @@ module.exports = {
                   importLoaders: 1,
                 },
               },
-                {
-                    loader: require.resolve('sass-loader'),
-                },
               {
                 loader: require.resolve('postcss-loader'),
                 options: {
@@ -221,6 +218,9 @@ module.exports = {
                     }),
                   ],
                 },
+              },
+              {
+                  loader: require.resolve('sass-loader'),
               },
             ],
           },

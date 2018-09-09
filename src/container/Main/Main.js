@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Switch, Route } from "react-router";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 
-import Projects from "../../components/Projects/Projects";
-import NewCalc from "../../container/NewCalc/NewCalc";
-import UnitSettings from "../../container/UnitSettings/UnitSettings";
-import LegalNotice from "../../container/LegalNotice/LegalNotice";
-import AboutThisWebsite from "../AboutThisWebsite/AboutThisWebsite";
+import Projects from '../../components/Projects/Projects';
+import NewCalc from '../../container/NewCalc/NewCalc';
+import UnitSettings from '../../container/UnitSettings/UnitSettings';
+import LegalNotice from '../../container/LegalNotice/LegalNotice';
+import AboutThisWebsite from '../AboutThisWebsite/AboutThisWebsite';
 import Summary from '../../container/Summary/Summary';
-import { setPageType } from "../../actions/pageTypeActions";
+import { setPageType } from '../../actions/pageTypeActions';
 
-export class Main extends Component {
+class Main extends Component {
 
     render() {
 
