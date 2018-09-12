@@ -23,7 +23,7 @@ export class NewCalc extends Component {
 
         let options = [];
 
-        values.forces.forEach((item) => {
+        values.forEach((item) => {
             options.push({value: item, label: this.context.t(item)});
         });
 
@@ -31,7 +31,64 @@ export class NewCalc extends Component {
 
     }
 
+    prepareApiCall(values) {
+
+        let races = [];
+
+        values.forEach(item => {
+            races.push(item.value);
+        });
+
+        this.props.onFetchAllUnits(races, this.props.allUnits);
+    }
+
+    configureUnitOptions () {
+
+       let options = [{value: 'tets', label: 'sdsad'}];
+       let forcesSummary = [this.props.allUnits.currentState, this.props.allUnits.payload];
+
+       console.log(forcesSummary);
+
+       forcesSummary.forEach(obj => {
+           console.log(obj);
+       });
+
+       this.props.forces.forEach(force => {
+
+           //console.log(forcesSummary['necrons']);
+
+           //forcesSummary[force].forEach(item =>  {
+
+               //console.log(item);
+
+               //console.log(item[force]);
+
+           //});
+
+       });
+
+
+            //console.log(this.props.allUnits['currentState']);
+
+            //(this.props.allUnits[item]) ? : ;
+
+            //item.forEach(unit => {
+              //  console.log(unit);
+
+            //    options.push({value: unit, label: this.context.t(unit)});
+            //});
+
+
+        //console.log(options);
+
+        return options;
+    }
+
     render() {
+
+        //console.log(this.props.forces);
+
+
 
         return (
 
@@ -48,22 +105,19 @@ export class NewCalc extends Component {
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('races')}
                     value={this.props.attackerRace}
-                    onChange={(value)=>{this.props.onSetAttackerRace({ value })}}
+                    onChange={(value)=>{this.props.onSetAttackerRace(value); this.prepareApiCall(value);}}
                     placeholder={this.context.t('selectYourRace')}
                     multi={true}
-                    options={(this.props.forces) ? this.configureOptions(this.props.forces) : null}
+                    options={(this.props.forces) ? this.configureOptions(this.props.forces) : []}
                 />
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('units')}
                     value={this.props.attackerUnit}
-                    onChange={(value)=>{this.props.onSetAttackerUnit({ value })}}
+                    onChange={(value)=>{this.props.onSetAttackerUnit(value);}}
                     placeholder={this.context.t('selectYourUnits')}
                     multi={true}
-                    options={[
-                        {value: 'Phantasia', label: 'Phantasia'},
-                        {value: 'Bueno', label: 'Bueno'},
-                    ]}
+                    options={(this.props.attackerRace.length > 0) ? this.configureUnitOptions() : []}
                 />
 
                 <SelectionMenuHeadline
@@ -75,7 +129,7 @@ export class NewCalc extends Component {
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('race')}
                     value={this.props.defenderRace.value}
-                    onChange={(value)=>{this.props.onSetDefenderRace({ value })}}
+                    onChange={(value)=>{this.props.onSetDefenderRace(value)}}
                     placeholder={this.context.t('selectYourRace')}
                     multi={false}
                     options={[
@@ -87,7 +141,7 @@ export class NewCalc extends Component {
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('unit')}
                     value={this.props.defenderUnit.value}
-                    onChange={(value)=>{this.props.onSetDefenderUnit({ value })}}
+                    onChange={(value)=>{this.props.onSetDefenderUnit(value)}}
                     placeholder={this.context.t('selectYourUnit')}
                     multi={false}
                     options={[
@@ -120,7 +174,8 @@ NewCalc.propTypes = {
     attackerUnit: PropTypes.array.isRequired,
     defenderRace: PropTypes.object.isRequired,
     defenderUnit: PropTypes.object.isRequired,
-    forces: PropTypes.object,
+    forces: PropTypes.array,
+    allUnits: PropTypes.object,
     pageType: PropTypes.string.isRequired
 };
 
@@ -144,6 +199,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(setAttackerRace(newState));
         },
         onSetAttackerUnit: (newState) => {
+            console.log(newState);
             dispatch(setAttackerUnit(newState));
         },
         onSetDefenderRace: (newState) => {
@@ -155,8 +211,8 @@ const mapDispatchToProps = dispatch => {
         onFetchForces: () => {
             dispatch(fetchForces());
         },
-        onFetchAllUnits: () => {
-            dispatch(fetchAllUnits());
+        onFetchAllUnits: (raceName, currentState) => {
+            dispatch(fetchAllUnits(raceName, {'spacemarines': ['immo']}));
         }
     }
 };

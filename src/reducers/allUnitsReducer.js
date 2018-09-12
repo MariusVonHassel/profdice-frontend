@@ -1,15 +1,17 @@
 import { FETCH_ALL_UNITS } from '../actions/types';
 
 const initialState = {
-    allUnits: []
+    currentState: []
 };
 
-export default function (state = initialState, { type, payload }) {
+export default function (state = initialState, { type, payload, currentState }) {
 
     switch (type) {
         case FETCH_ALL_UNITS:
+
             return {
-                payload
+                    payload,
+                    currentState
             };
         default:
             return state;

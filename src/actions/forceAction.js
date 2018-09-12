@@ -8,7 +8,7 @@ export const fetchForces = () => dispatch => {
         .then(forces =>
             dispatch({
                 type: FETCH_FORCES,
-                payload: forces})
+                payload: forces.forces})
         );
 
 };
