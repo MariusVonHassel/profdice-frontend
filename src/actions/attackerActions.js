@@ -10,6 +10,7 @@ export function setAttackerRace(value) {
 }
 
 export function setAttackerUnit(value) {
+
     return {
         type: SET_ATTACKERUNIT,
         payload: {
