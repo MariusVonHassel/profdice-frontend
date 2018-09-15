@@ -10,12 +10,12 @@ export default function (state=initialState, { type, payload }) {
     switch (type) {
         case SET_ATTACKERRACE: {
             return Object.assign({}, state, {
-                attackerRace: payload.value.value
+                attackerRace: payload.value
             });
         }
         case SET_ATTACKERUNIT: {
             return Object.assign({}, state, {
-                attackerUnit: payload.value.value
+                attackerUnit: payload.value
             });
         }
         default:

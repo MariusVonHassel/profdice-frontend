@@ -1,5 +1,6 @@
 export const translations = {
     'de': {
+        'annihilationBarge': 'Annihilation Barge',
         'attacker': 'Angreifer',
         'calculate': 'Berechnen',
         'confirmSelection': 'Auswahl bestätigen',
