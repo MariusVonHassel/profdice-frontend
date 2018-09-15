@@ -1,7 +1,7 @@
 import { FETCH_ALL_UNITS } from '../actions/types';
 
 const initialState = {
-    currentState: []
+    currentState: {}
 };
 
 export default function (state = initialState, { type, payload, currentState }) {

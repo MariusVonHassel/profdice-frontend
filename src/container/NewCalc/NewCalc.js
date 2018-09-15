@@ -19,74 +19,46 @@ export class NewCalc extends Component {
         this.props.onFetchForces();
     }
 
-    configureOptions(values) {
+    changeArrayStucture(obj, toObj) {
+        let result = [];
 
-        let options = [];
-
-        values.forEach((item) => {
-            options.push({value: item, label: this.context.t(item)});
+        obj.forEach(item => {
+            (toObj === 1) ? result.push({value: item, label: this.context.t(item)}) : result.push(item.value);
         });
 
-        return options;
-
+        return result;
     }
 
-    prepareApiCall(values) {
+    configureUnitOptions (selectedForces) {
 
-        let races = [];
+       let options = [];
+       let forcesSummary = [this.props.allUnits.currentState, (this.props.allUnits.payload) ? this.props.allUnits.payload : {}];
 
-        values.forEach(item => {
-            races.push(item.value);
-        });
+        if (selectedForces && forcesSummary) {
 
-        this.props.onFetchAllUnits(races, this.props.allUnits);
-    }
+            selectedForces.forEach(obj => {
 
-    configureUnitOptions () {
+                let match = forcesSummary.find(key => key.id === obj.value);
 
-       let options = [{value: 'tets', label: 'sdsad'}];
-       let forcesSummary = [this.props.allUnits.currentState, this.props.allUnits.payload];
+                if (match !== undefined)  {
 
-       console.log(forcesSummary);
+                   match.unitIds.forEach(item => {
+                        options.push(item)
+                    });
+                }
 
-       forcesSummary.forEach(obj => {
-           console.log(obj);
-       });
+            });
 
-       this.props.forces.forEach(force => {
+            options = this.changeArrayStucture(options, 1)
 
-           //console.log(forcesSummary['necrons']);
-
-           //forcesSummary[force].forEach(item =>  {
-
-               //console.log(item);
-
-               //console.log(item[force]);
-
-           //});
-
-       });
-
-
-            //console.log(this.props.allUnits['currentState']);
-
-            //(this.props.allUnits[item]) ? : ;
-
-            //item.forEach(unit => {
-              //  console.log(unit);
-
-            //    options.push({value: unit, label: this.context.t(unit)});
-            //});
-
-
-        //console.log(options);
+        }
 
         return options;
     }
 
     render() {
 
-        //console.log(this.props.forces);
+        //console.log(this.props.attackerUnit);
 
 
 
@@ -105,10 +77,10 @@ export class NewCalc extends Component {
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('races')}
                     value={this.props.attackerRace}
-                    onChange={(value)=>{this.props.onSetAttackerRace(value); this.prepareApiCall(value);}}
+                    onChange={(value)=>{this.props.onSetAttackerRace(value); this.props.onFetchAllUnits(this.changeArrayStucture(value), this.props.allUnits);}}
                     placeholder={this.context.t('selectYourRace')}
                     multi={true}
-                    options={(this.props.forces) ? this.configureOptions(this.props.forces) : []}
+                    options={(this.props.forces) ? this.changeArrayStucture(this.props.forces, 1) : []}
                 />
 
                 <CalcContainer
@@ -117,7 +89,7 @@ export class NewCalc extends Component {
                     onChange={(value)=>{this.props.onSetAttackerUnit(value);}}
                     placeholder={this.context.t('selectYourUnits')}
                     multi={true}
-                    options={(this.props.attackerRace.length > 0) ? this.configureUnitOptions() : []}
+                    options={(this.props.attackerRace.length > 0) ? this.configureUnitOptions(this.props.attackerRace) : []}
                 />
 
                 <SelectionMenuHeadline
@@ -212,7 +184,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(fetchForces());
         },
         onFetchAllUnits: (raceName, currentState) => {
-            dispatch(fetchAllUnits(raceName, {'spacemarines': ['immo']}));
+            dispatch(fetchAllUnits(raceName, currentState));
         }
     }
 };
