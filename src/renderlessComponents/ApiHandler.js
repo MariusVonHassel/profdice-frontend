@@ -13,7 +13,7 @@ export class ApiHandler extends Component {
     }
 
     componentDidUpdate() {
-        (this.props.forces !== undefined && this.props.forces.length > 0) && this.changeArrayStucture(this.props.forces, 1);
+        (this.props.forces !== undefined && this.props.forces.length > 0) && this.props.onSetForcesArray(this.changeArrayStucture(this.props.forces, 1));
     }
 
     changeArrayStucture(obj, toObj) {
@@ -23,7 +23,7 @@ export class ApiHandler extends Component {
             (toObj === 1) ? result.push({value: item, label: this.context.t(item)}) : result.push(item.value);
         });
 
-        this.props.onSetForcesArray(result);
+        return result;
 
     }
 
