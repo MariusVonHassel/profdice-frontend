@@ -8,26 +8,17 @@ import { setAttackerRace, setAttackerUnit } from '../../actions/attackerActions'
 import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import CalcContainer from '../../container/CalcContainer/CalcContainer';
-import SelectionMenuHeadline from "../../components/Menu/SelectionMenuHeadline";
-import { fetchForces } from "../../actions/forceAction";
-import { fetchAllUnits } from "../../actions/allUnitsAction";
+import SelectionMenuHeadline from '../../components/Menu/SelectionMenuHeadline';
+import { fetchAllUnits } from '../../actions/allUnitsAction';
+import ApiHandler from '../../renderlessComponents/ApiHandler';
 
 export class NewCalc extends Component {
 
     componentWillMount() {
         this.props.onSetPageType('newCalc');
-        this.props.onFetchForces();
     }
 
-    changeArrayStucture(obj, toObj) {
-        let result = [];
 
-        obj.forEach(item => {
-            (toObj === 1) ? result.push({value: item, label: this.context.t(item)}) : result.push(item.value);
-        });
-
-        return result;
-    }
 
     configureUnitOptions (selectedForces) {
 
@@ -58,13 +49,15 @@ export class NewCalc extends Component {
 
     render() {
 
-        //console.log(this.props.attackerUnit);
+        //console.log(this.props.forcesArray);
 
 
 
         return (
 
             <div className='newCalc'>
+
+                <ApiHandler />
 
                 <Breadcrumb />
 
@@ -77,19 +70,19 @@ export class NewCalc extends Component {
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('races')}
                     value={this.props.attackerRace}
-                    onChange={(value)=>{this.props.onSetAttackerRace(value); this.props.onFetchAllUnits(this.changeArrayStucture(value), this.props.allUnits);}}
+                    onChange={(value)=>{this.props.onSetAttackerRace(value)}}
                     placeholder={this.context.t('selectYourRace')}
                     multi={true}
-                    options={(this.props.forces) ? this.changeArrayStucture(this.props.forces, 1) : []}
+                    options={(this.props.forcesArray) ? this.props.forcesArray : []}
                 />
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('units')}
                     value={this.props.attackerUnit}
-                    onChange={(value)=>{this.props.onSetAttackerUnit(value);}}
+                    onChange={(value)=>{this.props.onSetAttackerUnit(value)}}
                     placeholder={this.context.t('selectYourUnits')}
                     multi={true}
-                    options={(this.props.attackerRace.length > 0) ? this.configureUnitOptions(this.props.attackerRace) : []}
+                    options={(this.props.attackerUnitArray) ? this.props.attackerUnitArray : []}
                 />
 
                 <SelectionMenuHeadline
@@ -143,10 +136,15 @@ NewCalc.contextTypes = {
 
 NewCalc.propTypes = {
     attackerRace: PropTypes.array.isRequired,
+    attackerRaceArray: PropTypes.array,
     attackerUnit: PropTypes.array.isRequired,
+    attackerUnitArray: PropTypes.array,
     defenderRace: PropTypes.object.isRequired,
+    defenderRaceArray: PropTypes.array,
     defenderUnit: PropTypes.object.isRequired,
+    defenderUnitArray: PropTypes.array,
     forces: PropTypes.array,
+    forcesArray: PropTypes.array,
     allUnits: PropTypes.object,
     pageType: PropTypes.string.isRequired
 };
@@ -154,11 +152,14 @@ NewCalc.propTypes = {
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
-    forces: state.forcesReducer.payload,
+    forces: state.forcesReducer.forces,
+    forcesArray: state.forcesReducer.forcesArray,
     allUnits: state.allUnitsReducer,
     attackerRace: state.attackerReducer.attackerRace,
+    attackerRaceArray: state.attackerReducer.attackerRaceArray,
     attackerUnit: state.attackerReducer.attackerUnit,
     defenderRace: state.defenderReducer.defenderRace,
+    //defenderRaceArray: state.defenderReducer.defenderRaceArray,
     defenderUnit: state.defenderReducer.defenderUnit
 });
 
@@ -179,9 +180,6 @@ const mapDispatchToProps = dispatch => {
         },
         onSetDefenderUnit: (newState) => {
             dispatch(setDefenderUnit(newState));
-        },
-        onFetchForces: () => {
-            dispatch(fetchForces());
         },
         onFetchAllUnits: (raceName, currentState) => {
             dispatch(fetchAllUnits(raceName, currentState));
