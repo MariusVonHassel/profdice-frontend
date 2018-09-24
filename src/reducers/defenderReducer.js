@@ -2,8 +2,8 @@ import { SET_DEFENDERRACE, SET_DEFENDERUNIT } from '../actions/types';
 
 const initialState = {
 
-    defenderRace: {},
-    defenderUnit: {}
+    defenderRace: [],
+    defenderUnit: []
 };
 
 export default function (state=initialState, { type, payload }) {

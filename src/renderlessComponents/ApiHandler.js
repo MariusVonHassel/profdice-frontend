@@ -34,28 +34,71 @@ export class ApiHandler extends Component {
 
        if (this.props.attackerRace !== undefined && this.props.attackerRace.length > 0) {
 
-           if (this.props.allUnits.id === undefined && this.props.attackerRace.length === 1 && this.props.fetchedUnits.length === 0) {
-               console.log('fetched Units:');
-               console.log(this.props.attackerRace[0].value);
+           // if (this.props.allUnits.id === undefined && this.props.attackerRace.length === 1 && this.props.fetchedUnits.length === 0) {
+           //     // console.log('fetched Units:');
+           //     // console.log(this.props.attackerRace[0].value);
+           //
+           //      //this.props.onSetFetchedUnits(this.props.onFetchAllUnits(this.props.attackerRace[0].value));
+           //
+           //      this.props.onFetchAllUnits(this.props.attackerRace[0].value);
+           //
+           // } else if (this.props.allUnits !== undefined && this.props.fetchedUnits.length === 0) {
+           //      //console.log('else');
+           //     this.props.onSetFetchedUnits(this.props.allUnits);
+           // }
 
-                //this.props.onSetFetchedUnits(this.props.onFetchAllUnits(this.props.attackerRace[0].value));
+           if (!this.selectedForceShowsItsUnits(this.props.attackerRace)) {
 
-                this.props.onFetchAllUnits(this.props.attackerRace[0].value);
+               if (this.props.fetchedUnits.length > 0) {
+                   console.log('ugugga');
+                   console.log(this.props.fetchedUnits);
 
-           } else if (this.props.allUnits !== undefined && this.props.fetchedUnits.length === 0) {
-                console.log('else');
-               this.props.onSetFetchedUnits(this.props.allUnits);
+                   //this.props.onSetAttackerUnitArray(this.changeArrayStucture(this.props.))
+
+                   console.log(this.props.attackerRace);
+                    let attacker = [];
+                    let attackerTmp = [];
+
+                   this.props.attackerRace.forEach(item => {
+                       attackerTmp = this.props.fetchedUnits.find(key => key.id === item.value);
+
+                       attackerTmp['unitIds'].forEach(elem => {
+                           attacker.push(elem);
+                       });
+
+                    });
+
+                   const attackerArray = this.changeArrayStucture(attacker, 1);
+
+                   if (this.props.attackerUnitArray.length !== attackerArray.length) {
+                       this.props.onSetAttackerUnitArray(attackerArray, 1);
+                   }
+
+                   //console.log(this.changeArrayStucture(attacker, 1));
+
+                   //this.props.onSetAttackerUnitArray(this.changeArrayStucture(attacker, 1));
+
+                   //console.log(attacker);
+
+               }
+
            }
 
-           //console.log(this.props.fetchedUnits);
+           if (!this.selectedForceShowsItsUnits(this.props.defenderRace)) {
+
+               if (this.props.fetchedUnits.length > 0) {
+                   console.log('defenden');
+               }
+
+           }
 
            // fetched.forEach(item => {
            //     let match = this.props.attackerRace.find(key => key.id === item.value);
            //     if (match === undefined) {console.log(item.value)}
            // });
 
-           console.log(this.props.allUnits);
-           console.log(this.props.fetchedUnits);
+           // console.log(this.props.allUnits);
+           // console.log(this.props.fetchedUnits);
 
            ///console.log(this.props.attackerRace);
 
@@ -63,18 +106,36 @@ export class ApiHandler extends Component {
 
            //console.log(this.props.attackerUnitArray)
 
-
        }
 
        //this.fetchAllUnits(this.props.attackerRace);
 
-        //(this.props.attackerRace !== undefined && this.props.attackerRace.length > 0) && this.props.onSetAttackerUnitArray([{value: 'salat', label: 'salat'}]);
+        //(this.props.attackerRace !== undefined && this.props.attackerRace.length > 0 && ) && this.props.onSetAttackerUnitArray([{value: 'salat', label: 'salat'}]);
         ///this.props.onSetAttackerUnitArray([{value: 'salat', label: 'salat'}]);
     }
 
-    changeArrayStucture(obj, toObj) {
+    selectedForceShowsItsUnits(selectedValues) {
 
-        console.log('je na pa');
+        selectedValues.forEach(item => {
+
+            let match = this.props.fetchedUnits.find(key => key.id === item.value);
+
+            if (match === undefined && item.value === this.props.allUnits.id) {
+                let newFetch = this.props.fetchedUnits;
+                (newFetch.length > 0) ? this.props.onSetFetchedUnits(newFetch.push(this.props.allUnits)) : this.props.onSetFetchedUnits([this.props.allUnits]);
+                return true;
+            } else if (match === undefined) {
+                this.props.onFetchAllUnits(item.value);
+                return true;
+            } else {
+                return false;
+            }
+
+        });
+
+    }
+
+    changeArrayStucture(obj, toObj) {
 
         let result = [];
 
@@ -123,6 +184,7 @@ ApiHandler.propTypes = {
     forcesArray: PropTypes.array,
     attackerRace: PropTypes.array,
     attackerUnitArray: PropTypes.array,
+    defenderRace: PropTypes.array,
     allUnits: PropTypes.object,
     fetchedUnits: PropTypes.array
 };
@@ -132,6 +194,7 @@ const mapStateToProps = state => ({
     fetchedUnits: state.allUnitsReducer.fetchedUnits,
     attackerRace: state.attackerReducer.attackerRace,
     attackerUnitArray: state.attackerReducer.attackerUnitArray,
+    defenderRace: state.defenderReducer.defenderRace,
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
     forces: state.forcesReducer.forces,

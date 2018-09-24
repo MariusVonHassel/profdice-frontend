@@ -18,7 +18,7 @@ export function setFetchedUnits(units) {
     return {
         type: FETCHED_UNTIS,
         payload: {
-            fetched: [units],
+            fetched: units,
         }
     }
 }
