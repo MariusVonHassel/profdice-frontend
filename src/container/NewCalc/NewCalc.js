@@ -9,7 +9,6 @@ import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import CalcContainer from '../../container/CalcContainer/CalcContainer';
 import SelectionMenuHeadline from '../../components/Menu/SelectionMenuHeadline';
-import { fetchAllUnits } from '../../actions/allUnitsAction';
 import ApiHandler from '../../renderlessComponents/ApiHandler';
 
 export class NewCalc extends Component {
@@ -18,38 +17,36 @@ export class NewCalc extends Component {
         this.props.onSetPageType('newCalc');
     }
 
-
-
-    configureUnitOptions (selectedForces) {
-
-       let options = [];
-       let forcesSummary = [this.props.allUnits.currentState, (this.props.allUnits.payload) ? this.props.allUnits.payload : {}];
-
-        if (selectedForces && forcesSummary) {
-
-            selectedForces.forEach(obj => {
-
-                let match = forcesSummary.find(key => key.id === obj.value);
-
-                if (match !== undefined)  {
-
-                   match.unitIds.forEach(item => {
-                        options.push(item)
-                    });
-                }
-
-            });
-
-            options = this.changeArrayStucture(options, 1)
-
-        }
-
-        return options;
-    }
+    // configureUnitOptions (selectedForces) {
+    //
+    //    let options = [];
+    //    let forcesSummary = [this.props.allUnits.currentState, (this.props.allUnits.payload) ? this.props.allUnits.payload : {}];
+    //
+    //     if (selectedForces && forcesSummary) {
+    //
+    //         selectedForces.forEach(obj => {
+    //
+    //             let match = forcesSummary.find(key => key.id === obj.value);
+    //
+    //             if (match !== undefined)  {
+    //
+    //                match.unitIds.forEach(item => {
+    //                     options.push(item)
+    //                 });
+    //             }
+    //
+    //         });
+    //
+    //         options = this.changeArrayStucture(options, 1)
+    //
+    //     }
+    //
+    //     return options;
+    // }
 
     render() {
 
-        //console.log(this.props.forcesArray);
+        //console.log(this.props.attackerUnitArray);
 
 
 
@@ -143,7 +140,6 @@ NewCalc.propTypes = {
     defenderRaceArray: PropTypes.array,
     defenderUnit: PropTypes.object.isRequired,
     defenderUnitArray: PropTypes.array,
-    forces: PropTypes.array,
     forcesArray: PropTypes.array,
     allUnits: PropTypes.object,
     pageType: PropTypes.string.isRequired
@@ -152,12 +148,12 @@ NewCalc.propTypes = {
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
-    forces: state.forcesReducer.forces,
     forcesArray: state.forcesReducer.forcesArray,
     allUnits: state.allUnitsReducer,
     attackerRace: state.attackerReducer.attackerRace,
     attackerRaceArray: state.attackerReducer.attackerRaceArray,
     attackerUnit: state.attackerReducer.attackerUnit,
+    attackerUnitArray: state.attackerReducer.attackerUnitArray,
     defenderRace: state.defenderReducer.defenderRace,
     //defenderRaceArray: state.defenderReducer.defenderRaceArray,
     defenderUnit: state.defenderReducer.defenderUnit
@@ -180,9 +176,6 @@ const mapDispatchToProps = dispatch => {
         },
         onSetDefenderUnit: (newState) => {
             dispatch(setDefenderUnit(newState));
-        },
-        onFetchAllUnits: (raceName, currentState) => {
-            dispatch(fetchAllUnits(raceName, currentState));
         }
     }
 };

@@ -9,13 +9,13 @@ export default function (state = initialState, { type, payload }) {
 
     switch (type) {
         case FETCH_FORCES:
-            return {
+            return Object.assign({}, state, {
                 forces: payload
-            };
+            });
         case SET_FORCES_ARRAY:
-            return {
+            return Object.assign({}, state, {
                 forcesArray: payload.forcesArray
-            };
+            });
         default:
             return state;
     }
