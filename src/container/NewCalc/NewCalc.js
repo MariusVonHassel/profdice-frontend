@@ -46,9 +46,8 @@ export class NewCalc extends Component {
 
     render() {
 
-        //console.log(this.props.attackerUnitArray);
-
-
+        // console.log(this.props.defenderRace);
+        // console.log(this.props.defenderUnit);
 
         return (
 
@@ -90,26 +89,20 @@ export class NewCalc extends Component {
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('race')}
-                    value={this.props.defenderRace.value}
+                    value={(this.props.defenderRace) ? this.props.defenderRace.value : null}
                     onChange={(value)=>{this.props.onSetDefenderRace(value)}}
                     placeholder={this.context.t('selectYourRace')}
                     multi={false}
-                    options={[
-                        {value: 'Bären', label: 'Bären'},
-                        {value: 'Affen', label: 'Affen'},
-                    ]}
+                    options={(this.props.forcesArray) ? this.props.forcesArray : []}
                 />
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('unit')}
-                    value={this.props.defenderUnit.value}
+                    value={(this.props.defenderUnit) ? this.props.defenderUnit.value : null}
                     onChange={(value)=>{this.props.onSetDefenderUnit(value)}}
-                    placeholder={this.context.t('selectYourUnit')}
+                    placeholder={this.context.t('selectYourUnits')}
                     multi={false}
-                    options={[
-                        {value: 'Räder', label: 'Räder'},
-                        {value: 'Autos', label: 'Autos'},
-                    ]}
+                    options={(this.props.defenderUnitArray) ? this.props.defenderUnitArray: []}
                 />
 
                 <SubmitButton
@@ -132,13 +125,13 @@ NewCalc.contextTypes = {
 };
 
 NewCalc.propTypes = {
-    attackerRace: PropTypes.array.isRequired,
+    attackerRace: PropTypes.array,
     attackerRaceArray: PropTypes.array,
-    attackerUnit: PropTypes.array.isRequired,
+    attackerUnit: PropTypes.array,
     attackerUnitArray: PropTypes.array,
-    defenderRace: PropTypes.array.isRequired,
+    defenderRace: PropTypes.object,
     defenderRaceArray: PropTypes.array,
-    defenderUnit: PropTypes.array.isRequired,
+    defenderUnit: PropTypes.object,
     defenderUnitArray: PropTypes.array,
     forcesArray: PropTypes.array,
     allUnits: PropTypes.object,
@@ -155,7 +148,7 @@ const mapStateToProps = state => ({
     attackerUnit: state.attackerReducer.attackerUnit,
     attackerUnitArray: state.attackerReducer.attackerUnitArray,
     defenderRace: state.defenderReducer.defenderRace,
-    //defenderRaceArray: state.defenderReducer.defenderRaceArray,
+    defenderUnitArray: state.defenderReducer.defenderUnitArray,
     defenderUnit: state.defenderReducer.defenderUnit
 });
 
@@ -168,7 +161,6 @@ const mapDispatchToProps = dispatch => {
             dispatch(setAttackerRace(newState));
         },
         onSetAttackerUnit: (newState) => {
-            console.log(newState);
             dispatch(setAttackerUnit(newState));
         },
         onSetDefenderRace: (newState) => {
