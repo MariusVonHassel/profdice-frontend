@@ -31,7 +31,7 @@ checks:
       threshold: 4
   complex-logic:
     config:
-      threshold: 4
+      threshold: 8
   file-lines:
     config:
       threshold: 250
