@@ -79,7 +79,7 @@ export class NewCalc extends Component {
                     className=' btn newCalc-submit'
                     onClick={()=>{this.props.onSetPageType('unitSettings')}}
                     path='/unit-settings'
-
+                    disabledValue={!(this.props.attackerUnit.length > 0 && this.props.defenderUnit !== undefined && this.props.defenderUnit !== null && this.props.defenderUnit.hasOwnProperty('value'))}
                 >
                 {this.context.t('confirmSelection')}
                 </SubmitButton>
