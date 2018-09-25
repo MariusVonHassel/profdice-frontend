@@ -19,29 +19,13 @@ export class ApiHandler extends Component {
 
         (this.props.forces !== undefined && this.props.forces.length > 0 && this.props.forcesArray.length === 0) && this.props.onSetForcesArray(this.changeArrayStucture(this.props.forces, 1));
 
-        if (this.props.attackerRace !== undefined && this.props.attackerRace.length > 0) {
+        this.setAttackerForm();
 
-            if (!this.selectedForceShowsItsUnits(this.props.attackerRace)) {
+        this.setDefenderForm();
 
-               if (this.props.fetchedUnits.length > 0) {
+    }
 
-                   let attackerArray = this.changeArrayStucture(this.prepareUnits(this.props.attackerRace), 1);
-
-                   if (this.props.attackerUnitArray.length !== attackerArray.length) {
-                       this.props.onSetAttackerUnitArray(attackerArray);
-                   }
-
-               }
-
-            }
-
-        }  else if (this.props.attackerRace.length === 0 && this.props.attackerUnitArray.length > 0) {
-
-            this.props.onSetAttackerUnitArray([]);
-            this.props.onSetAttackerUnit([]);
-
-        }
-
+    setDefenderForm() {
         if (this.props.defenderRace !== undefined && this.props.defenderRace !== null) {
 
             if (this.props.defenderRace.hasOwnProperty('value')) {
@@ -70,7 +54,31 @@ export class ApiHandler extends Component {
             }
 
         }
+    }
 
+    setAttackerForm() {
+        if (this.props.attackerRace !== undefined && this.props.attackerRace.length > 0) {
+
+            if (!this.selectedForceShowsItsUnits(this.props.attackerRace)) {
+
+                if (this.props.fetchedUnits.length > 0) {
+
+                    let attackerArray = this.changeArrayStucture(this.prepareUnits(this.props.attackerRace), 1);
+
+                    if (this.props.attackerUnitArray.length !== attackerArray.length) {
+                        this.props.onSetAttackerUnitArray(attackerArray);
+                    }
+
+                }
+
+            }
+
+        }  else if (this.props.attackerRace.length === 0 && this.props.attackerUnitArray.length > 0) {
+
+            this.props.onSetAttackerUnitArray([]);
+            this.props.onSetAttackerUnit([]);
+
+        }
     }
 
     prepareUnits(arrayValues) {
@@ -130,7 +138,7 @@ export class ApiHandler extends Component {
     }
 
     render() {
-        
+
         return null;
 
     }

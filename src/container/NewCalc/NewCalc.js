@@ -17,37 +17,7 @@ export class NewCalc extends Component {
         this.props.onSetPageType('newCalc');
     }
 
-    // configureUnitOptions (selectedForces) {
-    //
-    //    let options = [];
-    //    let forcesSummary = [this.props.allUnits.currentState, (this.props.allUnits.payload) ? this.props.allUnits.payload : {}];
-    //
-    //     if (selectedForces && forcesSummary) {
-    //
-    //         selectedForces.forEach(obj => {
-    //
-    //             let match = forcesSummary.find(key => key.id === obj.value);
-    //
-    //             if (match !== undefined)  {
-    //
-    //                match.unitIds.forEach(item => {
-    //                     options.push(item)
-    //                 });
-    //             }
-    //
-    //         });
-    //
-    //         options = this.changeArrayStucture(options, 1)
-    //
-    //     }
-    //
-    //     return options;
-    // }
-
     render() {
-
-        // console.log(this.props.defenderRace);
-        // console.log(this.props.defenderUnit);
 
         return (
 
