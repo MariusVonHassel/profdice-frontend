@@ -1,4 +1,4 @@
-import { FETCH_FORCES } from './types';
+import { FETCH_FORCES, SET_FORCES_ARRAY} from './types';
 
 export const fetchForces = () => dispatch => {
 
@@ -8,7 +8,19 @@ export const fetchForces = () => dispatch => {
         .then(forces => {
             dispatch({
                 type: FETCH_FORCES,
-                payload: (forces) ? forces.forces : forces})
+                payload: (forces) ? forces.forces : forces
+            })
         });
 
 };
+
+export function setForcesArray(forcesArray) {
+
+    return {
+         type: SET_FORCES_ARRAY,
+         payload: {
+             forcesArray,
+         }
+     }
+
+}

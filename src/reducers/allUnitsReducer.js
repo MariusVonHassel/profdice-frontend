@@ -1,18 +1,21 @@
-import { FETCH_ALL_UNITS } from '../actions/types';
+import { FETCH_ALL_UNITS, FETCHED_UNTIS } from '../actions/types';
 
 const initialState = {
-    currentState: {}
+    allUnits: {},
+    fetchedUnits: []
 };
 
-export default function (state = initialState, { type, payload, currentState }) {
+export default function (state = initialState, { type, payload }) {
 
     switch (type) {
         case FETCH_ALL_UNITS:
-
-            return {
-                    payload,
-                    currentState
-            };
+            return Object.assign({}, state, {
+                allUnits: payload
+            });
+        case FETCHED_UNTIS:
+            return Object.assign({}, state, {
+                fetchedUnits: payload.fetched
+            });
         default:
             return state;
     }
