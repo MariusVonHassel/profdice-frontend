@@ -25,3 +25,7 @@ jobs:
             ./cc-test-reporter before-build
             npm test -- --coverage
             ./cc-test-reporter after-build --exit-code $?
+eslint:
+  enabled: true
+  config:
+    config: ./.eslintrc
