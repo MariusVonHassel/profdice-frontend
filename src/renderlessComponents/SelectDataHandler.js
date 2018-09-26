@@ -9,15 +9,15 @@ import { fetchAllUnits, setFetchedUnits } from "../actions/allUnitsAction";
 import { setAttackerRace, setAttackerUnit, setAttackerUnitArray } from "../actions/attackerActions";
 import { setDefenderRace, setDefenderUnit, setDefenderUnitArray } from "../actions/defenderActions";
 
-export class ApiHandler extends Component {
+export class SelectDataHandler extends Component {
 
     componentWillMount() {
-        this.props.onFetchForces();
+        (this.props.forces.length < 1 && this.props.onFetchForces());
     }
 
     componentDidUpdate() {
 
-        (this.props.forces !== undefined && this.props.forces.length > 0 && this.props.forcesArray.length === 0) && this.props.onSetForcesArray(this.changeArrayStucture(this.props.forces, 1));
+        (this.props.forces.length > 0 && this.props.forcesArray.length === 0) && this.props.onSetForcesArray(this.changeArrayStucture(this.props.forces, 1));
 
         this.setAttackerForm();
 
@@ -26,38 +26,31 @@ export class ApiHandler extends Component {
     }
 
     setDefenderForm() {
-        if (this.props.defenderRace !== undefined && this.props.defenderRace !== null) {
+        if (this.props.defenderRace.hasOwnProperty('value')) {
 
-            if (this.props.defenderRace.hasOwnProperty('value')) {
+            if (!this.props.fetchedUnits.find(key => key.id === this.props.defenderRace.value)) {
 
-                if (!this.props.fetchedUnits.find(key => key.id === this.props.defenderRace.value)) {
+                this.fetchHandler(this.props.fetchedUnits, this.props.defenderRace.value);
 
-                    this.fetchHandler(this.props.fetchedUnits, this.props.defenderRace.value);
+            } else if (this.props.fetchedUnits.length > 0) {
 
-                } else if (this.props.fetchedUnits.length > 0) {
+                let defenderArray = this.changeArrayStucture(this.prepareUnits([this.props.defenderRace]), 1);
 
-                    let defenderArray = this.changeArrayStucture(this.prepareUnits([this.props.defenderRace]), 1);
-
-                    if (this.props.defenderUnitArray.length !== defenderArray.length) {
-                        this.props.onSetDefenderUnitArray(defenderArray);
-                    }
-
+                if (this.props.defenderUnitArray.length !== defenderArray.length) {
+                    this.props.onSetDefenderUnitArray(defenderArray);
                 }
 
             }
 
-        }  else if ((this.props.defenderRace === undefined || this.props.defenderRace === null) && (this.props.defenderUnitArray !== null || this.props.defenderUnitArray !== undefined)) {
 
-            if (this.props.defenderUnitArray.length > 0) {
+        }  else if (this.props.defenderUnitArray.length > 0) {
                 this.props.onSetDefenderUnitArray([]);
                 this.props.onSetDefenderUnit({});
-            }
-
         }
     }
 
     setAttackerForm() {
-        if (this.props.attackerRace !== undefined && this.props.attackerRace.length > 0) {
+        if (this.props.attackerRace.length > 0) {
 
             if (!this.selectedForceShowsItsUnits(this.props.attackerRace)) {
 
@@ -145,11 +138,11 @@ export class ApiHandler extends Component {
 
 }
 
-ApiHandler.contextTypes = {
+SelectDataHandler.contextTypes = {
     t: PropTypes.func.isRequired
 };
 
-ApiHandler.propTypes = {
+SelectDataHandler.propTypes = {
     pageType: PropTypes.string.isRequired,
     forces: PropTypes.array,
     forcesArray: PropTypes.array,
@@ -214,4 +207,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ApiHandler);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectDataHandler);

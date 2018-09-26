@@ -10,7 +10,21 @@ import DropdownMenu from '../../components/Menu/DropdownMenu';
 class UnitSettings extends Component {
 
     componentWillMount() {
-        this.props.onSetPageType('unitSettings');
+
+        this.checkValidInput();
+    }
+
+    checkValidInput() {
+        if (this.props.attackerUnit.length > 0 && this.props.defenderUnit.hasOwnProperty('value')) {
+            this.props.onSetPageType('unitSettings');
+        } else {
+            this.props.onSetPageType('newCalc');
+            this.props.history.push('/new-calculation');
+        }
+    }
+
+    fetchUnitStats() {
+
     }
 
     render() {
@@ -39,7 +53,9 @@ UnitSettings.contextTypes = {
 };
 
 UnitSettings.propTypes = {
-    pageType: PropTypes.string.isRequired
+    pageType: PropTypes.string.isRequired,
+    attackerUnit: PropTypes.array.isRequired,
+    defenderUnit: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = dispatch => {
@@ -53,6 +69,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
+    attackerUnit: state.attackerReducer.attackerUnit,
+    defenderUnit: state.defenderReducer.defenderUnit
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UnitSettings);

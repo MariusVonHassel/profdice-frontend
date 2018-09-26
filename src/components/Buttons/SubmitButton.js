@@ -13,8 +13,6 @@ export default class SubmitButton extends Component {
             path = ''
         } = this.props;
 
-        console.log(disabledValue);
-
         if (disabledValue) {
             return (
                 <div className='clearfix'>
