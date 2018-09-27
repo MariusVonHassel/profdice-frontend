@@ -34,7 +34,7 @@ export class SelectDataHandler extends Component {
 
             } else if (this.props.fetchedUnits.length > 0) {
 
-                let defenderArray = this.changeArrayStucture(this.prepareUnits([this.props.defenderRace]), 1);
+                let defenderArray = this.changeUnitArrayStucture(this.prepareUnits([this.props.defenderRace]), 1);
 
                 if (this.props.defenderUnitArray.length !== defenderArray.length) {
                     this.props.onSetDefenderUnitArray(defenderArray);
@@ -56,7 +56,7 @@ export class SelectDataHandler extends Component {
 
                 if (this.props.fetchedUnits.length > 0) {
 
-                    let attackerArray = this.changeArrayStucture(this.prepareUnits(this.props.attackerRace), 1);
+                    let attackerArray = this.changeUnitArrayStucture(this.prepareUnits(this.props.attackerRace), 1);
 
                     if (this.props.attackerUnitArray.length !== attackerArray.length) {
                         this.props.onSetAttackerUnitArray(attackerArray);
@@ -83,7 +83,9 @@ export class SelectDataHandler extends Component {
             unitsTmp = this.props.fetchedUnits.find(key => key.id === item.value);
 
             unitsTmp['unitIds'].forEach(elem => {
-                units.push(elem);
+
+                units.push({unitName: elem, race: item.value});
+
             });
         });
 
@@ -115,6 +117,18 @@ export class SelectDataHandler extends Component {
             this.fetchHandler(this.props.fetchedUnits, item.value);
 
         });
+
+    }
+
+    changeUnitArrayStucture(obj, toObj) {
+
+        let result = [];
+
+        obj.forEach(item => {
+            (toObj === 1) ? result.push({value: item.unitName, label: this.context.t(item.unitName), race: item.race}) : result.push(item.value);
+        });
+
+        return result;
 
     }
 
