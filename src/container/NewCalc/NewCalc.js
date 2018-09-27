@@ -9,7 +9,8 @@ import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import CalcContainer from '../../container/CalcContainer/CalcContainer';
 import SelectionMenuHeadline from '../../components/Menu/SelectionMenuHeadline';
-import SelectDataHandler from '../../renderlessComponents/SelectDataHandler';
+import ForcesApi from '../../renderlessComponents/ForcesApi';
+import AttackerUnitApi from "../../renderlessComponents/AttackerUnitApi";
 
 export class NewCalc extends Component {
 
@@ -23,7 +24,8 @@ export class NewCalc extends Component {
 
             <div className='newCalc'>
 
-                <SelectDataHandler />
+                <ForcesApi />
+                <AttackerUnitApi />
 
                 <Breadcrumb />
 

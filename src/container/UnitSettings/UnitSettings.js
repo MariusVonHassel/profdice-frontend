@@ -20,6 +20,11 @@ class UnitSettings extends Component {
         (this.checkValidInput() && this.fetchUnitStats())
     }
 
+    componentDidUpdate() {
+        console.log(this.props.fetchedUnitStats);
+
+    }
+
     checkValidInput() {
         if (this.props.attackerUnit.length > 0 && this.props.defenderUnit.hasOwnProperty('value')) {
             this.props.onSetPageType('unitSettings');

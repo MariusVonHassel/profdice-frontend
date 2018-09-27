@@ -1,9 +1,10 @@
-import { SET_ATTACKERRACE, SET_ATTACKERUNIT, SET_ATTACKERUNIT_ARRAY } from '../actions/types';
+import { SET_ATTACKERRACE, SET_ATTACKERUNIT, SET_ATTACKERUNIT_ARRAY, FETCH_ATTACKER_UNITS } from '../actions/types';
 
 const initialState = {
     attackerRace: [],
     attackerUnit: [],
-    attackerUnitArray: []
+    attackerUnitArray: [],
+    fetchedAttackerUnits: {}
 };
 
 export default function (state=initialState, { type, payload }) {
@@ -22,6 +23,11 @@ export default function (state=initialState, { type, payload }) {
         case SET_ATTACKERUNIT_ARRAY: {
             return Object.assign({}, state, {
                 attackerUnitArray: payload.value
+            });
+        }
+        case FETCH_ATTACKER_UNITS: {
+            return Object.assign({}, state, {
+                fetchedAttackerUnits: payload
             });
         }
         default:
