@@ -11,6 +11,7 @@ import CalcContainer from '../../container/CalcContainer/CalcContainer';
 import SelectionMenuHeadline from '../../components/Menu/SelectionMenuHeadline';
 import ForcesApi from '../../renderlessComponents/ForcesApi';
 import AttackerUnitApi from "../../renderlessComponents/AttackerUnitApi";
+import DefenderUnitApi from "../../renderlessComponents/DefenderUnitApi";
 
 export class NewCalc extends Component {
 
@@ -26,6 +27,7 @@ export class NewCalc extends Component {
 
                 <ForcesApi />
                 <AttackerUnitApi />
+                <DefenderUnitApi />
 
                 <Breadcrumb />
 
