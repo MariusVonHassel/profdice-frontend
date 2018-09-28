@@ -3,7 +3,8 @@ import {
     SET_ATTACKERUNIT,
     SET_ATTACKERUNIT_ARRAY,
     SET_ATTACKER_SAVE_UNITS,
-    FETCH_ATTACKER_UNITS
+    FETCH_ATTACKER_UNITS,
+    FETCH_ATTACKER_UNIT_STATS
 } from './types';
 
 export function setAttackerRace(value) {
@@ -56,3 +57,16 @@ export const fetchAttackerUnits = (race) => dispatch => {
         );
 };
 
+export const fetchAttackerStats = (race, unitName) => dispatch => {
+
+    fetch('http://217.160.28.212:8000/api/getUnit-' + race + '-' + unitName)
+        .then(res => res.json(),
+            error => console.log('There has been a problem with your fetch operation '+ error))
+        .then(fetchAttackerStats =>
+            dispatch({
+                type: FETCH_ATTACKER_UNIT_STATS,
+                payload: fetchAttackerStats
+            })
+        );
+
+};

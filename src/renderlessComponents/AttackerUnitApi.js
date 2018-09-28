@@ -7,8 +7,6 @@ export class AttackerUnitApi extends Component {
 
     componentDidUpdate(prevProps) {
 
-        console.log('update');
-
         if (this.props.attackerRace.length < 1) {
             this.props.onSetAttackerUnitArray([]);
             this.props.onSetAttackerUnit([]);
@@ -59,7 +57,7 @@ export class AttackerUnitApi extends Component {
 
             if (unitMatch) {
                 unitMatch['unitIds'].forEach(item => {
-                    selectableUnits.push({value: item, label: this.context.t(item), race: item.value});
+                    selectableUnits.push({value: item, label: this.context.t(item), race: unitMatch.id});
                 });
             }
 

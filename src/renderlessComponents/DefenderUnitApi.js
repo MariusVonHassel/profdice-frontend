@@ -48,15 +48,13 @@ export class DefenderUnitApi extends Component {
 
     prepareUnitArray() {
 
-        console.log('push');
-
         let selectableUnits = [];
 
         let unitMatch = this.props.defenderSaveUnits.find(key => key.id ===  this.props.defenderRace.value);
 
         if (unitMatch) {
             unitMatch['unitIds'].forEach(item => {
-                selectableUnits.push({value: item, label: this.context.t(item), race: item.value});
+                selectableUnits.push({value: item, label: this.context.t(item), race: unitMatch.id});
             });
         }
 

@@ -108,7 +108,6 @@ NewCalc.propTypes = {
     defenderUnit: PropTypes.object,
     defenderUnitArray: PropTypes.array,
     forcesArray: PropTypes.array,
-    allUnits: PropTypes.object,
     pageType: PropTypes.string.isRequired
 };
 
@@ -116,7 +115,6 @@ const mapStateToProps = state => ({
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
     forcesArray: state.forcesReducer.forcesArray,
-    allUnits: state.allUnitsReducer,
     attackerRace: state.attackerReducer.attackerRace,
     attackerRaceArray: state.attackerReducer.attackerRaceArray,
     attackerUnit: state.attackerReducer.attackerUnit,
