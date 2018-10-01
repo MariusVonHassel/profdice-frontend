@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import { setPageType } from '../../actions/pageTypeActions';
-import { fetchAttackerStats } from "../../actions/attackerActions";
+import { fetchAttackerStats } from '../../actions/attackerActions';
+import { fetchDefenderStats } from '../../actions/defenderActions';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import DropdownMenu from '../../components/Menu/DropdownMenu';
 import AttackerStats from '../../renderlessComponents/AttackerStats'
@@ -17,7 +18,7 @@ class UnitSettings extends Component {
     }
 
     componentDidUpdate() {
-        console.log(this.props.fetchedUnitStats);
+        // console.log(this.props.);
 
     }
 
@@ -37,6 +38,10 @@ class UnitSettings extends Component {
         this.props.attackerUnit.forEach(item => {
             this.props.onFetchAttackerStats(item.race, item.value);
         });
+
+
+            this.props.onFetchDefenderStats(this.props.defenderUnit.race, this.props.defenderUnit.value);
+
 
 
     }
@@ -88,6 +93,9 @@ const mapDispatchToProps = dispatch => {
         },
         onFetchAttackerStats: (race, unitName) => {
             dispatch(fetchAttackerStats(race, unitName));
+        },
+        onFetchDefenderStats: (race, unitName) => {
+            dispatch(fetchDefenderStats(race, unitName));
         }
     }
 };

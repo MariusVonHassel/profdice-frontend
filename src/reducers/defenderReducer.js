@@ -1,11 +1,19 @@
-import { SET_DEFENDERUNIT_ARRAY, SET_DEFENDERRACE, SET_DEFENDERUNIT, SET_DEFENDER_SAVE_UNITS, FETCH_DEFENDER_UNITS } from '../actions/types';
+import {
+    SET_DEFENDERUNIT_ARRAY,
+    SET_DEFENDERRACE,
+    SET_DEFENDERUNIT,
+    SET_DEFENDER_SAVE_UNITS,
+    FETCH_DEFENDER_UNITS,
+    FETCH_DEFENDER_UNIT_STATS
+} from '../actions/types';
 
 const initialState = {
     defenderRace: {},
     defenderUnit: {},
     defenderUnitArray: [],
     defenderSaveUnits: [],
-    fetchDefenderUnits: {}
+    fetchDefenderUnits: {},
+    fetchDefenderStats: {}
 };
 
 export default function (state=initialState, { type, payload }) {
@@ -34,6 +42,11 @@ export default function (state=initialState, { type, payload }) {
         case FETCH_DEFENDER_UNITS: {
             return Object.assign({}, state, {
                 fetchDefenderUnits: payload
+            });
+        }
+        case FETCH_DEFENDER_UNIT_STATS: {
+            return Object.assign({}, state, {
+                fetchDefenderStats: payload
             });
         }
         default:

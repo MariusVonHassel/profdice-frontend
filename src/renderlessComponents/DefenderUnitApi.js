@@ -23,9 +23,6 @@ export class DefenderUnitApi extends Component {
 
     fetchHandler(prevProps) {
 
-        console.log(this.props.defenderRace);
-        console.log(prevProps.defenderRace);
-        //
         if (this.props.defenderRace.hasOwnProperty('value') !== prevProps.defenderRace.hasOwnProperty('value')) {
             this.props.onFetchDefenderUnit(this.props.defenderRace.value);
         } else if (this.props.defenderRace['value'] !== prevProps.defenderRace['value']) {

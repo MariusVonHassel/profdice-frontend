@@ -3,7 +3,8 @@ import {
     SET_DEFENDERUNIT,
     SET_DEFENDER_SAVE_UNITS,
     SET_DEFENDERUNIT_ARRAY,
-    FETCH_DEFENDER_UNITS
+    FETCH_DEFENDER_UNITS,
+    FETCH_DEFENDER_UNIT_STATS
 } from './types';
 
 export function setDefenderRace(value) {
@@ -55,3 +56,16 @@ export const fetchDefenderUnits = (race) => dispatch => {
         );
 };
 
+export const fetchDefenderStats = (race, unitName) => dispatch => {
+
+    fetch('http://217.160.28.212:8000/api/getUnit-' + race + '-' + unitName)
+        .then(res => res.json(),
+            error => console.log('There has been a problem with your fetch operation '+ error))
+        .then(fetchAttackerStats =>
+            dispatch({
+                type: FETCH_DEFENDER_UNIT_STATS,
+                payload: fetchAttackerStats
+            })
+        );
+
+};

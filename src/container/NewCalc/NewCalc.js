@@ -99,15 +99,15 @@ NewCalc.contextTypes = {
 };
 
 NewCalc.propTypes = {
+    forcesArray: PropTypes.array,
     attackerRace: PropTypes.array,
-    attackerRaceArray: PropTypes.array,
     attackerUnit: PropTypes.array,
     attackerUnitArray: PropTypes.array,
     defenderRace: PropTypes.object,
     defenderRaceArray: PropTypes.array,
     defenderUnit: PropTypes.object,
     defenderUnitArray: PropTypes.array,
-    forcesArray: PropTypes.array,
+
     pageType: PropTypes.string.isRequired
 };
 
@@ -116,7 +116,6 @@ const mapStateToProps = state => ({
     pageType: state.pageTypeReducer.pageType,
     forcesArray: state.forcesReducer.forcesArray,
     attackerRace: state.attackerReducer.attackerRace,
-    attackerRaceArray: state.attackerReducer.attackerRaceArray,
     attackerUnit: state.attackerReducer.attackerUnit,
     attackerUnitArray: state.attackerReducer.attackerUnitArray,
     defenderRace: state.defenderReducer.defenderRace,
