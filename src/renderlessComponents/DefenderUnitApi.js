@@ -7,8 +7,6 @@ export class DefenderUnitApi extends Component {
 
     componentDidUpdate(prevProps) {
 
-        console.log('update');
-
         if (!(this.props.defenderRace.hasOwnProperty('value'))) {
             this.props.onSetDefenderUnitArray([]);
             this.props.onSetDefenderUnit({});

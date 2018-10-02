@@ -4,7 +4,9 @@ import {
     SET_ATTACKERUNIT_ARRAY,
     SET_ATTACKER_SAVE_UNITS,
     FETCH_ATTACKER_UNITS,
-    FETCH_ATTACKER_UNIT_STATS
+    FETCH_ATTACKER_UNIT_STATS,
+    SET_ATTACKER_STATS_COLLECTION,
+    CLEAR_ATTACKER_STATS_COLLECTION
 } from './types';
 
 export function setAttackerRace(value) {
@@ -40,6 +42,27 @@ export function setAttackerSaveUnits(value) {
         type: SET_ATTACKER_SAVE_UNITS,
         payload: {
             value
+        }
+    }
+}
+
+export function setAttackerStatsCollection(value, prevState = []) {
+
+    prevState.push(value);
+
+    return {
+        type: SET_ATTACKER_STATS_COLLECTION,
+        payload: {
+            value: prevState
+        }
+    }
+}
+
+export function clearAttackerStatsCollection() {
+    return {
+        type: CLEAR_ATTACKER_STATS_COLLECTION,
+        payload: {
+            value: []
         }
     }
 }

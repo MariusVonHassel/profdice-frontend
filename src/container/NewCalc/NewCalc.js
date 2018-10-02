@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import { setPageType } from '../../actions/pageTypeActions';
-import { setAttackerRace, setAttackerUnit } from '../../actions/attackerActions'
+import { setAttackerRace, setAttackerUnit, clearAttackerStatsCollection } from '../../actions/attackerActions'
 import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import CalcContainer from '../../container/CalcContainer/CalcContainer';
@@ -17,6 +17,7 @@ export class NewCalc extends Component {
 
     componentWillMount() {
         this.props.onSetPageType('newCalc');
+        this.props.onClearAttackerStatsCollection();
     }
 
     render() {
@@ -107,7 +108,6 @@ NewCalc.propTypes = {
     defenderRaceArray: PropTypes.array,
     defenderUnit: PropTypes.object,
     defenderUnitArray: PropTypes.array,
-
     pageType: PropTypes.string.isRequired
 };
 
@@ -139,6 +139,9 @@ const mapDispatchToProps = dispatch => {
         },
         onSetDefenderUnit: (newState) => {
             dispatch(setDefenderUnit(newState));
+        },
+        onClearAttackerStatsCollection: () => {
+            dispatch(clearAttackerStatsCollection());
         }
     }
 };

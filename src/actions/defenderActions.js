@@ -3,6 +3,7 @@ import {
     SET_DEFENDERUNIT,
     SET_DEFENDER_SAVE_UNITS,
     SET_DEFENDERUNIT_ARRAY,
+    SET_DEFENDEFR_STATS_COLLECTION,
     FETCH_DEFENDER_UNITS,
     FETCH_DEFENDER_UNIT_STATS
 } from './types';
@@ -39,6 +40,15 @@ export function setDefenderSaveUnits(value) {
         type: SET_DEFENDER_SAVE_UNITS,
         payload: {
             value,
+        }
+    }
+}
+
+export function setDefenderStatsCollection(value) {
+    return {
+        type: SET_DEFENDEFR_STATS_COLLECTION,
+        payload: {
+            value: value
         }
     }
 }

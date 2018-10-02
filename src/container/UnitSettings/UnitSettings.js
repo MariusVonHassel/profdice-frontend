@@ -8,7 +8,8 @@ import { fetchAttackerStats } from '../../actions/attackerActions';
 import { fetchDefenderStats } from '../../actions/defenderActions';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import DropdownMenu from '../../components/Menu/DropdownMenu';
-import AttackerStats from '../../renderlessComponents/AttackerStats'
+import AttackerStats from '../../renderlessComponents/AttackerStats';
+import DefenderStats from '../../renderlessComponents/DefenderStats';
 
 class UnitSettings extends Component {
 
@@ -39,10 +40,7 @@ class UnitSettings extends Component {
             this.props.onFetchAttackerStats(item.race, item.value);
         });
 
-
-            this.props.onFetchDefenderStats(this.props.defenderUnit.race, this.props.defenderUnit.value);
-
-
+        this.props.onFetchDefenderStats(this.props.defenderUnit.race, this.props.defenderUnit.value);
 
     }
 
@@ -52,6 +50,8 @@ class UnitSettings extends Component {
             <div className='unitSettings'>
 
                 <AttackerStats />
+
+                <DefenderStats />
 
                 <Breadcrumb />
 

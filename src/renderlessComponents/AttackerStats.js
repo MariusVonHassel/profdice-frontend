@@ -1,10 +1,15 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { setAttackerStatsCollection } from '../actions/attackerActions';
 
 export class AttackerStats extends Component {
 
     componentDidUpdate(prevProps) {
+
+        if (this.props.fetchAttackerStats.valueOf('id') !== prevProps.fetchAttackerStats.valueOf('id')) {
+            this.props.onSetAttackerStatsCollection(this.props.fetchAttackerStats, prevProps.attackerStatsCollection);
+        }
 
     }
 
@@ -16,19 +21,21 @@ export class AttackerStats extends Component {
 
 AttackerStats.contextTypes = {
     t: PropTypes.func.isRequired,
-    fetchedAttackerStats: PropTypes.object,
-    fetchedAttackerStatsCollection: PropTypes.array
+    fetchAttackerStats: PropTypes.object,
+    attackerStatsCollection: PropTypes.array
 };
 
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
-    fetchedAttackerStats: state.attackerReducer.fetchedAttackerStats,
-    fetchedAttackerStatsCollection: state.attackerReducer.fetchedAttackerStatsCollection
+    fetchAttackerStats: state.attackerReducer.fetchAttackerStats,
+    attackerStatsCollection: state.attackerReducer.attackerStatsCollection
 });
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        onSetAttackerStatsCollection: (newState, state) => {
+            dispatch(setAttackerStatsCollection(newState, state));
+        }
     }
 };
 

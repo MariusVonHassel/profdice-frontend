@@ -1,12 +1,13 @@
-import { SET_ATTACKERRACE, SET_ATTACKERUNIT, SET_ATTACKERUNIT_ARRAY, SET_ATTACKER_SAVE_UNITS, FETCH_ATTACKER_UNITS, FETCH_ATTACKER_UNIT_STATS } from '../actions/types';
+import { SET_ATTACKERRACE, SET_ATTACKERUNIT, SET_ATTACKERUNIT_ARRAY, SET_ATTACKER_SAVE_UNITS, CLEAR_ATTACKER_STATS_COLLECTION, FETCH_ATTACKER_UNITS, FETCH_ATTACKER_UNIT_STATS, SET_ATTACKER_STATS_COLLECTION } from '../actions/types';
 
 const initialState = {
     attackerRace: [],
     attackerUnit: [],
     attackerUnitArray: [],
     attackerSaveUnits: [],
+    attackerStatsCollection: [],
     fetchAttackerUnits: {},
-    fetchAttackerStats: {}
+    fetchAttackerStats: {},
 };
 
 export default function (state=initialState, { type, payload }) {
@@ -32,6 +33,11 @@ export default function (state=initialState, { type, payload }) {
                 attackerSaveUnits: payload.value
             });
         }
+        case SET_ATTACKER_STATS_COLLECTION: {
+            return Object.assign({}, state, {
+                attackerStatsCollection: payload.value
+            });
+        }
         case FETCH_ATTACKER_UNITS: {
             return Object.assign({}, state, {
                 fetchAttackerUnits: payload
@@ -40,6 +46,11 @@ export default function (state=initialState, { type, payload }) {
         case FETCH_ATTACKER_UNIT_STATS: {
             return Object.assign({}, state, {
                 fetchAttackerStats: payload
+            });
+        }
+        case CLEAR_ATTACKER_STATS_COLLECTION: {
+            return Object.assign({}, state, {
+                attackerStatsCollection: payload.value
             });
         }
         default:
