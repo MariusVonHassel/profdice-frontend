@@ -30,3 +30,10 @@ checks:
   identical-code:
     config:
       threshold: # language-specific defaults. an override will affect all languages.
+  plugins:
+    [ESLint]:
+      enabled: true
+    [SCSS Lint]:
+      enabled: true
+exclude_patterns:
+  - "./docs"
