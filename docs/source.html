@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="">
+  <title data-ice="title">Source | profdice-frontend</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="profdice-frontend"><meta property="twitter:description" content="This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/MariusVonHassel/profdice-frontend"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Wrapper.js~Wrapper.html">Wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-App">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-register">register</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unregister">unregister</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-history">history</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#actions">actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clearAttackerStatsCollection">clearAttackerStatsCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchAttackerStats">fetchAttackerStats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchAttackerUnits">fetchAttackerUnits</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setAttackerRace">setAttackerRace</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setAttackerSaveUnits">setAttackerSaveUnits</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setAttackerStatsCollection">setAttackerStatsCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setAttackerUnit">setAttackerUnit</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setAttackerUnitArray">setAttackerUnitArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchDefenderStats">fetchDefenderStats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchDefenderUnits">fetchDefenderUnits</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setDefenderRace">setDefenderRace</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setDefenderSaveUnits">setDefenderSaveUnits</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setDefenderStatsCollection">setDefenderStatsCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setDefenderUnit">setDefenderUnit</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setDefenderUnitArray">setDefenderUnitArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchForces">fetchForces</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setForcesArray">setForcesArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPageType">setPageType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_ATTACKER_STATS_COLLECTION">CLEAR_ATTACKER_STATS_COLLECTION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_ATTACKER_UNITS">FETCH_ATTACKER_UNITS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_ATTACKER_UNIT_STATS">FETCH_ATTACKER_UNIT_STATS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_DEFENDER_UNITS">FETCH_DEFENDER_UNITS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_DEFENDER_UNIT_STATS">FETCH_DEFENDER_UNIT_STATS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_FORCES">FETCH_FORCES</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_ATTACKERRACE">SET_ATTACKERRACE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_ATTACKERUNIT">SET_ATTACKERUNIT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_ATTACKERUNIT_ARRAY">SET_ATTACKERUNIT_ARRAY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_ATTACKER_SAVE_UNITS">SET_ATTACKER_SAVE_UNITS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_ATTACKER_STATS_COLLECTION">SET_ATTACKER_STATS_COLLECTION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_ATTACKER_UNIT_STATS">SET_ATTACKER_UNIT_STATS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_DEFENDEFR_STATS_COLLECTION">SET_DEFENDEFR_STATS_COLLECTION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_DEFENDERRACE">SET_DEFENDERRACE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_DEFENDERUNIT">SET_DEFENDERUNIT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_DEFENDERUNIT_ARRAY">SET_DEFENDERUNIT_ARRAY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_DEFENDER_SAVE_UNITS">SET_DEFENDER_SAVE_UNITS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_DEFENDER_UNIT_STATS">SET_DEFENDER_UNIT_STATS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_FORCES_ARRAY">SET_FORCES_ARRAY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_PAGETYPE">SET_PAGETYPE</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components-breadcrumb">components/Breadcrumb</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Breadcrumb/Breadcrumb.js~Breadcrumb.html">Breadcrumb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Breadcrumb/BreadcrumbItem.js~BreadcrumbItem.html">BreadcrumbItem</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components-buttons">components/Buttons</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Buttons/IconButton.js~IconButton.html">IconButton</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Buttons/SubmitButton.js~SubmitButton.html">SubmitButton</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components-inputselect">components/InputSelect</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/InputSelect/InputSelect.js~InputSelect.html">InputSelect</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components-menu">components/Menu</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Menu/SelectionMenuHeadline.js~SelectionMenuHeadline.html">SelectionMenuHeadline</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components-projects">components/Projects</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Projects/Projects.js~Projects.html">Projects</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components-singleproject">components/SingleProject</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/SingleProject/SingleProject.js~SingleProject.html">SingleProject</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-aboutthiswebsite">container/AboutThisWebsite</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/AboutThisWebsite/AboutThisWebsite.js~AboutThisWebside.html">AboutThisWebside</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-calccontainer">container/CalcContainer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/CalcContainer/CalcContainer.js~CalcContainer.html">CalcContainer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-footer">container/Footer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/Footer/Footer.js~Footer.html">Footer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-home">container/Home</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/Home/Home.js~Home.html">Home</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-legalnotice">container/LegalNotice</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/LegalNotice/LegalNotice.js~LegalNotice.html">LegalNotice</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-newcalc">container/NewCalc</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/NewCalc/NewCalc.js~NewCalc.html">NewCalc</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#defaults">defaults</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-defaultValuesAttacker">defaultValuesAttacker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-defaultValuesDefender">defaultValuesDefender</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#reducers">reducers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-attackerReducer">attackerReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-defenderReducer">defenderReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forcesReducer">forcesReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pageTypeReducer">pageTypeReducer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#renderlesscomponents">renderlessComponents</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/AttackerStats.js~AttackerStats.html">AttackerStats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi.html">AttackerUnitApi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/DefenderStats.js~DefenderStats.html">DefenderStats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi.html">DefenderUnitApi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/ForcesApi.js~ForcesApi.html">ForcesApi</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents">statelessFunctionalComponents</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prepareSelectValues">prepareSelectValues</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#translations">translations</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-translations">translations</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">0/163</span></h1>
+
+<table class="files-summary" data-ice="files" data-use-coverage="true">
+  <thead>
+    <tr>
+      <td>File</td>
+      <td>Identifier</td>
+      <td class="coverage">Document</td>
+      <td style="display: none;">Size</td>
+      <td style="display: none;">Lines</td>
+      <td style="display: none;">Updated</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+  <tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/App.js.html#errorLines=6">src/App.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-App">App</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/1</span></td>
+      <td style="display: none;" data-ice="size">450 byte</td>
+      <td style="display: none;" data-ice="lines">27</td>
+      <td style="display: none;" data-ice="updated">2018-08-05 16:50:47 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/Wrapper.js.html#errorLines=12,13,26,34">src/Wrapper.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/Wrapper.js~Wrapper.html">Wrapper</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">901 byte</td>
+      <td style="display: none;" data-ice="lines">37</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/actions/attackerActions.js.html#errorLines=12,21,31,40,49,61,70,83">src/actions/attackerActions.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-clearAttackerStatsCollection">clearAttackerStatsCollection</a></span>
+<span><a href="function/index.html#static-function-fetchAttackerStats">fetchAttackerStats</a></span>
+<span><a href="function/index.html#static-function-fetchAttackerUnits">fetchAttackerUnits</a></span>
+<span><a href="function/index.html#static-function-setAttackerRace">setAttackerRace</a></span>
+<span><a href="function/index.html#static-function-setAttackerSaveUnits">setAttackerSaveUnits</a></span>
+<span><a href="function/index.html#static-function-setAttackerStatsCollection">setAttackerStatsCollection</a></span>
+<span><a href="function/index.html#static-function-setAttackerUnit">setAttackerUnit</a></span>
+<span><a href="function/index.html#static-function-setAttackerUnitArray">setAttackerUnitArray</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/8</span></td>
+      <td style="display: none;" data-ice="size">2128 byte</td>
+      <td style="display: none;" data-ice="lines">95</td>
+      <td style="display: none;" data-ice="updated">2018-10-02 19:21:45 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/actions/defenderActions.js.html#errorLines=11,20,29,38,47,56,69">src/actions/defenderActions.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-fetchDefenderStats">fetchDefenderStats</a></span>
+<span><a href="function/index.html#static-function-fetchDefenderUnits">fetchDefenderUnits</a></span>
+<span><a href="function/index.html#static-function-setDefenderRace">setDefenderRace</a></span>
+<span><a href="function/index.html#static-function-setDefenderSaveUnits">setDefenderSaveUnits</a></span>
+<span><a href="function/index.html#static-function-setDefenderStatsCollection">setDefenderStatsCollection</a></span>
+<span><a href="function/index.html#static-function-setDefenderUnit">setDefenderUnit</a></span>
+<span><a href="function/index.html#static-function-setDefenderUnitArray">setDefenderUnitArray</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/7</span></td>
+      <td style="display: none;" data-ice="size">1876 byte</td>
+      <td style="display: none;" data-ice="lines">81</td>
+      <td style="display: none;" data-ice="updated">2018-10-03 10:18:22 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/actions/forceAction.js.html#errorLines=17,3">src/actions/forceAction.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-fetchForces">fetchForces</a></span>
+<span><a href="function/index.html#static-function-setForcesArray">setForcesArray</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">622 byte</td>
+      <td style="display: none;" data-ice="lines">26</td>
+      <td style="display: none;" data-ice="updated">2018-09-03 16:23:42 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/actions/pageTypeActions.js.html#errorLines=3">src/actions/pageTypeActions.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-setPageType">setPageType</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/1</span></td>
+      <td style="display: none;" data-ice="size">180 byte</td>
+      <td style="display: none;" data-ice="lines">9</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/actions/types.js.html#errorLines=1,10,11,12,13,15,16,17,18,19,20,21,23,24,3,4,6,7,8,9">src/actions/types.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-CLEAR_ATTACKER_STATS_COLLECTION">CLEAR_ATTACKER_STATS_COLLECTION</a></span>
+<span><a href="variable/index.html#static-variable-FETCH_ATTACKER_UNITS">FETCH_ATTACKER_UNITS</a></span>
+<span><a href="variable/index.html#static-variable-FETCH_ATTACKER_UNIT_STATS">FETCH_ATTACKER_UNIT_STATS</a></span>
+<span><a href="variable/index.html#static-variable-FETCH_DEFENDER_UNITS">FETCH_DEFENDER_UNITS</a></span>
+<span><a href="variable/index.html#static-variable-FETCH_DEFENDER_UNIT_STATS">FETCH_DEFENDER_UNIT_STATS</a></span>
+<span><a href="variable/index.html#static-variable-FETCH_FORCES">FETCH_FORCES</a></span>
+<span><a href="variable/index.html#static-variable-SET_ATTACKERRACE">SET_ATTACKERRACE</a></span>
+<span><a href="variable/index.html#static-variable-SET_ATTACKERUNIT">SET_ATTACKERUNIT</a></span>
+<span><a href="variable/index.html#static-variable-SET_ATTACKERUNIT_ARRAY">SET_ATTACKERUNIT_ARRAY</a></span>
+<span><a href="variable/index.html#static-variable-SET_ATTACKER_SAVE_UNITS">SET_ATTACKER_SAVE_UNITS</a></span>
+<span><a href="variable/index.html#static-variable-SET_ATTACKER_STATS_COLLECTION">SET_ATTACKER_STATS_COLLECTION</a></span>
+<span><a href="variable/index.html#static-variable-SET_ATTACKER_UNIT_STATS">SET_ATTACKER_UNIT_STATS</a></span>
+<span><a href="variable/index.html#static-variable-SET_DEFENDEFR_STATS_COLLECTION">SET_DEFENDEFR_STATS_COLLECTION</a></span>
+<span><a href="variable/index.html#static-variable-SET_DEFENDERRACE">SET_DEFENDERRACE</a></span>
+<span><a href="variable/index.html#static-variable-SET_DEFENDERUNIT">SET_DEFENDERUNIT</a></span>
+<span><a href="variable/index.html#static-variable-SET_DEFENDERUNIT_ARRAY">SET_DEFENDERUNIT_ARRAY</a></span>
+<span><a href="variable/index.html#static-variable-SET_DEFENDER_SAVE_UNITS">SET_DEFENDER_SAVE_UNITS</a></span>
+<span><a href="variable/index.html#static-variable-SET_DEFENDER_UNIT_STATS">SET_DEFENDER_UNIT_STATS</a></span>
+<span><a href="variable/index.html#static-variable-SET_FORCES_ARRAY">SET_FORCES_ARRAY</a></span>
+<span><a href="variable/index.html#static-variable-SET_PAGETYPE">SET_PAGETYPE</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/20</span></td>
+      <td style="display: none;" data-ice="size">1244 byte</td>
+      <td style="display: none;" data-ice="lines">24</td>
+      <td style="display: none;" data-ice="updated">2018-10-02 19:21:45 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/components/Breadcrumb/Breadcrumb.js.html#errorLines=10,50,58,8">src/components/Breadcrumb/Breadcrumb.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/components/Breadcrumb/Breadcrumb.js~Breadcrumb.html">Breadcrumb</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">1386 byte</td>
+      <td style="display: none;" data-ice="lines">62</td>
+      <td style="display: none;" data-ice="updated">2018-10-04 20:40:46 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/components/Breadcrumb/BreadcrumbItem.js.html#errorLines=10,38,46,8">src/components/Breadcrumb/BreadcrumbItem.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/components/Breadcrumb/BreadcrumbItem.js~BreadcrumbItem.html">BreadcrumbItem</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">1255 byte</td>
+      <td style="display: none;" data-ice="lines">50</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/components/Buttons/IconButton.js.html#errorLines=4,6">src/components/Buttons/IconButton.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/components/Buttons/IconButton.js~IconButton.html">IconButton</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">654 byte</td>
+      <td style="display: none;" data-ice="lines">26</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/components/Buttons/SubmitButton.js.html#errorLines=4,6">src/components/Buttons/SubmitButton.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/components/Buttons/SubmitButton.js~SubmitButton.html">SubmitButton</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">876 byte</td>
+      <td style="display: none;" data-ice="lines">34</td>
+      <td style="display: none;" data-ice="updated">2018-09-04 09:04:18 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/components/InputSelect/InputSelect.js.html#errorLines=4,6">src/components/InputSelect/InputSelect.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/components/InputSelect/InputSelect.js~InputSelect.html">InputSelect</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">570 byte</td>
+      <td style="display: none;" data-ice="lines">26</td>
+      <td style="display: none;" data-ice="updated">2018-08-05 16:50:47 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/components/Menu/DropdownMenu.js.html#errorLines=10,116,12,124">src/components/Menu/DropdownMenu.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">4082 byte</td>
+      <td style="display: none;" data-ice="lines">128</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/components/Menu/SelectionMenuHeadline.js.html#errorLines=4,6">src/components/Menu/SelectionMenuHeadline.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/components/Menu/SelectionMenuHeadline.js~SelectionMenuHeadline.html">SelectionMenuHeadline</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">648 byte</td>
+      <td style="display: none;" data-ice="lines">27</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/components/Projects/Projects.js.html#errorLines=10,58,66,8">src/components/Projects/Projects.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/components/Projects/Projects.js~Projects.html">Projects</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">1675 byte</td>
+      <td style="display: none;" data-ice="lines">70</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/components/SingleProject/SingleProject.js.html#errorLines=10,65,73,8">src/components/SingleProject/SingleProject.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/components/SingleProject/SingleProject.js~SingleProject.html">SingleProject</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">2051 byte</td>
+      <td style="display: none;" data-ice="lines">77</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/AboutThisWebsite/AboutThisWebsite.js.html#errorLines=4,6">src/container/AboutThisWebsite/AboutThisWebsite.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/container/AboutThisWebsite/AboutThisWebsite.js~AboutThisWebside.html">AboutThisWebside</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">910 byte</td>
+      <td style="display: none;" data-ice="lines">22</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/CalcContainer/CalcContainer.js.html#errorLines=52,57,7,9">src/container/CalcContainer/CalcContainer.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/container/CalcContainer/CalcContainer.js~CalcContainer.html">CalcContainer</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">1541 byte</td>
+      <td style="display: none;" data-ice="lines">64</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/Footer/Footer.js.html#errorLines=3,5">src/container/Footer/Footer.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/container/Footer/Footer.js~Footer.html">Footer</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">168 byte</td>
+      <td style="display: none;" data-ice="lines">9</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/Header/Header.js.html#errorLines=10,12,86,95">src/container/Header/Header.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">3312 byte</td>
+      <td style="display: none;" data-ice="lines">100</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/Home/Home.js.html#errorLines=4,6">src/container/Home/Home.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/container/Home/Home.js~Home.html">Home</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">209 byte</td>
+      <td style="display: none;" data-ice="lines">11</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/LegalNotice/LegalNotice.js.html#errorLines=4,6">src/container/LegalNotice/LegalNotice.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/container/LegalNotice/LegalNotice.js~LegalNotice.html">LegalNotice</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">19794 byte</td>
+      <td style="display: none;" data-ice="lines">78</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/Main/Main.js.html#errorLines=15,17,47,55">src/container/Main/Main.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">1837 byte</td>
+      <td style="display: none;" data-ice="lines">59</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/NewCalc/NewCalc.js.html#errorLines=114,126,16,18,23">src/container/NewCalc/NewCalc.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/container/NewCalc/NewCalc.js~NewCalc.html">NewCalc</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/5</span></td>
+      <td style="display: none;" data-ice="size">5728 byte</td>
+      <td style="display: none;" data-ice="lines">148</td>
+      <td style="display: none;" data-ice="updated">2018-10-02 19:24:25 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/Summary/Summary.js.html#errorLines=11,15,33,41,9">src/container/Summary/Summary.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/5</span></td>
+      <td style="display: none;" data-ice="size">995 byte</td>
+      <td style="display: none;" data-ice="lines">45</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/container/UnitSettings/UnitSettings.js.html#errorLines=14,16,21,26,37,47,82,89">src/container/UnitSettings/UnitSettings.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/8</span></td>
+      <td style="display: none;" data-ice="size">2976 byte</td>
+      <td style="display: none;" data-ice="lines">102</td>
+      <td style="display: none;" data-ice="updated">2018-10-03 10:20:42 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/defaults/defaults.js.html#errorLines=1,75">src/defaults/defaults.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-defaultValuesAttacker">defaultValuesAttacker</a></span>
+<span><a href="variable/index.html#static-variable-defaultValuesDefender">defaultValuesDefender</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">4122 byte</td>
+      <td style="display: none;" data-ice="lines">146</td>
+      <td style="display: none;" data-ice="updated">2018-08-05 16:50:47 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/index.js.html#errorLines=20,35">src/index.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">1476 byte</td>
+      <td style="display: none;" data-ice="lines">59</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/reducers/attackerReducer.js.html#errorLines=13,3">src/reducers/attackerReducer.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-attackerReducer">attackerReducer</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">1864 byte</td>
+      <td style="display: none;" data-ice="lines">59</td>
+      <td style="display: none;" data-ice="updated">2018-10-02 19:22:29 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/reducers/defenderReducer.js.html#errorLines=11,21">src/reducers/defenderReducer.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-defenderReducer">defenderReducer</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">1685 byte</td>
+      <td style="display: none;" data-ice="lines">62</td>
+      <td style="display: none;" data-ice="updated">2018-10-03 10:16:09 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/reducers/forcesReducer.js.html#errorLines=3,8">src/reducers/forcesReducer.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-forcesReducer">forcesReducer</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">535 byte</td>
+      <td style="display: none;" data-ice="lines">23</td>
+      <td style="display: none;" data-ice="updated">2018-09-03 16:23:42 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/reducers/index.js.html">src/reducers/index.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">407 byte</td>
+      <td style="display: none;" data-ice="lines">13</td>
+      <td style="display: none;" data-ice="updated">2018-09-06 16:52:16 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/reducers/pageTypeReducer.js.html#errorLines=3,7">src/reducers/pageTypeReducer.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-pageTypeReducer">pageTypeReducer</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">293 byte</td>
+      <td style="display: none;" data-ice="lines">15</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/registerServiceWorker.js.html#errorLines=11,111,21,55,84">src/registerServiceWorker.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-register">register</a></span>
+<span><a href="function/index.html#static-function-unregister">unregister</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/5</span></td>
+      <td style="display: none;" data-ice="size">4384 byte</td>
+      <td style="display: none;" data-ice="lines">117</td>
+      <td style="display: none;" data-ice="updated">2018-08-05 16:50:47 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/renderlessComponents/AttackerStats.js.html#errorLines=16,28,34,6,8">src/renderlessComponents/AttackerStats.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/renderlessComponents/AttackerStats.js~AttackerStats.html">AttackerStats</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/5</span></td>
+      <td style="display: none;" data-ice="size">1206 byte</td>
+      <td style="display: none;" data-ice="lines">42</td>
+      <td style="display: none;" data-ice="updated">2018-10-03 10:12:13 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/renderlessComponents/AttackerUnitApi.js.html#errorLines=10,12,28,40,53,67,82,89">src/renderlessComponents/AttackerUnitApi.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi.html">AttackerUnitApi</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/8</span></td>
+      <td style="display: none;" data-ice="size">2770 byte</td>
+      <td style="display: none;" data-ice="lines">105</td>
+      <td style="display: none;" data-ice="updated">2018-10-04 17:03:43 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/renderlessComponents/DefenderStats.js.html#errorLines=15,27,33,6,8">src/renderlessComponents/DefenderStats.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/renderlessComponents/DefenderStats.js~DefenderStats.html">DefenderStats</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/5</span></td>
+      <td style="display: none;" data-ice="size">1156 byte</td>
+      <td style="display: none;" data-ice="lines">40</td>
+      <td style="display: none;" data-ice="updated">2018-10-03 10:12:13 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/renderlessComponents/DefenderUnitApi.js.html#errorLines=23,33,45,51,65,7,72,9">src/renderlessComponents/DefenderUnitApi.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi.html">DefenderUnitApi</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/8</span></td>
+      <td style="display: none;" data-ice="size">2778 byte</td>
+      <td style="display: none;" data-ice="lines">88</td>
+      <td style="display: none;" data-ice="updated">2018-10-04 16:29:00 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/renderlessComponents/ForcesApi.js.html#errorLines=10,14,18,29,40,45,8">src/renderlessComponents/ForcesApi.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/renderlessComponents/ForcesApi.js~ForcesApi.html">ForcesApi</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/7</span></td>
+      <td style="display: none;" data-ice="size">1233 byte</td>
+      <td style="display: none;" data-ice="lines">55</td>
+      <td style="display: none;" data-ice="updated">2018-09-05 14:36:57 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/statelessFunctionalComponents/prepareSelectValues.js.html#errorLines=1">src/statelessFunctionalComponents/prepareSelectValues.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-prepareSelectValues">prepareSelectValues</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/1</span></td>
+      <td style="display: none;" data-ice="size">405 byte</td>
+      <td style="display: none;" data-ice="lines">14</td>
+      <td style="display: none;" data-ice="updated">2018-10-04 16:46:11 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/store.js.html#errorLines=13,9">src/store.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-history">history</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">929 byte</td>
+      <td style="display: none;" data-ice="lines">32</td>
+      <td style="display: none;" data-ice="updated">2018-09-01 14:04:14 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/translations/translations.js.html#errorLines=1">src/translations/translations.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-translations">translations</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/1</span></td>
+      <td style="display: none;" data-ice="size">2818 byte</td>
+      <td style="display: none;" data-ice="lines">75</td>
+      <td style="display: none;" data-ice="updated">2018-09-03 16:23:42 (UTC)</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

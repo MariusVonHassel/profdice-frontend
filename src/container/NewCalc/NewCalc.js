@@ -4,17 +4,20 @@ import PropTypes from 'prop-types';
 
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import { setPageType } from '../../actions/pageTypeActions';
-import { setAttackerRace, setAttackerUnit } from '../../actions/attackerActions'
+import { setAttackerRace, setAttackerUnit, clearAttackerStatsCollection } from '../../actions/attackerActions'
 import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import CalcContainer from '../../container/CalcContainer/CalcContainer';
 import SelectionMenuHeadline from '../../components/Menu/SelectionMenuHeadline';
-import ApiHandler from '../../renderlessComponents/ApiHandler';
+import ForcesApi from '../../renderlessComponents/ForcesApi';
+import AttackerUnitApi from "../../renderlessComponents/AttackerUnitApi";
+import DefenderUnitApi from "../../renderlessComponents/DefenderUnitApi";
 
 export class NewCalc extends Component {
 
     componentWillMount() {
         this.props.onSetPageType('newCalc');
+        this.props.onClearAttackerStatsCollection();
     }
 
     render() {
@@ -23,7 +26,9 @@ export class NewCalc extends Component {
 
             <div className='newCalc'>
 
-                <ApiHandler />
+                <ForcesApi />
+                <AttackerUnitApi />
+                <DefenderUnitApi />
 
                 <Breadcrumb />
 
@@ -59,8 +64,8 @@ export class NewCalc extends Component {
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('race')}
-                    value={(this.props.defenderRace) ? this.props.defenderRace.value : null}
-                    onChange={(value)=>{this.props.onSetDefenderRace(value)}}
+                    value={this.props.defenderRace.value}
+                    onChange={(value)=>{(value === null) ? this.props.onSetDefenderRace({}) : this.props.onSetDefenderRace(value)}}
                     placeholder={this.context.t('selectYourRace')}
                     multi={false}
                     options={(this.props.forcesArray) ? this.props.forcesArray : []}
@@ -68,8 +73,8 @@ export class NewCalc extends Component {
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('unit')}
-                    value={(this.props.defenderUnit) ? this.props.defenderUnit.value : null}
-                    onChange={(value)=>{this.props.onSetDefenderUnit(value)}}
+                    value={this.props.defenderUnit.value}
+                    onChange={(value)=>{(value === null) ? this.props.onSetDefenderUnit({}) : this.props.onSetDefenderUnit(value)}}
                     placeholder={this.context.t('selectYourUnits')}
                     multi={false}
                     options={(this.props.defenderUnitArray) ? this.props.defenderUnitArray: []}
@@ -79,7 +84,7 @@ export class NewCalc extends Component {
                     className=' btn newCalc-submit'
                     onClick={()=>{this.props.onSetPageType('unitSettings')}}
                     path='/unit-settings'
-
+                    disabledValue={!(this.props.attackerUnit.length > 0 && this.props.defenderUnit.hasOwnProperty('value'))}
                 >
                 {this.context.t('confirmSelection')}
                 </SubmitButton>
@@ -95,16 +100,14 @@ NewCalc.contextTypes = {
 };
 
 NewCalc.propTypes = {
+    forcesArray: PropTypes.array,
     attackerRace: PropTypes.array,
-    attackerRaceArray: PropTypes.array,
     attackerUnit: PropTypes.array,
     attackerUnitArray: PropTypes.array,
     defenderRace: PropTypes.object,
     defenderRaceArray: PropTypes.array,
     defenderUnit: PropTypes.object,
     defenderUnitArray: PropTypes.array,
-    forcesArray: PropTypes.array,
-    allUnits: PropTypes.object,
     pageType: PropTypes.string.isRequired
 };
 
@@ -112,9 +115,7 @@ const mapStateToProps = state => ({
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
     forcesArray: state.forcesReducer.forcesArray,
-    allUnits: state.allUnitsReducer,
     attackerRace: state.attackerReducer.attackerRace,
-    attackerRaceArray: state.attackerReducer.attackerRaceArray,
     attackerUnit: state.attackerReducer.attackerUnit,
     attackerUnitArray: state.attackerReducer.attackerUnitArray,
     defenderRace: state.defenderReducer.defenderRace,
@@ -138,6 +139,9 @@ const mapDispatchToProps = dispatch => {
         },
         onSetDefenderUnit: (newState) => {
             dispatch(setDefenderUnit(newState));
+        },
+        onClearAttackerStatsCollection: () => {
+            dispatch(clearAttackerStatsCollection());
         }
     }
 };

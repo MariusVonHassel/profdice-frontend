@@ -13,3 +13,11 @@ body {
 [type='checkbox'].filled-in:checked+label:before, [type='checkbox'].filled-in:not(:checked)+label:before, [type='checkbox'].filled-in:checked+label:after, [type='checkbox'].filled-in:not(:checked)+label:after  {
   top: 2px!important;
 }
+
+.Select-clear {
+  vertical-align: middle;
+}
+
+.Select-value-icon {
+  padding: 1px 5px!important;
+}
