@@ -37,3 +37,4 @@ checks:
       enabled: true
 exclude_patterns:
   - "./docs"
+  - "./config"

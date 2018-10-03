@@ -1,4 +1,4 @@
-const prepareSelectValues = (savedUnits, units, language, selectableUnits = []) => {
+export const prepareSelectValues = (savedUnits, units, language, selectableUnits = []) => {
 
     let unitMatch = savedUnits.find(key => key.id ===  units.value);
 
@@ -12,4 +12,16 @@ const prepareSelectValues = (savedUnits, units, language, selectableUnits = []) 
 
 };
 
-export default prepareSelectValues;
+
+export const saveUnits = (savedUnits, fetchedUnits) => {
+
+    let newFetch = savedUnits;
+
+    if (!(savedUnits.find(key => key.id === fetchedUnits['id']))) {
+
+        newFetch.push(fetchedUnits);
+
+    }
+
+    return newFetch;
+};

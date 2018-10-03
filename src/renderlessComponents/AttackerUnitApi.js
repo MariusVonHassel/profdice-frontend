@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setAttackerUnit, setAttackerUnitArray, setAttackerSaveUnits, fetchAttackerUnits } from "../actions/attackerActions";
-import prepareSelectValues from '../statelessFunctionalComponents/prepareSelectValues';
+import { prepareSelectValues, saveUnits } from '../statelessFunctionalComponents/prepareSelectValues';
 
 /*
 
@@ -17,7 +17,7 @@ export class AttackerUnitApi extends Component {
         } else {
             this.fetchHandler(prevProps);
             if (this.props.fetchAttackerUnits['id'] !== prevProps.fetchAttackerUnits['id']) {
-                this.saveUnits();
+                this.props.onSetAttackerSaveUnits(saveUnits(this.props.attackerSaveUnits, this.props.fetchAttackerUnits));
             }
             this.prepareUnitArray();
 
@@ -32,19 +32,6 @@ export class AttackerUnitApi extends Component {
             this.props.attackerRace.forEach(item => {
                 this.props.onFetchAttackerUnit(item.value);
             });
-
-        }
-
-    }
-
-    saveUnits() {
-
-        if (!(this.props.attackerSaveUnits.find(key => key.id === this.props.fetchAttackerUnits['id']))) {
-
-            let newFetch = this.props.attackerSaveUnits;
-            newFetch.push(this.props.fetchAttackerUnits);
-
-            this.props.onSetAttackerSaveUnits(newFetch);
 
         }
 

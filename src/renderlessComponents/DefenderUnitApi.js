@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setDefenderUnit, setDefenderUnitArray, setDefenderSaveUnits, fetchDefenderUnits } from "../actions/defenderActions";
-import prepareSelectValues from '../statelessFunctionalComponents/prepareSelectValues';
+import { prepareSelectValues, saveUnits } from '../statelessFunctionalComponents/prepareSelectValues';
 
 export class DefenderUnitApi extends Component {
 
@@ -14,7 +14,7 @@ export class DefenderUnitApi extends Component {
         } else {
             this.fetchHandler(prevProps);
             if (this.props.fetchDefenderUnits['id'] !== prevProps.fetchDefenderUnits['id']) {
-                this.saveUnits();
+                this.props.onSetDefenderSaveUnits(saveUnits(this.props.defenderSaveUnits, this.props.fetchDefenderUnits));
             }
             this.prepareUnitArray();
         }
@@ -26,18 +26,6 @@ export class DefenderUnitApi extends Component {
             this.props.onFetchDefenderUnit(this.props.defenderRace.value);
         } else if (this.props.defenderRace['value'] !== prevProps.defenderRace['value']) {
             this.props.onFetchDefenderUnit(this.props.defenderRace.value);
-        }
-
-    }
-
-    saveUnits() {
-
-        if (!(this.props.defenderSaveUnits.find(key => key.id === this.props.fetchDefenderUnits['id']))) {
-
-            let newFetch = this.props.defenderSaveUnits;
-            newFetch.push(this.props.fetchDefenderUnits);
-
-            this.props.onSetDefenderSaveUnits(newFetch);
         }
 
     }
