@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setDefenderUnit, setDefenderUnitArray, setDefenderSaveUnits, fetchDefenderUnits } from "../actions/defenderActions";
+import prepareSelectValues from '../statelessFunctionalComponents/prepareSelectValues';
 
 export class DefenderUnitApi extends Component {
 
@@ -43,17 +44,7 @@ export class DefenderUnitApi extends Component {
 
     prepareUnitArray() {
 
-        let selectableUnits = [];
-
-        let unitMatch = this.props.defenderSaveUnits.find(key => key.id ===  this.props.defenderRace.value);
-
-        if (unitMatch) {
-            unitMatch['unitIds'].forEach(item => {
-                selectableUnits.push({value: item, label: this.context.t(item), race: unitMatch.id});
-            });
-        }
-
-        this.props.onSetDefenderUnitArray(selectableUnits);
+        this.props.onSetDefenderUnitArray(prepareSelectValues(this.props.defenderSaveUnits, this.props.defenderRace, this.context));
 
     }
 
