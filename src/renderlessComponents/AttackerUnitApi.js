@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { setAttackerUnit, setAttackerUnitArray, setAttackerSaveUnits, fetchAttackerUnits } from "../actions/attackerActions";
 import prepareSelectValues from '../statelessFunctionalComponents/prepareSelectValues';
 
+/*
+
+ */
 export class AttackerUnitApi extends Component {
 
     componentDidUpdate(prevProps) {
