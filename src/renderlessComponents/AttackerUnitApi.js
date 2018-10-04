@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setAttackerUnit, setAttackerUnitArray, setAttackerSaveUnits, fetchAttackerUnits } from "../actions/attackerActions";
-import { prepareSelectValues, saveUnits } from '../statelessFunctionalComponents/prepareSelectValues';
+import { apiMethods, saveUnits } from '../statelessFunctionalComponents/apiMethods';
 
 /*
 
@@ -43,7 +43,7 @@ export class AttackerUnitApi extends Component {
 
         this.props.attackerRace.forEach(item => {
 
-            selectableUnits = prepareSelectValues(this.props.attackerSaveUnits, item, this.context, selectableUnits);
+            selectableUnits = apiMethods(this.props.attackerSaveUnits, item, this.context, selectableUnits);
 
         });
 
@@ -82,7 +82,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(setAttackerUnit(newState));
         },
         onSetAttackerSaveUnits: (newState) => {
-        dispatch(setAttackerSaveUnits(newState));
+            dispatch(setAttackerSaveUnits(newState));
         },
         onFetchAttackerUnit: (race) => {
             dispatch(fetchAttackerUnits(race));

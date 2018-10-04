@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { setPageType } from "../../actions/pageTypeActions";
+import { setPageType } from '../../actions/pageTypeActions';
 
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import PropTypes from "prop-types";
-import connect from "react-redux/es/connect/connect";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import connect from 'react-redux/es/connect/connect';
+import CalculationHandler from '../../renderlessComponents/CalculationHandler';
 
 class Summary extends Component {
 
@@ -19,7 +19,7 @@ class Summary extends Component {
 
                 <Breadcrumb/>
 
-                summarry
+                <CalculationHandler />
 
             </div>
         );

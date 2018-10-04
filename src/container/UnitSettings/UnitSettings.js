@@ -61,6 +61,7 @@ class UnitSettings extends Component {
                     className=' btn unitSettings-submit'
                     onClick={()=>{this.props.onSetPageType('summary')}}
                     path='/summary'
+                    disabledValue={false}
                 >
                     {this.context.t('confirmSelection')}
                 </SubmitButton>
