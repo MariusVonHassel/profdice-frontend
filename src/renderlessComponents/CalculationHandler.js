@@ -26,14 +26,14 @@ CalculationHandler.contextTypes = {
 };
 
 CalculationHandler.propTypes = {
-    attackerStatsCollection: PropTypes.array,
-    defenderStatsCollection: PropTypes.object
+    choosedAttackerData: PropTypes.array,
+    choosedDefenderData: PropTypes.object
 };
 
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
-    attackerStatsCollection: state.attackerReducer.attackerStatsCollection,
-    defenderStatsCollection: state.defenderReducer.defenderStatsCollection
+    choosedAttackerData: state.attackerReducer.choosedAttackerData,
+    choosedDefenderData: state.defenderReducer.choosedDefenderData
 });
 
 const mapDispatchToProps = dispatch => {
