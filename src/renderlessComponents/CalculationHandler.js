@@ -1,13 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CalculationCalls from '../statelessFunctionalComponents/calculation/CalculationCalls';
+import RangedCalc from '../statelessFunctionalComponents/calculation/RangedCalc';
 
 class CalculationHandler extends Component {
 
     componentWillMount() {
-        const calc1 = new CalculationCalls(this.props.attackerStatsCollection[0], this.props.defenderStatsCollection);
 
+        this.initCalculation();
+
+    }
+
+    initCalculation() {
+
+        this.initRangedCalc();
+
+    }
+
+    initRangedCalc() {
+
+        let rangedAttackerCalc = [];
+
+        this.props.choosedAttackerData.forEach(elem => {
+
+            elem.weapon.ranged.forEach((weapon) => {
+                let newCalc = new RangedCalc(elem, weapon, this.props.choosedDefenderData, false);
+                rangedAttackerCalc.push(newCalc);
+            });
+
+        });
+
+        return rangedAttackerCalc;
 
     }
 
@@ -32,8 +55,8 @@ CalculationHandler.propTypes = {
 
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
-    choosedAttackerData: state.attackerReducer.choosedAttackerData,
-    choosedDefenderData: state.defenderReducer.choosedDefenderData
+    choosedAttackerData: state.choosedDataReducer.choosedAttackerData,
+    choosedDefenderData: state.choosedDataReducer.choosedDefenderData
 });
 
 const mapDispatchToProps = dispatch => {

@@ -19,7 +19,7 @@ export class NewCalc extends Component {
     componentWillMount() {
         this.props.onSetPageType('newCalc');
         this.props.onClearAttackerStatsCollection();
-        if(this.props.choosedAttackerData.length > 0) {this.props.onClearAttackerChoosedData()}
+        this.props.onClearAttackerChoosedData();
     }
 
     render() {

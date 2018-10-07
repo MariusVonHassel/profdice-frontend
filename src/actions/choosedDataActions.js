@@ -1,8 +1,8 @@
 import {
     SET_ATTACKER_CHOOSED_DATA,
-    CLEAR_ATTACKER_UNIT_STATS,
+    CLEAR_ATTACKER_CHOOSED_DATA,
     SET_DEFENDER_CHOOSED_DATA,
-    CLEAR_DEFEDER_UNIT_STATS
+    CLEAR_DEFENDER_CHOOSED_DATA
 } from './types';
 
 export function setAttackerChoosedData(value, prevState = []) {
@@ -21,19 +21,31 @@ export function setAttackerChoosedData(value, prevState = []) {
 export function clearAttackerChoosedData() {
 
     return {
-        type: CLEAR_ATTACKER_UNIT_STATS,
+        type: CLEAR_ATTACKER_CHOOSED_DATA,
         payload: {
             value: []
         }
     }
 
 }
+
 export function setDefenderChoosedData(value) {
 
     return {
         type: SET_DEFENDER_CHOOSED_DATA,
         payload: {
             value
+        }
+    }
+
+}
+
+export function clearDefenderChoosedData() {
+
+    return {
+        type: CLEAR_DEFENDER_CHOOSED_DATA,
+        payload: {
+            value: []
         }
     }
 

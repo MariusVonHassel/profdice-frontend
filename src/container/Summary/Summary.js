@@ -9,7 +9,20 @@ import CalculationHandler from '../../renderlessComponents/CalculationHandler';
 class Summary extends Component {
 
     componentWillMount() {
+        this.checkValidInput();
         this.props.onSetPageType('summary');
+    }
+
+    checkValidInput() {
+        //if (this.props.choosedAttackerData.length > 0 && this.props.choosedDefenderData.hasOwnProperty('id')) {
+        if (this.props.choosedAttackerData.length > 0) {
+            this.props.onSetPageType('summary');
+            return true;
+        } else {
+            this.props.onSetPageType('newCalc');
+            this.props.history.push('/new-calculation');
+            return false;
+        }
     }
 
     render() {
@@ -41,6 +54,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
+    choosedAttackerData: state.choosedDataReducer.choosedAttackerData,
+    choosedDefenderData: state.choosedDataReducer.choosedDefenderData
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Summary);

@@ -97,7 +97,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/DefenderStats.js~DefenderStats.html">DefenderStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi.html">DefenderUnitApi</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/ForcesApi.js~ForcesApi.html">ForcesApi</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents">statelessFunctionalComponents</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prepareSelectValues">prepareSelectValues</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents">statelessFunctionalComponents</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-apiMethods">apiMethods</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveUnits">saveUnits</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents-calculation">statelessFunctionalComponents/calculation</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/statelessFunctionalComponents/calculation/Calculation.js~Calculation.html">Calculation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls.html">CalculationCalls</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html">Properties</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#translations">translations</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-translations">translations</a></span></span></li>
 </ul>
 </div>
@@ -108,7 +112,7 @@
 import { connect } from &apos;react-redux&apos;;
 import PropTypes from &apos;prop-types&apos;;
 import { setAttackerUnit, setAttackerUnitArray, setAttackerSaveUnits, fetchAttackerUnits } from &quot;../actions/attackerActions&quot;;
-import prepareSelectValues from &apos;../statelessFunctionalComponents/prepareSelectValues&apos;;
+import { apiMethods, saveUnits } from &apos;../statelessFunctionalComponents/apiMethods&apos;;
 
 /*
 
@@ -123,7 +127,7 @@ export class AttackerUnitApi extends Component {
         } else {
             this.fetchHandler(prevProps);
             if (this.props.fetchAttackerUnits[&apos;id&apos;] !== prevProps.fetchAttackerUnits[&apos;id&apos;]) {
-                this.saveUnits();
+                this.props.onSetAttackerSaveUnits(saveUnits(this.props.attackerSaveUnits, this.props.fetchAttackerUnits));
             }
             this.prepareUnitArray();
 
@@ -143,26 +147,13 @@ export class AttackerUnitApi extends Component {
 
     }
 
-    saveUnits() {
-
-        if (!(this.props.attackerSaveUnits.find(key =&gt; key.id === this.props.fetchAttackerUnits[&apos;id&apos;]))) {
-
-            let newFetch = this.props.attackerSaveUnits;
-            newFetch.push(this.props.fetchAttackerUnits);
-
-            this.props.onSetAttackerSaveUnits(newFetch);
-
-        }
-
-    }
-
     prepareUnitArray() {
 
         let selectableUnits = [];
 
         this.props.attackerRace.forEach(item =&gt; {
 
-            selectableUnits = prepareSelectValues(this.props.attackerSaveUnits, item, this.context, selectableUnits);
+            selectableUnits = apiMethods(this.props.attackerSaveUnits, item, this.context, selectableUnits);
 
         });
 
@@ -201,7 +192,7 @@ const mapDispatchToProps = dispatch =&gt; {
             dispatch(setAttackerUnit(newState));
         },
         onSetAttackerSaveUnits: (newState) =&gt; {
-        dispatch(setAttackerSaveUnits(newState));
+            dispatch(setAttackerSaveUnits(newState));
         },
         onFetchAttackerUnit: (race) =&gt; {
             dispatch(fetchAttackerUnits(race));

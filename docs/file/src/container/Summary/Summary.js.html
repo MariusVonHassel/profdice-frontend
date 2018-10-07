@@ -97,7 +97,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/DefenderStats.js~DefenderStats.html">DefenderStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi.html">DefenderUnitApi</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/ForcesApi.js~ForcesApi.html">ForcesApi</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents">statelessFunctionalComponents</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prepareSelectValues">prepareSelectValues</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents">statelessFunctionalComponents</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-apiMethods">apiMethods</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveUnits">saveUnits</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents-calculation">statelessFunctionalComponents/calculation</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/statelessFunctionalComponents/calculation/Calculation.js~Calculation.html">Calculation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls.html">CalculationCalls</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html">Properties</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#translations">translations</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-translations">translations</a></span></span></li>
 </ul>
 </div>
@@ -105,12 +109,12 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/container/Summary/Summary.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, { Component } from &apos;react&apos;;
-import { setPageType } from &quot;../../actions/pageTypeActions&quot;;
+import { setPageType } from &apos;../../actions/pageTypeActions&apos;;
 
 import Breadcrumb from &apos;../../components/Breadcrumb/Breadcrumb&apos;;
-import PropTypes from &quot;prop-types&quot;;
-import connect from &quot;react-redux/es/connect/connect&quot;;
-// import PropTypes from &apos;prop-types&apos;;
+import PropTypes from &apos;prop-types&apos;;
+import connect from &apos;react-redux/es/connect/connect&apos;;
+import CalculationHandler from &apos;../../renderlessComponents/CalculationHandler&apos;;
 
 class Summary extends Component {
 
@@ -125,7 +129,7 @@ class Summary extends Component {
 
                 &lt;Breadcrumb/&gt;
 
-                summarry
+                &lt;CalculationHandler /&gt;
 
             &lt;/div&gt;
         );

@@ -1279,8 +1279,8 @@ window.esdocSearchIndex = [
   ],
   [
     "src/statelessfunctionalcomponents/calculation/properties.js~properties#gettotalweaponshotsattacker",
-    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getTotalWeaponShotsAttacker",
-    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getTotalWeaponShotsAttacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getRangedWeaponShotsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getRangedWeaponShotsAttacker",
     "method"
   ],
   [
@@ -1297,8 +1297,8 @@ window.esdocSearchIndex = [
   ],
   [
     "src/statelessfunctionalcomponents/calculation/properties.js~properties#getweaponshotcountattacker",
-    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getWeaponShotCountAttacker",
-    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getWeaponShotCountAttacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getRangedWeaponsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getRangedWeaponsAttacker",
     "method"
   ],
   [
@@ -1345,8 +1345,8 @@ window.esdocSearchIndex = [
   ],
   [
     "src/statelessfunctionalcomponents/calculation/properties.js~properties#settotalweaponshotsattacker",
-    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setTotalWeaponShotsAttacker",
-    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setTotalWeaponShotsAttacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setRangedWeaponShotsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setRangedWeaponShotsAttacker",
     "method"
   ],
   [
@@ -1375,8 +1375,8 @@ window.esdocSearchIndex = [
   ],
   [
     "src/statelessfunctionalcomponents/calculation/properties.js~properties#totalweaponshotsattacker",
-    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-totalWeaponShotsAttacker",
-    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#totalWeaponShotsAttacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-totalRangedWeaponHitsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#totalRangedWeaponHitsAttacker",
     "member"
   ],
   [
