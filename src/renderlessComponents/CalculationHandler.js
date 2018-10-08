@@ -13,24 +13,27 @@ class CalculationHandler extends Component {
 
     initCalculation() {
 
-        this.initRangedCalc();
+        console.log('Attacker:');
+        this.initRangedCalc(this.props.choosedAttackerData, this.props.choosedDefenderData);
+        console.log('Defender:');
+        this.initRangedCalc([this.props.choosedDefenderData], this.props.choosedAttackerData);
 
     }
 
-    initRangedCalc() {
+    initRangedCalc(attacker, defender) {
 
-        let rangedAttackerCalc = [];
+        let rangedCalc = [];
 
-        this.props.choosedAttackerData.forEach(elem => {
+        attacker.forEach(elem => {
 
             elem.weapon.ranged.forEach((weapon) => {
-                let newCalc = new RangedCalc(elem, weapon, this.props.choosedDefenderData, false);
-                rangedAttackerCalc.push(newCalc);
+                let newCalc = new RangedCalc(elem, weapon, defender, false);
+                rangedCalc.push(newCalc);
             });
 
         });
 
-        return rangedAttackerCalc;
+        return rangedCalc;
 
     }
 

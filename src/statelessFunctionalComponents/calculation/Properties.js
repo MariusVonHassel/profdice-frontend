@@ -8,18 +8,22 @@ export default class Properties {
     }
 
     initAttackerProperties() {
-        this.attacker = {};
+        this.attacker = {
+            'overwatch': false
+        };
         this.attackerWeaponStats = {
             'count': 0,
             'autoHit': 0,
             'additionalAttacks': 0,
-            'overwatch': false,
-            'weaponModeCount': 0
+            'weaponModeCount': 0,
+            'rerollModifier': 0
         };
         this.attackerTotalWeaponAttacks = 0;
         this.attackerHits = 0;
-        this.attackerHitProability = 0;
-        this.attackerMissedAttacks = 0;
+        this.attackerHitProbability = 0;
+        this.attackerRerollableDiceAmount = 0;
+        this.attackerRerollProbability = 0;
+        this.attackerHitsInterimResult = 0;
     }
 
     initDefenderProperties() {
@@ -58,12 +62,12 @@ export default class Properties {
         return this.attackerTotalWeaponAttacks;
     }
 
-    getAttackerHitProability() {
-        return this.attackerHitProability;
+    getAttackerHitProbability() {
+        return this.attackerHitProbability;
     }
 
-    setAttackerHitProability(value) {
-        this.attackerHitProability = value;
+    setAttackerHitProbability(value) {
+        this.attackerHitProbability = value;
     }
 
     getBalisticSkill() {
@@ -98,13 +102,39 @@ export default class Properties {
         return this.attackerWeaponStats.autoHit;
     }
 
-    setAttackerMissedAttacks(value) {
-        this.attackerMissedAttacks = value;
+    getAttackerOverwatch() {
+        return this.attacker.overwatch;
     }
 
-    getAttackerMissedAttackes() {
-        return this.attackerMissedAttacks;
+    getAttackerWeaponRerollModifier() {
+        return this.attackerWeaponStats.rerollModifier;
     }
+
+    setAttackerRerollableDiceAmount(value) {
+        this.attackerRerollableDiceAmount = value;
+    }
+
+    getAttackerRerollableDiceAmount() {
+        return this.attackerRerollableDiceAmount;
+    }
+
+    setAttackerRerollProbability(value) {
+        this.attackerRerollProbability = value;
+    }
+
+    getAttackerRerollProbability() {
+        return this.attackerRerollProbability;
+    }
+
+    setAttackerHitsInterimResult(value) {
+        this.attackerHitsInterimResult = value;
+    }
+
+    getAttackerHitsInterimResult() {
+        return this.attackerHitsInterimResult;
+    }
+
+
 
 
 

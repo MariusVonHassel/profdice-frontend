@@ -11,13 +11,13 @@ export class AttackerStats extends Component {
         if (this.props.fetchAttackerStats.valueOf('id') !== prevProps.fetchAttackerStats.valueOf('id')) {
             this.props.onSetAttackerStatsCollection(this.props.fetchAttackerStats, prevProps.attackerStatsCollection);
 
-            this.prepareChooseUnit();
+            this.prepareUnitSettings();
 
         }
 
     }
 
-    prepareChooseUnit() {
+    prepareUnitSettings() {
 
         let rangedWeaponsJSONStr = `[`;
 
@@ -33,7 +33,7 @@ export class AttackerStats extends Component {
             rangedWeaponsJSONStr += `"count":"${this.props.fetchAttackerStats.count.default}",`;
             rangedWeaponsJSONStr += `"additionalAttacks": 0,`;
             rangedWeaponsJSONStr += `"autoHit": false,`;
-            rangedWeaponsJSONStr += `"overwatch": false`;
+            rangedWeaponsJSONStr += `"rerollModifier": 6`;
             rangedWeaponsJSONStr += `}`;
 
             if (this.props.fetchAttackerStats.weapon.ranged.default.length !== (index + 1)) {
@@ -53,7 +53,8 @@ export class AttackerStats extends Component {
             'weapon': {
                 ranged: rangedWeaponsJSONStr
             },
-            'BSModification': -1
+            'BSModification': 0,
+            'overwatch': false
         };
 
         console.log(unit);

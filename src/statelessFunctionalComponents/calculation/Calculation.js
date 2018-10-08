@@ -22,8 +22,16 @@ export default class Calculation extends Properties {
         return weaponAttacks * hitPropability;
     }
 
-    calcMissedAttacks(weaponAttacks, weaponHits) {
-        return weaponAttacks - weaponHits;
+    calcHitRerollDiceAmount(attacks, rerollModifier) {
+        return attacks * rerollModifier;
+    }
+
+    calcRerollProbability(hitProbability, rerollDiceAmount) {
+        return hitProbability * rerollDiceAmount;
+    }
+
+    calcHitsInterimResult(attacks, rerollProbability) {
+        return attacks + rerollProbability;
     }
 
 }
