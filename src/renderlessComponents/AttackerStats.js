@@ -21,7 +21,7 @@ export class AttackerStats extends Component {
 
         let rangedWeaponsJSONStr = `[`;
 
-        this.props.fetchAttackerStats.weapon.ranged.default.forEach((item, index) => {
+        this.props.fetchAttackerStats.weapon.ranged.replacement.forEach((item, index) => {
 
             rangedWeaponsJSONStr += `{`;
             rangedWeaponsJSONStr += `"weaponId": "${item.id}",`;
@@ -31,12 +31,14 @@ export class AttackerStats extends Component {
             rangedWeaponsJSONStr += `"weaponMode":"${item.weaponMode}",`;
             rangedWeaponsJSONStr += `"weaponModeCount":"${item.weaponModeCount}",`;
             rangedWeaponsJSONStr += `"count":"${this.props.fetchAttackerStats.count.default}",`;
+            rangedWeaponsJSONStr += `"weaponAbility": ${JSON.stringify(item.weaponAbility)},`;
             rangedWeaponsJSONStr += `"additionalAttacks": 0,`;
             rangedWeaponsJSONStr += `"autoHit": false,`;
-            rangedWeaponsJSONStr += `"rerollModifier": 6`;
+            rangedWeaponsJSONStr += `"rerollModifier": 6,`;
+            rangedWeaponsJSONStr += `"CPModifier": 2`;
             rangedWeaponsJSONStr += `}`;
 
-            if (this.props.fetchAttackerStats.weapon.ranged.default.length !== (index + 1)) {
+            if (this.props.fetchAttackerStats.weapon.ranged.replacement.length !== (index + 1)) {
                 rangedWeaponsJSONStr += `,`;
             }
 

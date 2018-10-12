@@ -22,6 +22,16 @@ export default class RangedCalc extends Calculation {
         this.handleHitRerollDiceAmount();
         this.handleRerollProbability();
         this.handleHitsInterimResult();
+        this.handleRerollCPProbability();
+        this.handleRerollTotalDiceAmount();
+        this.handleTotalDiceAmount();
+
+        if (this.getAttackerWeaponAbility() !== undefined) {
+            this.handleWeaponAbilityHitMultiplierProbability();
+            this.handleWeaponAbilityHitMultiplierProbabilityTotal();
+        }
+
+        this.handleHitsResult();
 
         console.log('Attacks:', this.getAttackerTotalWeaponAttacks());
         console.log('Hitprobability:', this.getAttackerHitProbability());
@@ -29,8 +39,12 @@ export default class RangedCalc extends Calculation {
         console.log('rerollableHitDice:', this.getAttackerRerollableDiceAmount());
         console.log('rerollProbability:', this.getAttackerRerollProbability());
         console.log('hitInterimResult:', this.getAttackerHitsInterimResult());
+        console.log('CPhitRerollProbability:', this.getAttackerRerollCPProbability());
+        console.log('RerollTotalDiceAmount:', this.getAttackerRerollTotalDiceAmount());
+        console.log('TotalDiceAmount:', this.getAttackerTotalDiceAmount());
+        console.log('HitsResults:', this.getAttackerHitsResult());
 
-        //console.log('Misses', this.getAttackerMissedAttackes());
+
     }
 
     handleAttacks() {
@@ -38,7 +52,7 @@ export default class RangedCalc extends Calculation {
     }
 
     handleHitprobability() {
-        (this.getAttackerOverwatch() === false) ? this.setAttackerHitProbability(this.calcHitProbability(this.getBalisticSkill())) : this.setAttackerHitProbability(this.calcHitProbability(6)) ;
+        (this.getAttackerOverwatch() === false) ? this.setAttackerHitProbability(this.calcHitProbability(this.getAccuracySkill())) : this.setAttackerHitProbability(this.calcHitProbability(6)) ;
     }
 
     handleHits() {
@@ -46,30 +60,7 @@ export default class RangedCalc extends Calculation {
     }
 
     handleHitRerollDiceAmount() {
-
-        let result = 0;
-        let attackerWeaponAttacks = this.getAttackerTotalWeaponAttacks();
-
-        if (this.getAttackerWeaponRerollModifier() === 1) {
-
-            result = this.calcHitRerollDiceAmount(attackerWeaponAttacks, this.getAttackerWeaponRerollModifier()/6);
-
-        } else if (this.getAttackerWeaponRerollModifier() === 6) {
-
-            if ((1 - this.getAttackerHitProbability()) > (Math.abs(1 - this.calcHitProbability(this.getBalisticSkillRaw())))) {
-
-                result = this.calcHitRerollDiceAmount(attackerWeaponAttacks, Math.abs(1 - this.calcHitProbability(this.getBalisticSkillRaw())));
-
-            } else {
-
-                result = this.calcHitRerollDiceAmount(attackerWeaponAttacks, Math.abs(1 - this.getAttackerHitProbability()));
-
-            }
-
-        }
-
-        this.setAttackerRerollableDiceAmount(result);
-
+        this.setAttackerRerollableDiceAmount(this.calcHitRerollDiceAmount(this.getAttackerTotalWeaponAttacks(), this.getAttackerWeaponRerollModifier(), this.getAttackerHitProbability(), this.getAccuracySkillRaw()));
     }
 
     handleRerollProbability() {
@@ -80,5 +71,29 @@ export default class RangedCalc extends Calculation {
         this.setAttackerHitsInterimResult(this.calcHitsInterimResult(this.getAttackerHits(), this.getAttackerRerollProbability()));
     }
 
+    handleRerollCPProbability() {
+
+        this.setAttackerRerollCPProbability(this.calcCPHitProbability(this.getAttackerCPModifier(), this.getAttackerHitProbability()));
+    }
+
+    handleRerollTotalDiceAmount() {
+        this.setAttackerRerollTotalDiceAmount(this.getAttackerRerollableDiceAmount() + this.getAttackerCPModifier());
+    }
+
+    handleTotalDiceAmount() {
+        this.setAttackerTotalDiceAmount(this.getAttackerRerollTotalDiceAmount() + this.getAttackerTotalWeaponAttacks());
+    }
+
+    handleWeaponAbilityHitMultiplierProbability() {
+        this.setAttackerWeaponAbilityHitMultiplierProbability(this.calcWeaponAbilityHitMultiplierProbability(this.getAttackerWeaponAbility(), this.getAttackerASModification()));
+    }
+
+    handleWeaponAbilityHitMultiplierProbabilityTotal() {
+        this.setAttackerWeaponAbilityHitMultiplierProbabilityTotal(this.getAttackerWeaponAbilityHitMultiplierProbability() * this.getAttackerTotalDiceAmount());
+    }
+
+    handleHitsResult() {
+        this.setAttackerHitsResult(this.getAttackerHitsInterimResult() + this.getAttackerWeaponHitMultiplierProbabilityTotal());
+    }
 
 }

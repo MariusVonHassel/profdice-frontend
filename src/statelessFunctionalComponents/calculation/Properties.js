@@ -16,7 +16,9 @@ export default class Properties {
             'autoHit': 0,
             'additionalAttacks': 0,
             'weaponModeCount': 0,
-            'rerollModifier': 0
+            'rerollModifier': 0,
+            'CPModifier': 0,
+            'weaponAbility': []
         };
         this.attackerTotalWeaponAttacks = 0;
         this.attackerHits = 0;
@@ -24,6 +26,12 @@ export default class Properties {
         this.attackerRerollableDiceAmount = 0;
         this.attackerRerollProbability = 0;
         this.attackerHitsInterimResult = 0;
+        this.attackerRerollCPProbability = 0;
+        this.attackerRerollTotalDiceAmount = 0;
+        this.attackerTotalDiceAmount = 0;
+        this.attackerWeaponAbilityHitMultiplierProbability = 0;
+        this.attackerWeaponHitMultiplierProbabilityTotal = 0;
+        this.attackerHitsResult = 0;
     }
 
     initDefenderProperties() {
@@ -70,12 +78,16 @@ export default class Properties {
         this.attackerHitProbability = value;
     }
 
-    getBalisticSkill() {
+    getAccuracySkill() {
         return this.attacker.stats.BS - this.attacker.BSModification;
     }
 
-    getBalisticSkillRaw() {
+    getAccuracySkillRaw() {
         return this.attacker.stats.BS;
+    }
+
+    getAttackerASModification() {
+        return this.attacker.BSModification;
     }
 
     getAttackerWeaponCount() {
@@ -134,19 +146,61 @@ export default class Properties {
         return this.attackerHitsInterimResult;
     }
 
+    getAttackerCPModifier() {
+        return this.attackerWeaponStats.CPModifier
+    }
 
+    getAttackerRerollCPProbability() {
+        return this.attackerRerollCPProbability;
+    }
 
+    setAttackerRerollCPProbability(value) {
+        this.attackerRerollCPProbability = value;
+    }
 
+    setAttackerRerollTotalDiceAmount(value) {
+        this.attackerRerollTotalDiceAmount = value;
+    }
 
+    getAttackerRerollTotalDiceAmount() {
+        return this.attackerRerollTotalDiceAmount;
+    }
 
+    setAttackerTotalDiceAmount(value) {
+        this.attackerTotalDiceAmount = value;
+    }
 
+    getAttackerTotalDiceAmount() {
+        return this.attackerTotalDiceAmount;
+    }
 
+    setAttackerWeaponAbilityHitMultiplierProbability(value) {
+        this.attackerWeaponAbilityHitMultiplierProbability = value;
+    }
 
+    getAttackerWeaponAbilityHitMultiplierProbability() {
+        return this.attackerWeaponAbilityHitMultiplierProbability;
+    }
 
+    setAttackerWeaponAbilityHitMultiplierProbabilityTotal(value) {
+        this.attackerWeaponHitMultiplierProbabilityTotal = value;
+    }
 
+    getAttackerWeaponHitMultiplierProbabilityTotal() {
+        return this.attackerWeaponHitMultiplierProbabilityTotal;
+    }
 
+    getAttackerWeaponAbility() {
+        return this.attackerWeaponStats.weaponAbility;
+    }
 
+    setAttackerHitsResult(value) {
+        this.attackerHitsResult = value;
+    }
 
+    getAttackerHitsResult() {
+        return this.attackerHitsResult;
+    }
 
 
 

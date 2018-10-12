@@ -29,9 +29,11 @@ export class DefenderStats extends Component {
             rangedWeaponsJSONStr += `"weaponMode":"${item.weaponMode}",`;
             rangedWeaponsJSONStr += `"weaponModeCount":"${item.weaponModeCount}",`;
             rangedWeaponsJSONStr += `"count":"${this.props.fetchDefenderStats.count.default}",`;
+            rangedWeaponsJSONStr += `"weaponAbility": ${JSON.stringify(item.weaponAbility)},`;
             rangedWeaponsJSONStr += `"additionalAttacks": 0,`;
             rangedWeaponsJSONStr += `"autoHit": false,`;
-            rangedWeaponsJSONStr += `"rerollModifier": 0`;
+            rangedWeaponsJSONStr += `"rerollModifier": 0,`;
+            rangedWeaponsJSONStr += `"CPModifier": 0`;
             rangedWeaponsJSONStr += `}`;
 
             if (this.props.fetchDefenderStats.weapon.ranged.default.length !== (index + 1)) {

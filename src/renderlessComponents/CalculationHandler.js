@@ -27,7 +27,7 @@ class CalculationHandler extends Component {
         attacker.forEach(elem => {
 
             elem.weapon.ranged.forEach((weapon) => {
-                let newCalc = new RangedCalc(elem, weapon, defender, false);
+                let newCalc = new RangedCalc(elem, weapon, defender);
                 rangedCalc.push(newCalc);
             });
 
