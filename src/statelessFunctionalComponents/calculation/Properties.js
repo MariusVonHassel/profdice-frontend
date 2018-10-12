@@ -35,11 +35,10 @@ export default class Properties {
     }
 
     initDefenderProperties() {
-        this.defender = {};
-        this.additionalShotsDefender = 0;
-        this.weaponCountDefender = 0;
-        this.weaponShotsDefender = 0;
-        this.totalWeaponShotsDefender = 0;
+        this.defender = {
+            'overwatch': false
+        };
+
     }
 
     getAttacker() {
@@ -225,37 +224,6 @@ export default class Properties {
         this.defender = value;
     }
 
-    getAdditionalShotsDefender() {
-        return this.additionalShotsDefender;
-    }
-
-    setAdditionalShotsDefender(value) {
-        this.additionalShotsDefender = value;
-    }
-
-    getWeaponCountDefender() {
-        return this.weaponCountDefender;
-    }
-
-    setWeaponCountDefender(value) {
-        this.weaponCountDefender = value;
-    }
-
-    getWeaponShotsDefender() {
-        return this.weaponShotsDefender;
-    }
-
-    setWeaponShotsDefender(value) {
-        this.weaponShotsDefender = value;
-    }
-
-    getTotalWeaponShotsDefender() {
-        return this.totalWeaponShotsDefender;
-    }
-
-    setTotalWeaponShotsDefender(value) {
-        this.totalWeaponShotsDefender = value;
-    }
 
 
 

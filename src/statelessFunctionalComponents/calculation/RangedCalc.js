@@ -2,16 +2,15 @@ import Calculation from './Calculation';
 
 export default class RangedCalc extends Calculation {
 
-    constructor(attackerData, weaponStats, defenderData) {
+    constructor(attackerData, weaponStats) {
         super();
 
-        this.settings(attackerData, weaponStats, defenderData);
+        this.settings(attackerData, weaponStats);
         this.calculateHandler();
     }
 
-    settings(attackerData, weaponStats, defenderData) {
+    settings(attackerData, weaponStats) {
         this.setAttacker(attackerData);
-        this.setDefender(defenderData);
         this.setAttackerWeaponStats(weaponStats);
     }
 
@@ -43,7 +42,6 @@ export default class RangedCalc extends Calculation {
         console.log('RerollTotalDiceAmount:', this.getAttackerRerollTotalDiceAmount());
         console.log('TotalDiceAmount:', this.getAttackerTotalDiceAmount());
         console.log('HitsResults:', this.getAttackerHitsResult());
-
 
     }
 

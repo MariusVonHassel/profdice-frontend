@@ -48,12 +48,39 @@ export class AttackerStats extends Component {
 
         rangedWeaponsJSONStr = JSON.parse(rangedWeaponsJSONStr);
 
+        let meleeWeaponsJSONStr = `[`;
+
+        this.props.fetchAttackerStats.weapon.melee.default.forEach((item, index) => {
+
+            meleeWeaponsJSONStr += `{`;
+            meleeWeaponsJSONStr += `"weaponId": "${item.id}",`;
+            meleeWeaponsJSONStr += `"AP": "${item.AP}",`;
+            meleeWeaponsJSONStr += `"D": "${item.D}",`;
+            meleeWeaponsJSONStr += `"S": "${item.S}",`;
+            meleeWeaponsJSONStr += `"count": "${this.props.fetchAttackerStats.count.default}",`;
+            meleeWeaponsJSONStr += `"weaponAbility": ${JSON.stringify(item.weaponAbility)},`;
+            meleeWeaponsJSONStr += `"additionalAttacks": 0,`;
+            meleeWeaponsJSONStr += `"autoHit": false,`;
+            meleeWeaponsJSONStr += `"rerollModifier": 0,`;
+            meleeWeaponsJSONStr += `"CPModifier": 0`;
+            meleeWeaponsJSONStr += `}`;
+
+            if (this.props.fetchAttackerStats.weapon.melee.default.length !== (index + 1)) {
+                meleeWeaponsJSONStr += `,`;
+            }
+
+        });
+
+        meleeWeaponsJSONStr += `]`;
+        meleeWeaponsJSONStr = JSON.parse(meleeWeaponsJSONStr);
+
         const unit = {
             'id': this.props.fetchAttackerStats.id,
             'stats': this.props.fetchAttackerStats.stats,
             'count': this.props.fetchAttackerStats.count.default,
             'weapon': {
-                ranged: rangedWeaponsJSONStr
+                ranged: rangedWeaponsJSONStr,
+                melee: meleeWeaponsJSONStr
             },
             'BSModification': 0,
             'overwatch': false
