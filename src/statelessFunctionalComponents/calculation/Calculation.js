@@ -87,5 +87,23 @@ export default class Calculation extends Properties {
 
     }
 
+    calcWoundAccuracyValue(attackerStrength, defenderToughness) {
+
+        if (attackerStrength >= (defenderToughness * this.toWoundAccuracyValueModifier)) {
+            return 2;
+        } else if (attackerStrength > defenderToughness && attackerStrength < (defenderToughness * this.toWoundAccuracyValueModifier)) {
+            return 3;
+        } else if (attackerStrength === defenderToughness) {
+            return 4;
+        } else if (attackerStrength < defenderToughness && attackerStrength > (defenderToughness/this.toWoundAccuracyValueModifier)) {
+            return 5;
+        } else {
+            return 6;
+        }
+
+
+    }
+
+
 
 }

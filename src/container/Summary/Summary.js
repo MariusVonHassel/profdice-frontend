@@ -10,7 +10,6 @@ class Summary extends Component {
 
     componentWillMount() {
         this.checkValidInput();
-        this.props.onSetPageType('summary');
     }
 
     checkValidInput() {
@@ -32,7 +31,7 @@ class Summary extends Component {
 
                 <Breadcrumb/>
 
-                <CalculationHandler />
+                {this.props.choosedAttackerData.length > 0 ? <CalculationHandler /> : ''}
 
             </div>
         );

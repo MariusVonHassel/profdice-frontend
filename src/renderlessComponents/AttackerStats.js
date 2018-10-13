@@ -25,16 +25,17 @@ export class AttackerStats extends Component {
 
             rangedWeaponsJSONStr += `{`;
             rangedWeaponsJSONStr += `"weaponId": "${item.id}",`;
-            rangedWeaponsJSONStr += `"AP":"${item.AP}",`;
-            rangedWeaponsJSONStr += `"D":"${item.D}",`;
-            rangedWeaponsJSONStr += `"S":"${item.S}",`;
-            rangedWeaponsJSONStr += `"weaponMode":"${item.weaponMode}",`;
-            rangedWeaponsJSONStr += `"weaponModeCount":"${item.weaponModeCount}",`;
-            rangedWeaponsJSONStr += `"count":"${this.props.fetchAttackerStats.count.default}",`;
+            rangedWeaponsJSONStr += `"AP": "${item.AP}",`;
+            rangedWeaponsJSONStr += `"D": "${item.D}",`;
+            rangedWeaponsJSONStr += `"S": ${item.S},`;
+            rangedWeaponsJSONStr += `"weaponMode": "${item.weaponMode}",`;
+            rangedWeaponsJSONStr += `"weaponModeCount": "${item.weaponModeCount}",`;
+            rangedWeaponsJSONStr += `"count": "${this.props.fetchAttackerStats.count.default}",`;
             rangedWeaponsJSONStr += `"weaponAbility": ${JSON.stringify(item.weaponAbility)},`;
             rangedWeaponsJSONStr += `"additionalAttacks": 0,`;
             rangedWeaponsJSONStr += `"autoHit": false,`;
             rangedWeaponsJSONStr += `"rerollModifier": 6,`;
+            rangedWeaponsJSONStr += `"weaponType": "${item.weaponType}",`;
             rangedWeaponsJSONStr += `"CPModifier": 2`;
             rangedWeaponsJSONStr += `}`;
 
@@ -56,13 +57,17 @@ export class AttackerStats extends Component {
             meleeWeaponsJSONStr += `"weaponId": "${item.id}",`;
             meleeWeaponsJSONStr += `"AP": "${item.AP}",`;
             meleeWeaponsJSONStr += `"D": "${item.D}",`;
-            meleeWeaponsJSONStr += `"S": "${item.S}",`;
+            meleeWeaponsJSONStr += `"S": ${item.S},`;
             meleeWeaponsJSONStr += `"count": "${this.props.fetchAttackerStats.count.default}",`;
             meleeWeaponsJSONStr += `"weaponAbility": ${JSON.stringify(item.weaponAbility)},`;
             meleeWeaponsJSONStr += `"additionalAttacks": 0,`;
             meleeWeaponsJSONStr += `"autoHit": false,`;
             meleeWeaponsJSONStr += `"rerollModifier": 0,`;
-            meleeWeaponsJSONStr += `"CPModifier": 0`;
+            //addition, user, special, multiplication
+            meleeWeaponsJSONStr += `"strengthType": "addition",`;
+            meleeWeaponsJSONStr += `"weaponType": "${item.weaponType}",`;
+            meleeWeaponsJSONStr += `"CPModifier": 0,`;
+            meleeWeaponsJSONStr += `"strengthModifier": 0`;
             meleeWeaponsJSONStr += `}`;
 
             if (this.props.fetchAttackerStats.weapon.melee.default.length !== (index + 1)) {
@@ -83,7 +88,9 @@ export class AttackerStats extends Component {
                 melee: meleeWeaponsJSONStr
             },
             'BSModification': 0,
-            'overwatch': false
+            'overwatch': false,
+            'toughnessModification': 0,
+            'toWoundModifier': 0
         };
 
         console.log(unit);

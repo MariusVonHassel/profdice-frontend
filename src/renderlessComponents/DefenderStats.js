@@ -23,17 +23,18 @@ export class DefenderStats extends Component {
 
             rangedWeaponsJSONStr += `{`;
             rangedWeaponsJSONStr += `"weaponId": "${item.id}",`;
-            rangedWeaponsJSONStr += `"AP":"${item.AP}",`;
-            rangedWeaponsJSONStr += `"D":"${item.D}",`;
-            rangedWeaponsJSONStr += `"S":"${item.S}",`;
-            rangedWeaponsJSONStr += `"weaponMode":"${item.weaponMode}",`;
-            rangedWeaponsJSONStr += `"weaponModeCount":"${item.weaponModeCount}",`;
-            rangedWeaponsJSONStr += `"count":"${this.props.fetchDefenderStats.count.default}",`;
+            rangedWeaponsJSONStr += `"AP": "${item.AP}",`;
+            rangedWeaponsJSONStr += `"D": "${item.D}",`;
+            rangedWeaponsJSONStr += `"S": ${item.S},`;
+            rangedWeaponsJSONStr += `"weaponMode": "${item.weaponMode}",`;
+            rangedWeaponsJSONStr += `"weaponModeCount": "${item.weaponModeCount}",`;
+            rangedWeaponsJSONStr += `"count": "${this.props.fetchDefenderStats.count.default}",`;
             rangedWeaponsJSONStr += `"weaponAbility": ${JSON.stringify(item.weaponAbility)},`;
             rangedWeaponsJSONStr += `"additionalAttacks": 0,`;
             rangedWeaponsJSONStr += `"autoHit": false,`;
-            rangedWeaponsJSONStr += `"rerollModifier": 0,`;
-            rangedWeaponsJSONStr += `"CPModifier": 0`;
+            rangedWeaponsJSONStr += `"rerollModifier": 6,`;
+            rangedWeaponsJSONStr += `"weaponType": "${item.weaponType}",`;
+            rangedWeaponsJSONStr += `"CPModifier": 2`;
             rangedWeaponsJSONStr += `}`;
 
             if (this.props.fetchDefenderStats.weapon.ranged.default.length !== (index + 1)) {
@@ -54,12 +55,16 @@ export class DefenderStats extends Component {
             meleeWeaponsJSONStr += `"weaponId": "${item.id}",`;
             meleeWeaponsJSONStr += `"AP": "${item.AP}",`;
             meleeWeaponsJSONStr += `"D": "${item.D}",`;
-            meleeWeaponsJSONStr += `"S": "${item.S}",`;
+            meleeWeaponsJSONStr += `"S": ${item.S},`;
             meleeWeaponsJSONStr += `"count": "${this.props.fetchDefenderStats.count.default}",`;
             meleeWeaponsJSONStr += `"weaponAbility": ${JSON.stringify(item.weaponAbility)},`;
             meleeWeaponsJSONStr += `"additionalAttacks": 0,`;
             meleeWeaponsJSONStr += `"autoHit": false,`;
             meleeWeaponsJSONStr += `"rerollModifier": 0,`;
+            //addition, user, special, multiplication
+            meleeWeaponsJSONStr += `"strengthType": "addition",`;
+            meleeWeaponsJSONStr += `"strengthModifier": 0,`;
+            meleeWeaponsJSONStr += `"weaponType": "${item.weaponType}",`;
             meleeWeaponsJSONStr += `"CPModifier": 0`;
             meleeWeaponsJSONStr += `}`;
 
@@ -81,6 +86,8 @@ export class DefenderStats extends Component {
                 melee: meleeWeaponsJSONStr
             },
             'BSModification': 0,
+            'toughnessModification': 0,
+            'toWoundModifier': 0,
             'overwatch': true
         };
 

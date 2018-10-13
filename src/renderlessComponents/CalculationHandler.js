@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import RangedCalc from '../statelessFunctionalComponents/calculation/RangedCalc';
-import MeleeCalc from '../statelessFunctionalComponents/calculation/MeleeCalc';
+import MainCalc from '../statelessFunctionalComponents/calculation/mainCalc';
 
 class CalculationHandler extends Component {
 
@@ -16,25 +15,25 @@ class CalculationHandler extends Component {
 
         console.log('Ranged:');
         console.log('Attacker:');
-        this.initCalc(this.props.choosedAttackerData, this.props.choosedDefenderData, 'ranged', RangedCalc);
+        this.initCalc(this.props.choosedAttackerData, this.props.choosedDefenderData, 'ranged');
         console.log('Defender:');
-        this.initCalc([this.props.choosedDefenderData], this.props.choosedAttackerData, 'ranged', RangedCalc);
+        this.initCalc([this.props.choosedDefenderData], this.props.choosedAttackerData[0], 'ranged');
 
         console.log('Melee:');
         console.log('Attacker:');
-        this.initCalc(this.props.choosedAttackerData, this.props.choosedDefenderData, 'melee', MeleeCalc);
+        this.initCalc(this.props.choosedAttackerData, this.props.choosedDefenderData, 'melee');
         console.log('Defender:');
-        this.initCalc([this.props.choosedDefenderData], this.props.choosedAttackerData, 'melee', MeleeCalc);
+        this.initCalc([this.props.choosedDefenderData], this.props.choosedAttackerData[0], 'melee');
 
     }
 
-    initCalc(attacker, defender, weaponType, calcObject) {
+    initCalc(attacker, defender, weaponType) {
 
         let calcObjects = [];
 
         attacker.forEach(elem => {
             elem.weapon[weaponType].forEach(weapon => {
-                calcObjects.push(new calcObject(elem, weapon, defender));
+                calcObjects.push(new MainCalc(elem, weapon, defender));
             });
         });
 
