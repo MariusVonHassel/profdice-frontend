@@ -22,6 +22,7 @@ class CalculationHandler extends Component {
         console.log('Melee:');
         console.log('Attacker:');
         this.initCalc(this.props.choosedAttackerData, this.props.choosedDefenderData, 'melee');
+
         console.log('Defender:');
         this.initCalc([this.props.choosedDefenderData], this.props.choosedAttackerData[0], 'melee');
 

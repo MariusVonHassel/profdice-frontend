@@ -16,19 +16,28 @@ export default class Properties {
                 'WS': 0,
                 'A': 0,
                 'S': 0
+
             },
-            'toWoundModifier': 0,
-            'strengthModifier': 0
+            'strengthModifier': 0,
+            'saveCPModifier': 0
         };
         this.attackerWeaponStats = {
+            'AP': 0,
+            'D': 0,
             'count': 0,
             'autoHit': 0,
             'additionalAttacks': 0,
             'weaponModeCount': 0,
-            'rerollModifier': 0,
-            'CPModifier': 0,
+            'hitRerollModifier': 0,
+            'woundRerollModifier': 0,
+            'hitCPModifier': 0,
+            'woundCPModifier': 0,
+            'damageCPModifier': 0,
+            'damageModifier': 0,
             'strengthType': 'user',
             'weaponAbility': [],
+            'toWoundModifier': 0,
+            'svModifier': 0,
             'weaponType': ''
         };
         this.attackerTotalWeaponAttacks = 0;
@@ -37,9 +46,9 @@ export default class Properties {
         this.attackerRerollableDiceAmount = 0;
         this.attackerRerollProbability = 0;
         this.attackerHitsInterimResult = 0;
-        this.attackerRerollCPProbability = 0;
-        this.attackerRerollTotalDiceAmount = 0;
-        this.attackerTotalDiceAmount = 0;
+        this.attackerHitRerollCPProbability = 0;
+        this.attackerHitRerollAbilityTotalDiceAmount = 0;
+        this.attackerHitTotalAbilityDiceAmount = 0;
         this.attackerWeaponAbilityHitMultiplierProbability = 0;
         this.attackerWeaponHitMultiplierProbabilityTotal = 0;
         this.attackerHitsResult = 0;
@@ -48,15 +57,39 @@ export default class Properties {
         this.attackerModifiedToWoundAccuracyValue = 0;
         this.attackerToWoundProbability = 0;
         this.attackerWounds = 0;
+        this.attackerWoundRerollDiceAmount = 0;
+        this.attackerWoundRerollProbability = 0;
+        this.attackerWoundRerollCPProbability = 0;
+        this.attackerWoundResult = 0;
+        this.attackerTotalWeaponAbilityWoundDiceAmount = 0;
+        this.attackerAdditionalWeaponMortalWoundsProbability = 0;
+        this.attackerSaveProbability = 0;
+        this.attackerCPRerollPenetrationProbability = 0;
+        this.attackerPenetrationResult = 0;
+        this.attackerPenetrationProabilityResult = 0;
+        this.attackerToDamageResult = 0;
+
+
     }
 
     initDefenderProperties() {
         this.defender = {
             'overwatch': false,
             'stats': {
-                'T': 0
-            }
+                'T': 0,
+                'Sv': 0,
+                'W': 0
+            },
+            'wargear': {
+                'abilityFactors': {
+                    'invulnerableSave': [0]
+                }
+            },
+            'abilities':[]
         };
+
+        this.defenderModifiedSv = 0;
+        this.defenderCompareSaves = 0;
 
     }
 
@@ -90,6 +123,14 @@ export default class Properties {
 
     getAttackerTotalWeaponAttacks() {
         return this.attackerTotalWeaponAttacks;
+    }
+
+    getAttackerWeaponDamage() {
+        return this.attackerWeaponStats.D;
+    }
+
+    getAttackerAP() {
+        return this.attackerWeaponStats.AP;
     }
 
     getAttackerHitProbability() {
@@ -136,23 +177,28 @@ export default class Properties {
 
         let weaponStats = this.getAttackerWeaponStats();
 
-        switch (weaponStats.strengthType) {
+        let switchResult = () => {
+            switch (weaponStats.strengthType) {
             case 'addition': {
-                return this.attacker.stats.S + this.attackerWeaponStats.S + this.attackerWeaponStats.strengthModifier;
+                return this.attacker.stats.S + this.attackerWeaponStats.S;
             }
             case 'user': {
-                return this.attacker.stats.S + this.attackerWeaponStats.strengthModifier;
+                return this.attacker.stats.S;
             }
             case 'special': {
                 //toDO: joa muss gemacht werden!
-                return this.attacker.stats.S + this.attackerWeaponStats.strengthModifier;
+                return this.attacker.stats.S;
             }
             case 'multiplication': {
-                return this.attacker.stats.S * this.attackerWeaponStats.S + this.attackerWeaponStats.strengthModifier;
+                return this.attacker.stats.S * this.attackerWeaponStats.S;
             }
             default:
-                return this.attacker.stats.S + this.attackerWeaponStats.strengthModifier;
-        }
+                return this.attacker.stats.S;
+            }
+
+        };
+
+        return switchResult() + this.attackerWeaponStats.strengthModifier;
 
     };
 
@@ -180,23 +226,27 @@ export default class Properties {
         return this.attacker.overwatch;
     }
 
-    getAttackerWeaponRerollModifier() {
-        return this.attackerWeaponStats.rerollModifier;
+    getAttackerHitRerollModifier() {
+        return this.attackerWeaponStats.hitRerollModifier;
     }
 
-    setAttackerRerollableDiceAmount(value) {
+    getAttackerWoundRerollModifier() {
+        return this.attackerWeaponStats.woundRerollModifier;
+    }
+
+    setAttackerHitRerollableDiceAmount(value) {
         this.attackerRerollableDiceAmount = value;
     }
 
-    getAttackerRerollableDiceAmount() {
+    getAttackerHitRerollableDiceAmount() {
         return this.attackerRerollableDiceAmount;
     }
 
-    setAttackerRerollProbability(value) {
+    setAttackerHitRerollProbability(value) {
         this.attackerRerollProbability = value;
     }
 
-    getAttackerRerollProbability() {
+    getAttackerHitRerollProbability() {
         return this.attackerRerollProbability;
     }
 
@@ -208,32 +258,40 @@ export default class Properties {
         return this.attackerHitsInterimResult;
     }
 
-    getAttackerCPModifier() {
-        return this.attackerWeaponStats.CPModifier
+    getAttackerHitCPModifier() {
+        return this.attackerWeaponStats.hitCPModifier;
     }
 
-    getAttackerRerollCPProbability() {
-        return this.attackerRerollCPProbability;
+    getAttackerWoundCPModifier() {
+        return this.attackerWeaponStats.woundCPModifier;
     }
 
-    setAttackerRerollCPProbability(value) {
-        this.attackerRerollCPProbability = value;
+    getAttackerDamageCPModifier() {
+        return this.attackerWeaponStats.damageCPModifier;
     }
 
-    setAttackerRerollTotalDiceAmount(value) {
-        this.attackerRerollTotalDiceAmount = value;
+    getAttackerHitRerollCPProbability() {
+        return this.attackerHitRerollCPProbability;
     }
 
-    getAttackerRerollTotalDiceAmount() {
-        return this.attackerRerollTotalDiceAmount;
+    setAttackerHitRerollCPProbability(value) {
+        this.attackerHitRerollCPProbability = value;
     }
 
-    setAttackerTotalDiceAmount(value) {
-        this.attackerTotalDiceAmount = value;
+    setAttackerHitRerollAbilityTotalDiceAmount(value) {
+        this.attackerHitRerollAbilityTotalDiceAmount = value;
     }
 
-    getAttackerTotalDiceAmount() {
-        return this.attackerTotalDiceAmount;
+    getAttackerHitRerollAbilityTotalDiceAmount() {
+        return this.attackerHitRerollAbilityTotalDiceAmount;
+    }
+
+    setAttackerHitTotalAbilityDiceAmount(value) {
+        this.attackerHitTotalAbilityDiceAmount = value;
+    }
+
+    getAttackerHitTotalAbilityDiceAmount() {
+        return this.attackerHitTotalAbilityDiceAmount;
     }
 
     setAttackerWeaponAbilityHitMultiplierProbability(value) {
@@ -248,7 +306,7 @@ export default class Properties {
         this.attackerWeaponHitMultiplierProbabilityTotal = value;
     }
 
-    getAttackerWeaponHitMultiplierProbabilityTotal() {
+    getAttackerWeaponAbilityHitMultiplierProbabilityTotal() {
         return this.attackerWeaponHitMultiplierProbabilityTotal;
     }
 
@@ -281,7 +339,7 @@ export default class Properties {
     }
 
     getAttackerToWoundModifier() {
-        return this.attacker.toWoundModifier;
+        return this.attackerWeaponStats.toWoundModifier;
     }
 
     setAttackerModifiedToWoundAccuracyValue(value) {
@@ -308,6 +366,111 @@ export default class Properties {
         return this.attackerWounds;
     }
 
+    setAttackerWoundRerollDiceAmount(value) {
+        this.attackerWoundRerollDiceAmount = value;
+    }
+
+    getAttackerWoundRerollDiceAmount() {
+        return this.attackerWoundRerollDiceAmount;
+    }
+
+    setAttackerWoundRerollProbability(value) {
+        this.attackerWoundRerollProbability = value;
+    }
+
+    getAttackerWoundRerollProbability() {
+        return this.attackerWoundRerollProbability;
+    }
+
+    setAttackerWoundRerollCPProbability(value) {
+        this.attackerWoundRerollCPProbability = value;
+    }
+
+    getAttackerWoundRerollCPProbability() {
+        return this.attackerWoundRerollCPProbability;
+    }
+
+    setAttackerWoundResult(value) {
+        this.attackerWoundResult = value;
+    }
+
+    getAttackerWoundResult() {
+        return this.attackerWoundResult;
+    }
+
+    getAttackerTotalWeaponAbilityWoundDiceAmount() {
+        return this.attackerTotalWeaponAbilityWoundDiceAmount;
+    }
+
+    setAttackerTotalWeaponAbilityWoundDiceAmount(value) {
+        this.attackerTotalWeaponAbilityWoundDiceAmount = value;
+    }
+
+    setAttackerAdditionalWeaponMortalWoundsProbability(value) {
+        this.attackerAdditionalWeaponMortalWoundsProbability = value;
+    }
+
+    getAttackerAdditionalMortalWoundsProbability() {
+        return this.attackerAdditionalWeaponMortalWoundsProbability;
+    }
+
+    setAttackerAdditionalMortalWoundsResult(value) {
+        this.attackerAdditionalMortalWoundsResult = value;
+    }
+
+    getAttackerAdditionalMortalWoundsResult() {
+        return this.attackerAdditionalMortalWoundsResult;
+    }
+
+
+    setAttackerPenetrationProbability(value) {
+        this.attackerSaveProbability = value;
+    }
+
+    getAttackerPenetrationProbability() {
+        return this.attackerSaveProbability;
+    }
+
+    setAttackerCPRerollPenetrationProbability(value) {
+        this.attackerCPRerollPenetrationProbability = value;
+    }
+
+    getAttackerCPRerollPenetrationProbability() {
+        return this.attackerCPRerollPenetrationProbability;   
+    }
+
+    getAttackerSaveCPModifier() {
+        return this.attacker.saveCPModifier;
+    }
+
+    getAttackerSvModifier() {
+        return this.attackerWeaponStats.svModifier;
+    }
+
+    getAttackerPenetrationResult() {
+        return this.attackerPenetrationResult;
+    }
+
+    setAttackerPenetrationResult(value) {
+        this.attackerPenetrationResult = value;
+    }
+
+    getAttackerPenetrationProabilityResult() {
+        return this.attackerPenetrationProabilityResult;
+    }
+
+    setAttackerPenetrationProabilityResult(value) {
+        this.attackerPenetrationProabilityResult = value;
+    }
+
+    setAttackerToDamageResult(value) {
+        this.attackerToDamageResult = value;
+    }
+
+    getAttackerToDamageResult() {
+        return this.attackerToDamageResult;
+    }
+
 
     getDefender() {
         return this.defender;
@@ -321,7 +484,37 @@ export default class Properties {
         return this.defender.stats.T + this.defender.toughnessModification;
     }
 
+    getDefenderSv() {
+        return this.defender.stats.Sv;
+    }
 
+    getDefenderHealth() {
+        return this.defender.stats.W;
+    }
 
+    setDefenderModifiedSv(value) {
+        this.defenderModifiedSv = value;
+    }
+
+    getDefenderModifiedSv() {
+        return this.defenderModifiedSv;
+    }
+    
+    setDefenderCompareSaves(value) {
+        this.defenderCompareSaves = value;
+    }
+
+    getDefenderCompareSaves() {
+        return this.defenderCompareSaves;
+    }
+
+    getDefenderWargearAbilities() {
+        return 0;
+        // return this.defender.wargear.abilityFactors;
+    }
+
+    getDefenderUnitAbilities() {
+        return this.defender.abilities;
+    }
 
 }

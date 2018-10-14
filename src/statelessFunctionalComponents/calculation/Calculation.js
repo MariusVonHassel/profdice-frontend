@@ -6,7 +6,7 @@ export default class Calculation extends Properties {
         return weaponCount * weaponAttacks + additionalAttacks;
     }
 
-    calcHitProbability(accuracySkill) {
+    calcProbability(accuracySkill) {
         let calc = (this.probabilityAccuracySkillMinuend - accuracySkill) / this.diceDivisor;
 
         if (calc > 5/6) {
@@ -22,25 +22,25 @@ export default class Calculation extends Properties {
         return weaponAttacks * hitPropability;
     }
 
-    calcHitRerollDiceAmount(weaponAttacks, rerollModifier, hitProbability, ASRaw) {
+    calcRerollDiceAmount(attacks, rerollModifier, probability, ASRaw) {
 
         let result = 0;
 
         if (rerollModifier === 1) {
-            result = this.calcHitRerollDiceAmount(weaponAttacks, rerollModifier/6);
+            result = rerollModifier/6;
 
         } else if (rerollModifier === 6) {
 
 
-            if ((1 - hitProbability) > (Math.abs(1 - this.calcHitProbability(ASRaw)))) {
-                result = Math.abs(1 - this.calcHitProbability(ASRaw));
+            if ((1 - probability) > (Math.abs(1 - this.calcProbability(ASRaw)))) {
+                result = Math.abs(1 - this.calcProbability(ASRaw));
             } else {
-                result = Math.abs(1 - hitProbability);
+                result = Math.abs(1 - probability);
             }
 
         }
 
-        return result * weaponAttacks;
+        return result * attacks;
 
     }
 
@@ -48,22 +48,22 @@ export default class Calculation extends Properties {
         return hitProbability * rerollDiceAmount;
     }
 
-    calcHitsInterimResult(attacks, rerollProbability) {
-        return attacks + rerollProbability;
+    calcInterimResult(attacks, rerollProbability, cpHitProbability) {
+        return attacks + rerollProbability + cpHitProbability;
     }
 
     calcCPHitProbability(cpModifier, calcHitProbability) {
         return cpModifier * calcHitProbability;
     }
 
-    calcWeaponAbilityHitMultiplierProbability(weaponAbility, hitModifier) {
+    calcWeaponAbilityMultiplierProbability(weaponAbility, modifier) {
         let result = 0;
 
             weaponAbility.forEach(elem => {
 
                 if (elem.id === 'teslaWeaponAbility') {
 
-                    result = this.calcWeaponHitMultiplierProbabilityItem(elem.abilityFactors.additionalAttackHitProbability[0], hitModifier, elem.abilityFactors.additionalAttackModifier[0]);
+                    result = this.calcWeaponHitMultiplierProbabilityItem(elem.abilityFactors.additionalAttackHitProbability[0], modifier, elem.abilityFactors.additionalAttackModifier[0]);
 
                 }
 
@@ -74,7 +74,51 @@ export default class Calculation extends Properties {
 
     }
 
+    calcWeaponAbilityMortalWoundsProbabiity(weaponAbility, modifier) {
+        let result = 0;
+
+        weaponAbility.forEach(elem => {
+
+            if (elem.id === 'transdimensionalBeamerAbility') {
+                result = this.calcWeaponHitMultiplierProbabilityItem(elem.abilityFactors.additionalMortalWoundProbability[0], modifier, elem.abilityFactors.additionalMortalWoundDamage[0]);
+            } else if (elem.id === 'synapticDisintegratorAbility') {
+                result = this.calcWeaponHitMultiplierProbabilityItem(elem.abilityFactors.additionalMortalWoundProbability[0], modifier, elem.abilityFactors.additionalMortalWoundDamage[0]);
+            }
+
+        });
+
+        return result;
+
+    }
+
+    calcWargearAbilityMultiplierProbability(wargearAbilities, unitAbility) {
+        let resultWargear = 7;
+        let resultUnit = 7;
+
+        // wargearAbilities.forEach(elem => {
+
+            // if (elem.abilityFactors.hasOwnProperty('invunerableSave')) {
+            if (wargearAbilities.hasOwnProperty('invunerableSave')) {
+                // resultWargear = elem.abilityFactors.invunerableSave[0];
+                resultWargear = wargearAbilities.abilityFactors.invunerableSave[0];
+            }
+
+
+        // });
+
+        unitAbility.forEach(elem => {
+
+            if (elem.abilityFactors.hasOwnProperty('invunerableSave')) {
+                resultUnit = elem.abilityFactors.invunerableSave[0];
+            }
+
+        });
+
+        return (resultUnit > resultWargear) ? resultWargear : resultUnit;
+    }
+
     calcWeaponHitMultiplierProbabilityItem(additionalAttackHitProbability, hitModifier, additionalAttackModifier) {
+
         let calc = ((this.probabilityAccuracySkillMinuend - additionalAttackHitProbability + hitModifier) / this.diceDivisor) * additionalAttackModifier;
 
         if (calc > 5/6) {
@@ -101,6 +145,26 @@ export default class Calculation extends Properties {
             return 6;
         }
 
+
+    }
+
+    calcWeaponDamage(damage, maxHealth) {
+
+        let result = () => {
+            switch (damage) {
+                case 'D3': {
+                    return 2;
+                }
+                case 'D6': {
+                    return 3.5;
+                }
+                default: {
+                    return damage*1
+                }
+            }
+        };
+
+        return (result() > maxHealth) ? maxHealth : result();
 
     }
 

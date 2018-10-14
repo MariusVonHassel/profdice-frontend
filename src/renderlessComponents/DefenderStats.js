@@ -32,9 +32,16 @@ export class DefenderStats extends Component {
             rangedWeaponsJSONStr += `"weaponAbility": ${JSON.stringify(item.weaponAbility)},`;
             rangedWeaponsJSONStr += `"additionalAttacks": 0,`;
             rangedWeaponsJSONStr += `"autoHit": false,`;
-            rangedWeaponsJSONStr += `"rerollModifier": 6,`;
+            rangedWeaponsJSONStr += `"woundRerollModifier": 0,`;
+            rangedWeaponsJSONStr += `"hitRerollModifier": 0,`;
             rangedWeaponsJSONStr += `"weaponType": "${item.weaponType}",`;
-            rangedWeaponsJSONStr += `"CPModifier": 2`;
+            rangedWeaponsJSONStr += `"hitCPModifier": 0,`;
+            rangedWeaponsJSONStr += `"woundCPModifier": 0,`;
+            rangedWeaponsJSONStr += `"damageCPModifier": 0,`;
+            rangedWeaponsJSONStr += `"strengthModifier": 0,`;
+            rangedWeaponsJSONStr += `"damageModifier": 0,`;
+            rangedWeaponsJSONStr += `"svModifier": 0,`;
+            rangedWeaponsJSONStr += `"toWoundModifier": 0`;
             rangedWeaponsJSONStr += `}`;
 
             if (this.props.fetchDefenderStats.weapon.ranged.default.length !== (index + 1)) {
@@ -60,12 +67,19 @@ export class DefenderStats extends Component {
             meleeWeaponsJSONStr += `"weaponAbility": ${JSON.stringify(item.weaponAbility)},`;
             meleeWeaponsJSONStr += `"additionalAttacks": 0,`;
             meleeWeaponsJSONStr += `"autoHit": false,`;
-            meleeWeaponsJSONStr += `"rerollModifier": 0,`;
+            meleeWeaponsJSONStr += `"woundRerollModifier": 0,`;
+            meleeWeaponsJSONStr += `"hitRerollModifier": 0,`;
             //addition, user, special, multiplication
             meleeWeaponsJSONStr += `"strengthType": "addition",`;
-            meleeWeaponsJSONStr += `"strengthModifier": 0,`;
             meleeWeaponsJSONStr += `"weaponType": "${item.weaponType}",`;
-            meleeWeaponsJSONStr += `"CPModifier": 0`;
+            meleeWeaponsJSONStr += `"hitCPModifier": 0,`;
+            meleeWeaponsJSONStr += `"woundCPModifier": 0,`;
+            meleeWeaponsJSONStr += `"damageCPModifier": 0,`;
+            meleeWeaponsJSONStr += `"strengthModifier": 0,`;
+            meleeWeaponsJSONStr += `"damageModifier": 0,`;
+            meleeWeaponsJSONStr += `"svModifier": 0,`;
+            meleeWeaponsJSONStr += `"rangedSvModifier": 0,`;
+            meleeWeaponsJSONStr += `"toWoundModifier": 0`;
             meleeWeaponsJSONStr += `}`;
 
             if (this.props.fetchDefenderStats.weapon.melee.default.length !== (index + 1)) {
@@ -87,8 +101,9 @@ export class DefenderStats extends Component {
             },
             'BSModification': 0,
             'toughnessModification': 0,
-            'toWoundModifier': 0,
-            'overwatch': true
+            'saveCPModifier': 0,
+            'overwatch': true,
+            'abilities': []
         };
 
         console.log(unit);
