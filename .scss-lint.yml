@@ -165,8 +165,8 @@ linters:
     max_depth: 8
 
   SelectorFormat:
-    enabled: true
-    convention: camel_case # or 'classic_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+    enabled: false
+    convention: classic_BEM # or 'classic_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
 
   Shorthand:
     enabled: true
