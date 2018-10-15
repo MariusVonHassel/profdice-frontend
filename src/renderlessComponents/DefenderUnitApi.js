@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setDefenderUnit, setDefenderUnitArray, setDefenderSaveUnits, fetchDefenderUnits } from "../actions/defenderActions";
-import { prepareSelectValues, saveUnits } from '../statelessFunctionalComponents/prepareSelectValues';
+import { apiMethods, saveUnits } from '../statelessFunctionalComponents/apiMethods';
 
 export class DefenderUnitApi extends Component {
 
@@ -32,7 +32,7 @@ export class DefenderUnitApi extends Component {
 
     prepareUnitArray() {
 
-        this.props.onSetDefenderUnitArray(prepareSelectValues(this.props.defenderSaveUnits, this.props.defenderRace, this.context));
+        this.props.onSetDefenderUnitArray(apiMethods(this.props.defenderSaveUnits, this.props.defenderRace, this.context));
 
     }
 

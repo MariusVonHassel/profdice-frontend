@@ -13,7 +13,7 @@ export function setAttackerRace(value) {
     return {
         type: SET_ATTACKERRACE,
         payload: {
-            value,
+            value
         }
     }
 }
@@ -23,7 +23,7 @@ export function setAttackerUnit(value) {
     return {
         type: SET_ATTACKERUNIT,
         payload: {
-            value,
+            value
         }
     }
 }

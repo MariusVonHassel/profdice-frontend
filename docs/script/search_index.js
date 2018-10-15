@@ -48,6 +48,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "profdice-frontend/src/statelessfunctionalcomponents/calculation/calculation.js~calculation",
+    "class/src/statelessFunctionalComponents/calculation/Calculation.js~Calculation.html",
+    "<span>Calculation</span> <span class=\"search-result-import-path\">profdice-frontend/src/statelessFunctionalComponents/calculation/Calculation.js</span>",
+    "class"
+  ],
+  [
+    "profdice-frontend/src/statelessfunctionalcomponents/calculation/calculationcalls.js~calculationcalls",
+    "class/src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls.html",
+    "<span>CalculationCalls</span> <span class=\"search-result-import-path\">profdice-frontend/src/statelessFunctionalComponents/calculation/CalculationCalls.js</span>",
+    "class"
+  ],
+  [
     "profdice-frontend/src/renderlesscomponents/defenderstats.js~defenderstats",
     "class/src/renderlessComponents/DefenderStats.js~DefenderStats.html",
     "<span>DefenderStats</span> <span class=\"search-result-import-path\">profdice-frontend/src/renderlessComponents/DefenderStats.js</span>",
@@ -135,6 +147,12 @@ window.esdocSearchIndex = [
     "profdice-frontend/src/components/projects/projects.js~projects",
     "class/src/components/Projects/Projects.js~Projects.html",
     "<span>Projects</span> <span class=\"search-result-import-path\">profdice-frontend/src/components/Projects/Projects.js</span>",
+    "class"
+  ],
+  [
+    "profdice-frontend/src/statelessfunctionalcomponents/calculation/properties.js~properties",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html",
+    "<span>Properties</span> <span class=\"search-result-import-path\">profdice-frontend/src/statelessFunctionalComponents/calculation/Properties.js</span>",
     "class"
   ],
   [
@@ -246,6 +264,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "profdice-frontend/src/statelessfunctionalcomponents/apimethods.js~apimethods",
+    "function/index.html#static-function-apiMethods",
+    "<span>apiMethods</span> <span class=\"search-result-import-path\">profdice-frontend/src/statelessFunctionalComponents/apiMethods.js</span>",
+    "function"
+  ],
+  [
     "profdice-frontend/src/reducers/attackerreducer.js~attackerreducer",
     "function/index.html#static-function-attackerReducer",
     "<span>attackerReducer</span> <span class=\"search-result-import-path\">profdice-frontend/src/reducers/attackerReducer.js</span>",
@@ -324,15 +348,15 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "profdice-frontend/src/statelessfunctionalcomponents/prepareselectvalues.js~prepareselectvalues",
-    "function/index.html#static-function-prepareSelectValues",
-    "<span>prepareSelectValues</span> <span class=\"search-result-import-path\">profdice-frontend/src/statelessFunctionalComponents/prepareSelectValues.js</span>",
-    "function"
-  ],
-  [
     "profdice-frontend/src/registerserviceworker.js~register",
     "function/index.html#static-function-register",
     "<span>register</span> <span class=\"search-result-import-path\">profdice-frontend/src/registerServiceWorker.js</span>",
+    "function"
+  ],
+  [
+    "profdice-frontend/src/statelessfunctionalcomponents/apimethods.js~saveunits",
+    "function/index.html#static-function-saveUnits",
+    "<span>saveUnits</span> <span class=\"search-result-import-path\">profdice-frontend/src/statelessFunctionalComponents/apiMethods.js</span>",
     "function"
   ],
   [
@@ -1050,10 +1074,10 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/renderlesscomponents/attackerunitapi.js~attackerunitapi#saveunits",
-    "class/src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi.html#instance-method-saveUnits",
-    "src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi#saveUnits",
-    "method"
+    "src/renderlesscomponents/calculationhandler.js",
+    "file/src/renderlessComponents/CalculationHandler.js.html",
+    "src/renderlessComponents/CalculationHandler.js",
+    "file"
   ],
   [
     "src/renderlesscomponents/defenderstats.js",
@@ -1104,12 +1128,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/renderlesscomponents/defenderunitapi.js~defenderunitapi#saveunits",
-    "class/src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi.html#instance-method-saveUnits",
-    "src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi#saveUnits",
-    "method"
-  ],
-  [
     "src/renderlesscomponents/forcesapi.js",
     "file/src/renderlessComponents/ForcesApi.js.html",
     "src/renderlessComponents/ForcesApi.js",
@@ -1140,10 +1158,256 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/statelessfunctionalcomponents/prepareselectvalues.js",
-    "file/src/statelessFunctionalComponents/prepareSelectValues.js.html",
-    "src/statelessFunctionalComponents/prepareSelectValues.js",
+    "src/statelessfunctionalcomponents/apimethods.js",
+    "file/src/statelessFunctionalComponents/apiMethods.js.html",
+    "src/statelessFunctionalComponents/apiMethods.js",
     "file"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/calculation.js",
+    "file/src/statelessFunctionalComponents/calculation/Calculation.js.html",
+    "src/statelessFunctionalComponents/calculation/Calculation.js",
+    "file"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/calculation.js~calculation.calctotalshotsweapon",
+    "class/src/statelessFunctionalComponents/calculation/Calculation.js~Calculation.html#static-method-calcTotalShotsWeapon",
+    "src/statelessFunctionalComponents/calculation/Calculation.js~Calculation.calcTotalShotsWeapon",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/calculationcalls.js",
+    "file/src/statelessFunctionalComponents/calculation/CalculationCalls.js.html",
+    "src/statelessFunctionalComponents/calculation/CalculationCalls.js",
+    "file"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/calculationcalls.js~calculationcalls#calculateattacker",
+    "class/src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls.html#instance-method-calculateAttacker",
+    "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#calculateAttacker",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/calculationcalls.js~calculationcalls#calculatedefender",
+    "class/src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls.html#instance-method-calculateDefender",
+    "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#calculateDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/calculationcalls.js~calculationcalls#constructor",
+    "class/src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls.html#instance-constructor-constructor",
+    "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#constructor",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/calculationcalls.js~calculationcalls#setattackersettings",
+    "class/src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls.html#instance-method-setAttackerSettings",
+    "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#setAttackerSettings",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/calculationcalls.js~calculationcalls#setdefendersettings",
+    "class/src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls.html#instance-method-setDefenderSettings",
+    "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#setDefenderSettings",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js",
+    "file/src/statelessFunctionalComponents/calculation/Properties.js.html",
+    "src/statelessFunctionalComponents/calculation/Properties.js",
+    "file"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#additionalshotsattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-additionalShotsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#additionalShotsAttacker",
+    "member"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#additionalshotsdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-additionalShotsDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#additionalShotsDefender",
+    "member"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#attacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-attacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#attacker",
+    "member"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#constructor",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-constructor-constructor",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#constructor",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#defender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-defender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#defender",
+    "member"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#getadditionalshotsattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getAdditionalShotsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getAdditionalShotsAttacker",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#getadditionalshotsdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getAdditionalShotsDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getAdditionalShotsDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#getattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getAttacker",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#getattackerstats",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getAttackerStats",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getAttackerStats",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#getdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#gettotalweaponshotsattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getRangedWeaponShotsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getRangedWeaponShotsAttacker",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#gettotalweaponshotsdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getTotalWeaponShotsDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getTotalWeaponShotsDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#getweaponcountdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getWeaponCountDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getWeaponCountDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#getweaponshotcountattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getRangedWeaponsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getRangedWeaponsAttacker",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#getweaponshotsattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getWeaponShotsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getWeaponShotsAttacker",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#getweaponshotsdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-getWeaponShotsDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getWeaponShotsDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#initattackerproperties",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-initAttackerProperties",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#initAttackerProperties",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#initdefenderproperties",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-initDefenderProperties",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#initDefenderProperties",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#setadditionalshotsdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setAdditionalShotsDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setAdditionalShotsDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#setattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setAttacker",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#setdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#settotalweaponshotsattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setRangedWeaponShotsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setRangedWeaponShotsAttacker",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#settotalweaponshotsdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setTotalWeaponShotsDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setTotalWeaponShotsDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#setweaponcountdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setWeaponCountDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setWeaponCountDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#setweaponshotsattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setWeaponShotsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setWeaponShotsAttacker",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#setweaponshotsdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-method-setWeaponShotsDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setWeaponShotsDefender",
+    "method"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#totalweaponshotsattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-totalRangedWeaponHitsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#totalRangedWeaponHitsAttacker",
+    "member"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#totalweaponshotsdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-totalWeaponShotsDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#totalWeaponShotsDefender",
+    "member"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#weaponcountattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-weaponCountAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#weaponCountAttacker",
+    "member"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#weaponcountdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-weaponCountDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#weaponCountDefender",
+    "member"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#weaponshotsattacker",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-weaponShotsAttacker",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#weaponShotsAttacker",
+    "member"
+  ],
+  [
+    "src/statelessfunctionalcomponents/calculation/properties.js~properties#weaponshotsdefender",
+    "class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html#instance-member-weaponShotsDefender",
+    "src/statelessFunctionalComponents/calculation/Properties.js~Properties#weaponShotsDefender",
+    "member"
   ],
   [
     "src/store.js",

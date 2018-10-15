@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import { setPageType } from '../../actions/pageTypeActions';
 import { setAttackerRace, setAttackerUnit, clearAttackerStatsCollection } from '../../actions/attackerActions'
-import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
+import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions';
+import { clearAttackerChoosedData } from '../../actions/choosedDataActions';
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import CalcContainer from '../../container/CalcContainer/CalcContainer';
 import SelectionMenuHeadline from '../../components/Menu/SelectionMenuHeadline';
@@ -18,6 +19,7 @@ export class NewCalc extends Component {
     componentWillMount() {
         this.props.onSetPageType('newCalc');
         this.props.onClearAttackerStatsCollection();
+        this.props.onClearAttackerChoosedData();
     }
 
     render() {
@@ -108,7 +110,8 @@ NewCalc.propTypes = {
     defenderRaceArray: PropTypes.array,
     defenderUnit: PropTypes.object,
     defenderUnitArray: PropTypes.array,
-    pageType: PropTypes.string.isRequired
+    pageType: PropTypes.string.isRequired,
+    choosedAttackerData: PropTypes.array
 };
 
 const mapStateToProps = state => ({
@@ -120,7 +123,8 @@ const mapStateToProps = state => ({
     attackerUnitArray: state.attackerReducer.attackerUnitArray,
     defenderRace: state.defenderReducer.defenderRace,
     defenderUnitArray: state.defenderReducer.defenderUnitArray,
-    defenderUnit: state.defenderReducer.defenderUnit
+    defenderUnit: state.defenderReducer.defenderUnit,
+    choosedAttackerData: state.choosedDataReducer.choosedAttackerData
 });
 
 const mapDispatchToProps = dispatch => {
@@ -142,6 +146,9 @@ const mapDispatchToProps = dispatch => {
         },
         onClearAttackerStatsCollection: () => {
             dispatch(clearAttackerStatsCollection());
+        },
+        onClearAttackerChoosedData: () => {
+            dispatch(clearAttackerChoosedData());
         }
     }
 };

@@ -1,4 +1,4 @@
-export const prepareSelectValues = (savedUnits, units, language, selectableUnits = []) => {
+export const apiMethods = (savedUnits, units, language, selectableUnits = []) => {
 
     let unitMatch = savedUnits.find(key => key.id ===  units.value);
 

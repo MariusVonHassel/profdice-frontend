@@ -3102,7 +3102,7 @@
     "__docId__": 168,
     "kind": "file",
     "name": "src/container/Summary/Summary.js",
-    "content": "import React, { Component } from 'react';\nimport { setPageType } from \"../../actions/pageTypeActions\";\n\nimport Breadcrumb from '../../components/Breadcrumb/Breadcrumb';\nimport PropTypes from \"prop-types\";\nimport connect from \"react-redux/es/connect/connect\";\n// import PropTypes from 'prop-types';\n\nclass Summary extends Component {\n\n    componentWillMount() {\n        this.props.onSetPageType('summary');\n    }\n\n    render() {\n\n        return (\n            <div className='summary'>\n\n                <Breadcrumb/>\n\n                summarry\n\n            </div>\n        );\n    }\n}\n\nSummary.propTypes = {\n    pageType: PropTypes.string.isRequired\n};\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetPageType: (newState) => {\n            dispatch(setPageType(newState));\n        }\n    }\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    pageType: state.pageTypeReducer.pageType,\n});\n\nexport default connect(mapStateToProps, mapDispatchToProps)(Summary);",
+    "content": "import React, { Component } from 'react';\nimport { setPageType } from '../../actions/pageTypeActions';\n\nimport Breadcrumb from '../../components/Breadcrumb/Breadcrumb';\nimport PropTypes from 'prop-types';\nimport connect from 'react-redux/es/connect/connect';\nimport CalculationHandler from '../../renderlessComponents/CalculationHandler';\n\nclass Summary extends Component {\n\n    componentWillMount() {\n        this.props.onSetPageType('summary');\n    }\n\n    render() {\n\n        return (\n            <div className='summary'>\n\n                <Breadcrumb/>\n\n                <CalculationHandler />\n\n            </div>\n        );\n    }\n}\n\nSummary.propTypes = {\n    pageType: PropTypes.string.isRequired\n};\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetPageType: (newState) => {\n            dispatch(setPageType(newState));\n        }\n    }\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    pageType: state.pageTypeReducer.pageType,\n});\n\nexport default connect(mapStateToProps, mapDispatchToProps)(Summary);",
     "static": true,
     "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/container/Summary/Summary.js",
     "access": "public",
@@ -3227,7 +3227,7 @@
     "__docId__": 174,
     "kind": "file",
     "name": "src/container/UnitSettings/UnitSettings.js",
-    "content": "import React, { Component } from \"react\";\nimport { connect } from \"react-redux\";\nimport PropTypes from \"prop-types\";\n\nimport SubmitButton from '../../components/Buttons/SubmitButton';\nimport { setPageType } from '../../actions/pageTypeActions';\nimport { fetchAttackerStats } from '../../actions/attackerActions';\nimport { fetchDefenderStats } from '../../actions/defenderActions';\nimport Breadcrumb from '../../components/Breadcrumb/Breadcrumb';\nimport DropdownMenu from '../../components/Menu/DropdownMenu';\nimport AttackerStats from '../../renderlessComponents/AttackerStats';\nimport DefenderStats from '../../renderlessComponents/DefenderStats';\n\nclass UnitSettings extends Component {\n\n    componentWillMount() {\n\n        (this.checkValidInput() && this.fetchUnitStats())\n    }\n\n    componentDidUpdate() {\n        // console.log(this.props.);\n\n    }\n\n    checkValidInput() {\n        if (this.props.attackerUnit.length > 0 && this.props.defenderUnit.hasOwnProperty('value')) {\n            this.props.onSetPageType('unitSettings');\n            return true;\n        } else {\n            this.props.onSetPageType('newCalc');\n            this.props.history.push('/new-calculation');\n            return false;\n        }\n    }\n\n    fetchUnitStats() {\n\n        this.props.attackerUnit.forEach(item => {\n            this.props.onFetchAttackerStats(item.race, item.value);\n        });\n\n        this.props.onFetchDefenderStats(this.props.defenderUnit.race, this.props.defenderUnit.value);\n\n    }\n\n    render() {\n\n        return(\n            <div className='unitSettings'>\n\n                <AttackerStats />\n\n                <DefenderStats />\n\n                <Breadcrumb />\n\n                <DropdownMenu />\n\n                <SubmitButton\n                    className=' btn unitSettings-submit'\n                    onClick={()=>{this.props.onSetPageType('summary')}}\n                    path='/summary'\n                >\n                    {this.context.t('confirmSelection')}\n                </SubmitButton>\n            </div>\n        );\n    }\n}\n\nUnitSettings.contextTypes = {\n    t: PropTypes.func.isRequired\n};\n\nUnitSettings.propTypes = {\n    pageType: PropTypes.string.isRequired,\n    attackerUnit: PropTypes.array.isRequired,\n    defenderUnit: PropTypes.object.isRequired\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    pageType: state.pageTypeReducer.pageType,\n    attackerUnit: state.attackerReducer.attackerUnit,\n    defenderUnit: state.defenderReducer.defenderUnit\n});\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetPageType: (newState) => {\n            dispatch(setPageType(newState));\n        },\n        onFetchAttackerStats: (race, unitName) => {\n            dispatch(fetchAttackerStats(race, unitName));\n        },\n        onFetchDefenderStats: (race, unitName) => {\n            dispatch(fetchDefenderStats(race, unitName));\n        }\n    }\n};\n\nexport default connect(mapStateToProps, mapDispatchToProps)(UnitSettings);",
+    "content": "import React, { Component } from \"react\";\nimport { connect } from \"react-redux\";\nimport PropTypes from \"prop-types\";\n\nimport SubmitButton from '../../components/Buttons/SubmitButton';\nimport { setPageType } from '../../actions/pageTypeActions';\nimport { fetchAttackerStats } from '../../actions/attackerActions';\nimport { fetchDefenderStats } from '../../actions/defenderActions';\nimport Breadcrumb from '../../components/Breadcrumb/Breadcrumb';\nimport DropdownMenu from '../../components/Menu/DropdownMenu';\nimport AttackerStats from '../../renderlessComponents/AttackerStats';\nimport DefenderStats from '../../renderlessComponents/DefenderStats';\n\nclass UnitSettings extends Component {\n\n    componentWillMount() {\n\n        (this.checkValidInput() && this.fetchUnitStats())\n    }\n\n    componentDidUpdate() {\n        // console.log(this.props.);\n\n    }\n\n    checkValidInput() {\n        if (this.props.attackerUnit.length > 0 && this.props.defenderUnit.hasOwnProperty('value')) {\n            this.props.onSetPageType('unitSettings');\n            return true;\n        } else {\n            this.props.onSetPageType('newCalc');\n            this.props.history.push('/new-calculation');\n            return false;\n        }\n    }\n\n    fetchUnitStats() {\n\n        this.props.attackerUnit.forEach(item => {\n            this.props.onFetchAttackerStats(item.race, item.value);\n        });\n\n        this.props.onFetchDefenderStats(this.props.defenderUnit.race, this.props.defenderUnit.value);\n\n    }\n\n    render() {\n\n        return(\n            <div className='unitSettings'>\n\n                <AttackerStats />\n\n                <DefenderStats />\n\n                <Breadcrumb />\n\n                <DropdownMenu />\n\n                <SubmitButton\n                    className=' btn unitSettings-submit'\n                    onClick={()=>{this.props.onSetPageType('summary')}}\n                    path='/summary'\n                    disabledValue={false}\n                >\n                    {this.context.t('confirmSelection')}\n                </SubmitButton>\n            </div>\n        );\n    }\n}\n\nUnitSettings.contextTypes = {\n    t: PropTypes.func.isRequired\n};\n\nUnitSettings.propTypes = {\n    pageType: PropTypes.string.isRequired,\n    attackerUnit: PropTypes.array.isRequired,\n    defenderUnit: PropTypes.object.isRequired\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    pageType: state.pageTypeReducer.pageType,\n    attackerUnit: state.attackerReducer.attackerUnit,\n    defenderUnit: state.defenderReducer.defenderUnit\n});\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetPageType: (newState) => {\n            dispatch(setPageType(newState));\n        },\n        onFetchAttackerStats: (race, unitName) => {\n            dispatch(fetchAttackerStats(race, unitName));\n        },\n        onFetchDefenderStats: (race, unitName) => {\n            dispatch(fetchDefenderStats(race, unitName));\n        }\n    }\n};\n\nexport default connect(mapStateToProps, mapDispatchToProps)(UnitSettings);",
     "static": true,
     "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/container/UnitSettings/UnitSettings.js",
     "access": "public",
@@ -3356,7 +3356,7 @@
     "importPath": "profdice-frontend/src/container/UnitSettings/UnitSettings.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 82,
+    "lineNumber": 83,
     "undocument": true,
     "params": [
       {
@@ -3383,7 +3383,7 @@
     "importPath": "profdice-frontend/src/container/UnitSettings/UnitSettings.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 89,
+    "lineNumber": 90,
     "undocument": true,
     "params": [
       {
@@ -4084,7 +4084,7 @@
     "__docId__": 214,
     "kind": "file",
     "name": "src/renderlessComponents/AttackerUnitApi.js",
-    "content": "import { Component } from 'react';\nimport { connect } from 'react-redux';\nimport PropTypes from 'prop-types';\nimport { setAttackerUnit, setAttackerUnitArray, setAttackerSaveUnits, fetchAttackerUnits } from \"../actions/attackerActions\";\nimport prepareSelectValues from '../statelessFunctionalComponents/prepareSelectValues';\n\n/*\n\n */\nexport class AttackerUnitApi extends Component {\n\n    componentDidUpdate(prevProps) {\n\n        if (this.props.attackerRace.length < 1) {\n            this.props.onSetAttackerUnitArray([]);\n            this.props.onSetAttackerUnit([]);\n        } else {\n            this.fetchHandler(prevProps);\n            if (this.props.fetchAttackerUnits['id'] !== prevProps.fetchAttackerUnits['id']) {\n                this.saveUnits();\n            }\n            this.prepareUnitArray();\n\n        }\n\n    }\n\n    fetchHandler(prevProps) {\n\n        if (prevProps.attackerRace.length < this.props.attackerRace.length) {\n\n            this.props.attackerRace.forEach(item => {\n                this.props.onFetchAttackerUnit(item.value);\n            });\n\n        }\n\n    }\n\n    saveUnits() {\n\n        if (!(this.props.attackerSaveUnits.find(key => key.id === this.props.fetchAttackerUnits['id']))) {\n\n            let newFetch = this.props.attackerSaveUnits;\n            newFetch.push(this.props.fetchAttackerUnits);\n\n            this.props.onSetAttackerSaveUnits(newFetch);\n\n        }\n\n    }\n\n    prepareUnitArray() {\n\n        let selectableUnits = [];\n\n        this.props.attackerRace.forEach(item => {\n\n            selectableUnits = prepareSelectValues(this.props.attackerSaveUnits, item, this.context, selectableUnits);\n\n        });\n\n        this.props.onSetAttackerUnitArray(selectableUnits);\n\n    }\n\n    render() {\n\n        return null;\n\n    }\n\n}\n\nAttackerUnitApi.contextTypes = {\n    t: PropTypes.func.isRequired,\n    attackerRace: PropTypes.array,\n    attackerSaveUnits: PropTypes.array,\n    fetchAttackerUnits: PropTypes.object\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    attackerRace: state.attackerReducer.attackerRace,\n    attackerSaveUnits: state.attackerReducer.attackerSaveUnits,\n    fetchAttackerUnits: state.attackerReducer.fetchAttackerUnits\n});\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetAttackerUnitArray: (newState) => {\n            dispatch(setAttackerUnitArray(newState));\n        },\n        onSetAttackerUnit: (newState) => {\n            dispatch(setAttackerUnit(newState));\n        },\n        onSetAttackerSaveUnits: (newState) => {\n        dispatch(setAttackerSaveUnits(newState));\n        },\n        onFetchAttackerUnit: (race) => {\n            dispatch(fetchAttackerUnits(race));\n        }\n    }\n};\n\nexport default connect(mapStateToProps, mapDispatchToProps)(AttackerUnitApi);",
+    "content": "import { Component } from 'react';\nimport { connect } from 'react-redux';\nimport PropTypes from 'prop-types';\nimport { setAttackerUnit, setAttackerUnitArray, setAttackerSaveUnits, fetchAttackerUnits } from \"../actions/attackerActions\";\nimport { apiMethods, saveUnits } from '../statelessFunctionalComponents/apiMethods';\n\n/*\n\n */\nexport class AttackerUnitApi extends Component {\n\n    componentDidUpdate(prevProps) {\n\n        if (this.props.attackerRace.length < 1) {\n            this.props.onSetAttackerUnitArray([]);\n            this.props.onSetAttackerUnit([]);\n        } else {\n            this.fetchHandler(prevProps);\n            if (this.props.fetchAttackerUnits['id'] !== prevProps.fetchAttackerUnits['id']) {\n                this.props.onSetAttackerSaveUnits(saveUnits(this.props.attackerSaveUnits, this.props.fetchAttackerUnits));\n            }\n            this.prepareUnitArray();\n\n        }\n\n    }\n\n    fetchHandler(prevProps) {\n\n        if (prevProps.attackerRace.length < this.props.attackerRace.length) {\n\n            this.props.attackerRace.forEach(item => {\n                this.props.onFetchAttackerUnit(item.value);\n            });\n\n        }\n\n    }\n\n    prepareUnitArray() {\n\n        let selectableUnits = [];\n\n        this.props.attackerRace.forEach(item => {\n\n            selectableUnits = apiMethods(this.props.attackerSaveUnits, item, this.context, selectableUnits);\n\n        });\n\n        this.props.onSetAttackerUnitArray(selectableUnits);\n\n    }\n\n    render() {\n\n        return null;\n\n    }\n\n}\n\nAttackerUnitApi.contextTypes = {\n    t: PropTypes.func.isRequired,\n    attackerRace: PropTypes.array,\n    attackerSaveUnits: PropTypes.array,\n    fetchAttackerUnits: PropTypes.object\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    attackerRace: state.attackerReducer.attackerRace,\n    attackerSaveUnits: state.attackerReducer.attackerSaveUnits,\n    fetchAttackerUnits: state.attackerReducer.fetchAttackerUnits\n});\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetAttackerUnitArray: (newState) => {\n            dispatch(setAttackerUnitArray(newState));\n        },\n        onSetAttackerUnit: (newState) => {\n            dispatch(setAttackerUnit(newState));\n        },\n        onSetAttackerSaveUnits: (newState) => {\n            dispatch(setAttackerSaveUnits(newState));\n        },\n        onFetchAttackerUnit: (race) => {\n            dispatch(fetchAttackerUnits(race));\n        }\n    }\n};\n\nexport default connect(mapStateToProps, mapDispatchToProps)(AttackerUnitApi);",
     "static": true,
     "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/renderlessComponents/AttackerUnitApi.js",
     "access": "public",
@@ -4159,12 +4159,12 @@
   {
     "__docId__": 218,
     "kind": "method",
-    "name": "saveUnits",
+    "name": "prepareUnitArray",
     "memberof": "src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi#saveUnits",
+    "longname": "src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi#prepareUnitArray",
     "access": "public",
     "description": null,
     "lineNumber": 40,
@@ -4175,22 +4175,6 @@
   {
     "__docId__": 219,
     "kind": "method",
-    "name": "prepareUnitArray",
-    "memberof": "src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi#prepareUnitArray",
-    "access": "public",
-    "description": null,
-    "lineNumber": 53,
-    "undocument": true,
-    "params": [],
-    "return": null
-  },
-  {
-    "__docId__": 220,
-    "kind": "method",
     "name": "render",
     "memberof": "src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi",
     "generator": false,
@@ -4199,7 +4183,7 @@
     "longname": "src/renderlessComponents/AttackerUnitApi.js~AttackerUnitApi#render",
     "access": "public",
     "description": null,
-    "lineNumber": 67,
+    "lineNumber": 54,
     "undocument": true,
     "params": [],
     "return": {
@@ -4209,7 +4193,7 @@
     }
   },
   {
-    "__docId__": 221,
+    "__docId__": 220,
     "kind": "function",
     "name": "mapStateToProps",
     "memberof": "src/renderlessComponents/AttackerUnitApi.js",
@@ -4222,7 +4206,7 @@
     "importPath": "profdice-frontend/src/renderlessComponents/AttackerUnitApi.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 82,
+    "lineNumber": 69,
     "undocument": true,
     "params": [
       {
@@ -4236,7 +4220,7 @@
     "ignore": true
   },
   {
-    "__docId__": 222,
+    "__docId__": 221,
     "kind": "function",
     "name": "mapDispatchToProps",
     "memberof": "src/renderlessComponents/AttackerUnitApi.js",
@@ -4249,7 +4233,7 @@
     "importPath": "profdice-frontend/src/renderlessComponents/AttackerUnitApi.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 89,
+    "lineNumber": 76,
     "undocument": true,
     "params": [
       {
@@ -4267,7 +4251,132 @@
     "ignore": true
   },
   {
+    "__docId__": 222,
+    "kind": "file",
+    "name": "src/renderlessComponents/CalculationHandler.js",
+    "content": "import React, { Component } from 'react';\nimport { connect } from 'react-redux';\nimport PropTypes from 'prop-types';\nimport CalculationCalls from '../statelessFunctionalComponents/calculation/CalculationCalls';\n\nclass CalculationHandler extends Component {\n\n    componentWillMount() {\n        const calc1 = new CalculationCalls(this.props.attackerStatsCollection[0], this.props.defenderStatsCollection);\n\n\n    }\n\n    render() {\n        return (\n            <div>\n                42\n            </div>\n        );\n    }\n\n}\n\nCalculationHandler.contextTypes = {\n    t: PropTypes.func.isRequired\n};\n\nCalculationHandler.propTypes = {\n    attackerStatsCollection: PropTypes.array,\n    defenderStatsCollection: PropTypes.object\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    attackerStatsCollection: state.attackerReducer.attackerStatsCollection,\n    defenderStatsCollection: state.defenderReducer.defenderStatsCollection\n});\n\nconst mapDispatchToProps = dispatch => {\n    return {\n\n    }\n};\n\nexport default connect(mapStateToProps, mapDispatchToProps)(CalculationHandler);",
+    "static": true,
+    "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/renderlessComponents/CalculationHandler.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
     "__docId__": 223,
+    "kind": "class",
+    "name": "CalculationHandler",
+    "memberof": "src/renderlessComponents/CalculationHandler.js",
+    "static": true,
+    "longname": "src/renderlessComponents/CalculationHandler.js~CalculationHandler",
+    "access": "public",
+    "export": false,
+    "importPath": "profdice-frontend/src/renderlessComponents/CalculationHandler.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~Component"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 224,
+    "kind": "method",
+    "name": "componentWillMount",
+    "memberof": "src/renderlessComponents/CalculationHandler.js~CalculationHandler",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/renderlessComponents/CalculationHandler.js~CalculationHandler#componentWillMount",
+    "access": "public",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 225,
+    "kind": "method",
+    "name": "render",
+    "memberof": "src/renderlessComponents/CalculationHandler.js~CalculationHandler",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/renderlessComponents/CalculationHandler.js~CalculationHandler#render",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 226,
+    "kind": "function",
+    "name": "mapStateToProps",
+    "memberof": "src/renderlessComponents/CalculationHandler.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/renderlessComponents/CalculationHandler.js~mapStateToProps",
+    "access": "public",
+    "export": false,
+    "importPath": "profdice-frontend/src/renderlessComponents/CalculationHandler.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "params": [
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 227,
+    "kind": "function",
+    "name": "mapDispatchToProps",
+    "memberof": "src/renderlessComponents/CalculationHandler.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/renderlessComponents/CalculationHandler.js~mapDispatchToProps",
+    "access": "public",
+    "export": false,
+    "importPath": "profdice-frontend/src/renderlessComponents/CalculationHandler.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 39,
+    "undocument": true,
+    "params": [
+      {
+        "name": "dispatch",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 228,
     "kind": "file",
     "name": "src/renderlessComponents/DefenderStats.js",
     "content": "import { Component } from 'react';\nimport { connect } from 'react-redux';\nimport PropTypes from 'prop-types';\nimport { setDefenderStatsCollection } from '../actions/defenderActions';\n\nexport class DefenderStats extends Component {\n\n    componentDidUpdate(prevProps) {\n        if (this.props.fetchDefenderStats.valueOf('id') !== prevProps.fetchDefenderStats.valueOf('id')) {\n            this.props.onSetDefenderStatsCollection(this.props.fetchDefenderStats);\n        }\n\n    }\n\n    render() {\n        return null;\n    }\n\n}\n\nDefenderStats.contextTypes = {\n    t: PropTypes.func.isRequired,\n    fetchDefenderStats: PropTypes.object,\n    defenderStatsCollection: PropTypes.object\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    fetchDefenderStats: state.defenderReducer.fetchDefenderStats,\n    defenderStatsCollection: state.defenderReducer.defenderStatsCollection\n});\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetDefenderStatsCollection: (newState) => {\n            dispatch(setDefenderStatsCollection(newState));\n        }\n    }\n};\n\nexport default connect(mapStateToProps, mapDispatchToProps)(DefenderStats);",
@@ -4278,7 +4387,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 224,
+    "__docId__": 229,
     "kind": "class",
     "name": "DefenderStats",
     "memberof": "src/renderlessComponents/DefenderStats.js",
@@ -4297,7 +4406,7 @@
     ]
   },
   {
-    "__docId__": 225,
+    "__docId__": 230,
     "kind": "method",
     "name": "componentDidUpdate",
     "memberof": "src/renderlessComponents/DefenderStats.js~DefenderStats",
@@ -4320,7 +4429,7 @@
     "return": null
   },
   {
-    "__docId__": 226,
+    "__docId__": 231,
     "kind": "method",
     "name": "render",
     "memberof": "src/renderlessComponents/DefenderStats.js~DefenderStats",
@@ -4340,7 +4449,7 @@
     }
   },
   {
-    "__docId__": 227,
+    "__docId__": 232,
     "kind": "function",
     "name": "mapStateToProps",
     "memberof": "src/renderlessComponents/DefenderStats.js",
@@ -4367,7 +4476,7 @@
     "ignore": true
   },
   {
-    "__docId__": 228,
+    "__docId__": 233,
     "kind": "function",
     "name": "mapDispatchToProps",
     "memberof": "src/renderlessComponents/DefenderStats.js",
@@ -4398,10 +4507,10 @@
     "ignore": true
   },
   {
-    "__docId__": 229,
+    "__docId__": 234,
     "kind": "file",
     "name": "src/renderlessComponents/DefenderUnitApi.js",
-    "content": "import { Component } from 'react';\nimport { connect } from 'react-redux';\nimport PropTypes from 'prop-types';\nimport { setDefenderUnit, setDefenderUnitArray, setDefenderSaveUnits, fetchDefenderUnits } from \"../actions/defenderActions\";\nimport prepareSelectValues from '../statelessFunctionalComponents/prepareSelectValues';\n\nexport class DefenderUnitApi extends Component {\n\n    componentDidUpdate(prevProps) {\n\n        if (!(this.props.defenderRace.hasOwnProperty('value'))) {\n            this.props.onSetDefenderUnitArray([]);\n            this.props.onSetDefenderUnit({});\n        } else {\n            this.fetchHandler(prevProps);\n            if (this.props.fetchDefenderUnits['id'] !== prevProps.fetchDefenderUnits['id']) {\n                this.saveUnits();\n            }\n            this.prepareUnitArray();\n        }\n    }\n\n    fetchHandler(prevProps) {\n\n        if (this.props.defenderRace.hasOwnProperty('value') !== prevProps.defenderRace.hasOwnProperty('value')) {\n            this.props.onFetchDefenderUnit(this.props.defenderRace.value);\n        } else if (this.props.defenderRace['value'] !== prevProps.defenderRace['value']) {\n            this.props.onFetchDefenderUnit(this.props.defenderRace.value);\n        }\n\n    }\n\n    saveUnits() {\n\n        if (!(this.props.defenderSaveUnits.find(key => key.id === this.props.fetchDefenderUnits['id']))) {\n\n            let newFetch = this.props.defenderSaveUnits;\n            newFetch.push(this.props.fetchDefenderUnits);\n\n            this.props.onSetDefenderSaveUnits(newFetch);\n        }\n\n    }\n\n    prepareUnitArray() {\n\n        this.props.onSetDefenderUnitArray(prepareSelectValues(this.props.defenderSaveUnits, this.props.defenderRace, this.context));\n\n    }\n\n    render() {\n\n        return null;\n    }\n\n}\n\nDefenderUnitApi.contextTypes = {\n    t: PropTypes.func.isRequired,\n    defenderRace: PropTypes.array,\n    defenderSaveUnits: PropTypes.array,\n    fetchDefenderUnits: PropTypes.object\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    defenderRace: state.defenderReducer.defenderRace,\n    defenderSaveUnits: state.defenderReducer.defenderSaveUnits,\n    fetchDefenderUnits: state.defenderReducer.fetchDefenderUnits\n});\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetDefenderUnitArray: (newState) => {\n            dispatch(setDefenderUnitArray(newState));\n        },\n        onSetDefenderUnit: (newState) => {\n            dispatch(setDefenderUnit(newState));\n        },\n        onSetDefenderSaveUnits: (newState) => {\n            dispatch(setDefenderSaveUnits(newState));\n        },\n        onFetchDefenderUnit: (race) => {\n            dispatch(fetchDefenderUnits(race));\n        }\n    }\n};\n\nexport default connect(mapStateToProps, mapDispatchToProps)(DefenderUnitApi);",
+    "content": "import { Component } from 'react';\nimport { connect } from 'react-redux';\nimport PropTypes from 'prop-types';\nimport { setDefenderUnit, setDefenderUnitArray, setDefenderSaveUnits, fetchDefenderUnits } from \"../actions/defenderActions\";\nimport { apiMethods, saveUnits } from '../statelessFunctionalComponents/apiMethods';\n\nexport class DefenderUnitApi extends Component {\n\n    componentDidUpdate(prevProps) {\n\n        if (!(this.props.defenderRace.hasOwnProperty('value'))) {\n            this.props.onSetDefenderUnitArray([]);\n            this.props.onSetDefenderUnit({});\n        } else {\n            this.fetchHandler(prevProps);\n            if (this.props.fetchDefenderUnits['id'] !== prevProps.fetchDefenderUnits['id']) {\n                this.props.onSetDefenderSaveUnits(saveUnits(this.props.defenderSaveUnits, this.props.fetchDefenderUnits));\n            }\n            this.prepareUnitArray();\n        }\n    }\n\n    fetchHandler(prevProps) {\n\n        if (this.props.defenderRace.hasOwnProperty('value') !== prevProps.defenderRace.hasOwnProperty('value')) {\n            this.props.onFetchDefenderUnit(this.props.defenderRace.value);\n        } else if (this.props.defenderRace['value'] !== prevProps.defenderRace['value']) {\n            this.props.onFetchDefenderUnit(this.props.defenderRace.value);\n        }\n\n    }\n\n    prepareUnitArray() {\n\n        this.props.onSetDefenderUnitArray(apiMethods(this.props.defenderSaveUnits, this.props.defenderRace, this.context));\n\n    }\n\n    render() {\n\n        return null;\n    }\n\n}\n\nDefenderUnitApi.contextTypes = {\n    t: PropTypes.func.isRequired,\n    defenderRace: PropTypes.array,\n    defenderSaveUnits: PropTypes.array,\n    fetchDefenderUnits: PropTypes.object\n};\n\nconst mapStateToProps = state => ({\n    lang: state.i18nState.lang,\n    defenderRace: state.defenderReducer.defenderRace,\n    defenderSaveUnits: state.defenderReducer.defenderSaveUnits,\n    fetchDefenderUnits: state.defenderReducer.fetchDefenderUnits\n});\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetDefenderUnitArray: (newState) => {\n            dispatch(setDefenderUnitArray(newState));\n        },\n        onSetDefenderUnit: (newState) => {\n            dispatch(setDefenderUnit(newState));\n        },\n        onSetDefenderSaveUnits: (newState) => {\n            dispatch(setDefenderSaveUnits(newState));\n        },\n        onFetchDefenderUnit: (race) => {\n            dispatch(fetchDefenderUnits(race));\n        }\n    }\n};\n\nexport default connect(mapStateToProps, mapDispatchToProps)(DefenderUnitApi);",
     "static": true,
     "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/renderlessComponents/DefenderUnitApi.js",
     "access": "public",
@@ -4409,7 +4518,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 230,
+    "__docId__": 235,
     "kind": "class",
     "name": "DefenderUnitApi",
     "memberof": "src/renderlessComponents/DefenderUnitApi.js",
@@ -4428,7 +4537,7 @@
     ]
   },
   {
-    "__docId__": 231,
+    "__docId__": 236,
     "kind": "method",
     "name": "componentDidUpdate",
     "memberof": "src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi",
@@ -4451,7 +4560,7 @@
     "return": null
   },
   {
-    "__docId__": 232,
+    "__docId__": 237,
     "kind": "method",
     "name": "fetchHandler",
     "memberof": "src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi",
@@ -4474,23 +4583,7 @@
     "return": null
   },
   {
-    "__docId__": 233,
-    "kind": "method",
-    "name": "saveUnits",
-    "memberof": "src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi#saveUnits",
-    "access": "public",
-    "description": null,
-    "lineNumber": 33,
-    "undocument": true,
-    "params": [],
-    "return": null
-  },
-  {
-    "__docId__": 234,
+    "__docId__": 238,
     "kind": "method",
     "name": "prepareUnitArray",
     "memberof": "src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi",
@@ -4500,13 +4593,13 @@
     "longname": "src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi#prepareUnitArray",
     "access": "public",
     "description": null,
-    "lineNumber": 45,
+    "lineNumber": 33,
     "undocument": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 235,
+    "__docId__": 239,
     "kind": "method",
     "name": "render",
     "memberof": "src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi",
@@ -4516,7 +4609,7 @@
     "longname": "src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi#render",
     "access": "public",
     "description": null,
-    "lineNumber": 51,
+    "lineNumber": 39,
     "undocument": true,
     "params": [],
     "return": {
@@ -4526,7 +4619,7 @@
     }
   },
   {
-    "__docId__": 236,
+    "__docId__": 240,
     "kind": "function",
     "name": "mapStateToProps",
     "memberof": "src/renderlessComponents/DefenderUnitApi.js",
@@ -4539,7 +4632,7 @@
     "importPath": "profdice-frontend/src/renderlessComponents/DefenderUnitApi.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 65,
+    "lineNumber": 53,
     "undocument": true,
     "params": [
       {
@@ -4553,7 +4646,7 @@
     "ignore": true
   },
   {
-    "__docId__": 237,
+    "__docId__": 241,
     "kind": "function",
     "name": "mapDispatchToProps",
     "memberof": "src/renderlessComponents/DefenderUnitApi.js",
@@ -4566,7 +4659,7 @@
     "importPath": "profdice-frontend/src/renderlessComponents/DefenderUnitApi.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 72,
+    "lineNumber": 60,
     "undocument": true,
     "params": [
       {
@@ -4584,7 +4677,7 @@
     "ignore": true
   },
   {
-    "__docId__": 238,
+    "__docId__": 242,
     "kind": "file",
     "name": "src/renderlessComponents/ForcesApi.js",
     "content": "import { Component } from 'react';\nimport { connect } from 'react-redux';\nimport PropTypes from 'prop-types';\n\nimport { setForcesArray } from \"../actions/forceAction\";\nimport { fetchForces } from \"../actions/forceAction\";\n\nexport class ForcesApi extends Component {\n\n    componentWillMount() {\n        (this.props.forces.length < 1 && this.props.onFetchForces());\n    }\n\n    componentDidUpdate() {\n        this.props.onSetForcesArray(this.prepareSelectValues());\n    }\n\n    prepareSelectValues() {\n\n        let forceValues = [];\n\n        this.props.forces.forEach(item => {\n            forceValues.push({value: item, label: this.context.t(item)});\n        });\n\n        return forceValues;\n    }\n\n    render() {\n\n        return null;\n    }\n\n}\n\nForcesApi.contextTypes = {\n    t: PropTypes.func.isRequired\n};\n\nconst mapStateToProps = state => ({\n    forces: state.forcesReducer.forces,\n    lang: state.i18nState.lang\n});\n\nconst mapDispatchToProps = dispatch => {\n    return {\n        onSetForcesArray: (newState) => {\n            dispatch(setForcesArray(newState));\n        },\n        onFetchForces: () => {\n            dispatch(fetchForces());\n        }\n    }\n};\n\nexport default connect(mapStateToProps, mapDispatchToProps)(ForcesApi);",
@@ -4595,7 +4688,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 239,
+    "__docId__": 243,
     "kind": "class",
     "name": "ForcesApi",
     "memberof": "src/renderlessComponents/ForcesApi.js",
@@ -4614,7 +4707,7 @@
     ]
   },
   {
-    "__docId__": 240,
+    "__docId__": 244,
     "kind": "method",
     "name": "componentWillMount",
     "memberof": "src/renderlessComponents/ForcesApi.js~ForcesApi",
@@ -4630,7 +4723,7 @@
     "return": null
   },
   {
-    "__docId__": 241,
+    "__docId__": 245,
     "kind": "method",
     "name": "componentDidUpdate",
     "memberof": "src/renderlessComponents/ForcesApi.js~ForcesApi",
@@ -4646,7 +4739,7 @@
     "return": null
   },
   {
-    "__docId__": 242,
+    "__docId__": 246,
     "kind": "method",
     "name": "prepareSelectValues",
     "memberof": "src/renderlessComponents/ForcesApi.js~ForcesApi",
@@ -4666,7 +4759,7 @@
     }
   },
   {
-    "__docId__": 243,
+    "__docId__": 247,
     "kind": "method",
     "name": "render",
     "memberof": "src/renderlessComponents/ForcesApi.js~ForcesApi",
@@ -4686,7 +4779,7 @@
     }
   },
   {
-    "__docId__": 244,
+    "__docId__": 248,
     "kind": "function",
     "name": "mapStateToProps",
     "memberof": "src/renderlessComponents/ForcesApi.js",
@@ -4713,7 +4806,7 @@
     "ignore": true
   },
   {
-    "__docId__": 245,
+    "__docId__": 249,
     "kind": "function",
     "name": "mapDispatchToProps",
     "memberof": "src/renderlessComponents/ForcesApi.js",
@@ -4744,29 +4837,29 @@
     "ignore": true
   },
   {
-    "__docId__": 246,
+    "__docId__": 250,
     "kind": "file",
-    "name": "src/statelessFunctionalComponents/prepareSelectValues.js",
-    "content": "const prepareSelectValues = (savedUnits, units, language, selectableUnits = []) => {\n\n    let unitMatch = savedUnits.find(key => key.id ===  units.value);\n\n    if (unitMatch) {\n        unitMatch['unitIds'].forEach(item => {\n            selectableUnits.push({value: item, label: language.t(item), race: unitMatch.id});\n        });\n    }\n\n    return selectableUnits;\n\n};\n\nexport default prepareSelectValues;",
+    "name": "src/statelessFunctionalComponents/apiMethods.js",
+    "content": "export const apiMethods = (savedUnits, units, language, selectableUnits = []) => {\n\n    let unitMatch = savedUnits.find(key => key.id ===  units.value);\n\n    if (unitMatch) {\n        unitMatch['unitIds'].forEach(item => {\n            selectableUnits.push({value: item, label: language.t(item), race: unitMatch.id});\n        });\n    }\n\n    return selectableUnits;\n\n};\n\n\nexport const saveUnits = (savedUnits, fetchedUnits) => {\n\n    let newFetch = savedUnits;\n\n    if (!(savedUnits.find(key => key.id === fetchedUnits['id']))) {\n\n        newFetch.push(fetchedUnits);\n\n    }\n\n    return newFetch;\n};",
     "static": true,
-    "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/statelessFunctionalComponents/prepareSelectValues.js",
+    "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/statelessFunctionalComponents/apiMethods.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 247,
+    "__docId__": 251,
     "kind": "function",
-    "name": "prepareSelectValues",
-    "memberof": "src/statelessFunctionalComponents/prepareSelectValues.js",
+    "name": "apiMethods",
+    "memberof": "src/statelessFunctionalComponents/apiMethods.js",
     "generator": false,
     "async": false,
     "static": true,
-    "longname": "src/statelessFunctionalComponents/prepareSelectValues.js~prepareSelectValues",
+    "longname": "src/statelessFunctionalComponents/apiMethods.js~apiMethods",
     "access": "public",
     "export": true,
-    "importPath": "profdice-frontend/src/statelessFunctionalComponents/prepareSelectValues.js",
-    "importStyle": "prepareSelectValues",
+    "importPath": "profdice-frontend/src/statelessFunctionalComponents/apiMethods.js",
+    "importStyle": "{apiMethods}",
     "description": null,
     "lineNumber": 1,
     "undocument": true,
@@ -4806,7 +4899,881 @@
     }
   },
   {
-    "__docId__": 248,
+    "__docId__": 252,
+    "kind": "function",
+    "name": "saveUnits",
+    "memberof": "src/statelessFunctionalComponents/apiMethods.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/statelessFunctionalComponents/apiMethods.js~saveUnits",
+    "access": "public",
+    "export": true,
+    "importPath": "profdice-frontend/src/statelessFunctionalComponents/apiMethods.js",
+    "importStyle": "{saveUnits}",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "params": [
+      {
+        "name": "savedUnits",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fetchedUnits",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 253,
+    "kind": "file",
+    "name": "src/statelessFunctionalComponents/calculation/Calculation.js",
+    "content": "import Properties from './Properties';\n\nexport default class Calculation extends Properties {\n\n    static calcTotalShotsWeapon(weaponCount, weaponShots, additionalShots) {\n        return weaponCount * weaponShots + additionalShots;\n    }\n\n}",
+    "static": true,
+    "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/statelessFunctionalComponents/calculation/Calculation.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 254,
+    "kind": "class",
+    "name": "Calculation",
+    "memberof": "src/statelessFunctionalComponents/calculation/Calculation.js",
+    "static": true,
+    "longname": "src/statelessFunctionalComponents/calculation/Calculation.js~Calculation",
+    "access": "public",
+    "export": true,
+    "importPath": "profdice-frontend/src/statelessFunctionalComponents/calculation/Calculation.js",
+    "importStyle": "Calculation",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "src/statelessFunctionalComponents/calculation/Properties.js~Properties"
+    ]
+  },
+  {
+    "__docId__": 255,
+    "kind": "method",
+    "name": "calcTotalShotsWeapon",
+    "memberof": "src/statelessFunctionalComponents/calculation/Calculation.js~Calculation",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/statelessFunctionalComponents/calculation/Calculation.js~Calculation.calcTotalShotsWeapon",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "weaponCount",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "weaponShots",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "additionalShots",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 256,
+    "kind": "file",
+    "name": "src/statelessFunctionalComponents/calculation/CalculationCalls.js",
+    "content": "import Calculation from './Calculation';\n\nexport default class CalculationCalls extends Calculation {\n\n    constructor(attackerStats, defenderStats) {\n        super(attackerStats, defenderStats);\n\n\n        this.setAttackerSettings(attackerStats);\n        this.setDefenderSettings(defenderStats);\n\n        this.calculateAttacker();\n        this.calculateDefender();\n\n    }\n\n    setAttackerSettings(attackerStats) {\n        this.setAttacker(attackerStats);\n    }\n\n    setDefenderSettings(defenderStats) {\n        this.setDefender(defenderStats);\n    }\n\n    calculateAttacker() {\n\n        let equippedWeapons = this.getWeaponShotCountAttacker();\n        equippedWeapons.forEach(item => {\n            // this.calcTotalShotsWeapon(item.weaponModeCount);\n        });\n\n        console.log(equippedWeapons[0].weaponModeCount);\n    }\n\n    calculateDefender() {\n        //console.log(this.calcTotalShotsWeapon());\n    }\n\n\n}",
+    "static": true,
+    "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/statelessFunctionalComponents/calculation/CalculationCalls.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 257,
+    "kind": "class",
+    "name": "CalculationCalls",
+    "memberof": "src/statelessFunctionalComponents/calculation/CalculationCalls.js",
+    "static": true,
+    "longname": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls",
+    "access": "public",
+    "export": true,
+    "importPath": "profdice-frontend/src/statelessFunctionalComponents/calculation/CalculationCalls.js",
+    "importStyle": "CalculationCalls",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "src/statelessFunctionalComponents/calculation/Calculation.js~Calculation"
+    ]
+  },
+  {
+    "__docId__": 258,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true
+  },
+  {
+    "__docId__": 259,
+    "kind": "method",
+    "name": "setAttackerSettings",
+    "memberof": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#setAttackerSettings",
+    "access": "public",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "attackerStats",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 260,
+    "kind": "method",
+    "name": "setDefenderSettings",
+    "memberof": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#setDefenderSettings",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "params": [
+      {
+        "name": "defenderStats",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 261,
+    "kind": "method",
+    "name": "calculateAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#calculateAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 262,
+    "kind": "method",
+    "name": "calculateDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls#calculateDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 35,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 263,
+    "kind": "file",
+    "name": "src/statelessFunctionalComponents/calculation/Properties.js",
+    "content": "export default class Properties {\n\n    constructor() {\n        this.initAttackerProperties();\n        this.initDefenderProperties();\n\n    }\n\n    initAttackerProperties() {\n        this.attacker = {};\n        this.additionalShotsAttacker = 0;\n        this.weaponCountAttacker = 0;\n        this.weaponShotsAttacker = 0;\n        this.totalWeaponShotsAttacker = 0;\n    }\n\n    initDefenderProperties() {\n        this.defender = {};\n        this.additionalShotsDefender = 0;\n        this.weaponCountDefender = 0;\n        this.weaponShotsDefender = 0;\n        this.totalWeaponShotsDefender = 0;\n    }\n\n    getAttacker() {\n        return this.attacker;\n    }\n\n    setAttacker(value) {\n        this.attacker = value;\n    }\n\n    getAttackerStats() {\n        return this.attacker.stats;\n    }\n\n    getAdditionalShotsAttacker() {\n        return null;\n    }\n\n    getWeaponShotCountAttacker() {\n        return this.attacker.weapon.ranged.default;\n    }\n\n    getWeaponShotsAttacker() {\n        return this.weaponShotsAttacker;\n    }\n\n    setWeaponShotsAttacker(value) {\n        this.weaponShotsAttacker = value;\n    }\n\n    getTotalWeaponShotsAttacker() {\n        return this.totalWeaponShotsAttacker;\n    }\n\n    setTotalWeaponShotsAttacker(value) {\n        this.totalWeaponShotsAttacker = value;\n    }\n\n    getDefender() {\n        return this.defender;\n    }\n\n    setDefender(value) {\n        this.defender = value;\n    }\n\n    getAdditionalShotsDefender() {\n        return this.additionalShotsDefender;\n    }\n\n    setAdditionalShotsDefender(value) {\n        this.additionalShotsDefender = value;\n    }\n\n    getWeaponCountDefender() {\n        return this.weaponCountDefender;\n    }\n\n    setWeaponCountDefender(value) {\n        this.weaponCountDefender = value;\n    }\n\n    getWeaponShotsDefender() {\n        return this.weaponShotsDefender;\n    }\n\n    setWeaponShotsDefender(value) {\n        this.weaponShotsDefender = value;\n    }\n\n    getTotalWeaponShotsDefender() {\n        return this.totalWeaponShotsDefender;\n    }\n\n    setTotalWeaponShotsDefender(value) {\n        this.totalWeaponShotsDefender = value;\n    }\n\n\n\n}",
+    "static": true,
+    "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/src/statelessFunctionalComponents/calculation/Properties.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 264,
+    "kind": "class",
+    "name": "Properties",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js",
+    "static": true,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "access": "public",
+    "export": true,
+    "importPath": "profdice-frontend/src/statelessFunctionalComponents/calculation/Properties.js",
+    "importStyle": "Properties",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 265,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true
+  },
+  {
+    "__docId__": 266,
+    "kind": "method",
+    "name": "initAttackerProperties",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#initAttackerProperties",
+    "access": "public",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 267,
+    "kind": "member",
+    "name": "attacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#attacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 268,
+    "kind": "member",
+    "name": "additionalShotsAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#additionalShotsAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 269,
+    "kind": "member",
+    "name": "weaponCountAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#weaponCountAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 270,
+    "kind": "member",
+    "name": "weaponShotsAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#weaponShotsAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 271,
+    "kind": "member",
+    "name": "totalWeaponShotsAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#totalWeaponShotsAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 272,
+    "kind": "method",
+    "name": "initDefenderProperties",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#initDefenderProperties",
+    "access": "public",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 273,
+    "kind": "member",
+    "name": "defender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#defender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 274,
+    "kind": "member",
+    "name": "additionalShotsDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#additionalShotsDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 275,
+    "kind": "member",
+    "name": "weaponCountDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#weaponCountDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 276,
+    "kind": "member",
+    "name": "weaponShotsDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#weaponShotsDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 277,
+    "kind": "member",
+    "name": "totalWeaponShotsDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#totalWeaponShotsDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 278,
+    "kind": "method",
+    "name": "getAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 279,
+    "kind": "method",
+    "name": "setAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 281,
+    "kind": "method",
+    "name": "getAttackerStats",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getAttackerStats",
+    "access": "public",
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 282,
+    "kind": "method",
+    "name": "getAdditionalShotsAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getAdditionalShotsAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 283,
+    "kind": "method",
+    "name": "getWeaponShotCountAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getWeaponShotCountAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 284,
+    "kind": "method",
+    "name": "getWeaponShotsAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getWeaponShotsAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 45,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 285,
+    "kind": "method",
+    "name": "setWeaponShotsAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setWeaponShotsAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 49,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 287,
+    "kind": "method",
+    "name": "getTotalWeaponShotsAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getTotalWeaponShotsAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 53,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 288,
+    "kind": "method",
+    "name": "setTotalWeaponShotsAttacker",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setTotalWeaponShotsAttacker",
+    "access": "public",
+    "description": null,
+    "lineNumber": 57,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 290,
+    "kind": "method",
+    "name": "getDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 61,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 291,
+    "kind": "method",
+    "name": "setDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 65,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 293,
+    "kind": "method",
+    "name": "getAdditionalShotsDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getAdditionalShotsDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 69,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 294,
+    "kind": "method",
+    "name": "setAdditionalShotsDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setAdditionalShotsDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 73,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 296,
+    "kind": "method",
+    "name": "getWeaponCountDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getWeaponCountDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 77,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 297,
+    "kind": "method",
+    "name": "setWeaponCountDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setWeaponCountDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 81,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 299,
+    "kind": "method",
+    "name": "getWeaponShotsDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getWeaponShotsDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 85,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 300,
+    "kind": "method",
+    "name": "setWeaponShotsDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setWeaponShotsDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 89,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 302,
+    "kind": "method",
+    "name": "getTotalWeaponShotsDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#getTotalWeaponShotsDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 93,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 303,
+    "kind": "method",
+    "name": "setTotalWeaponShotsDefender",
+    "memberof": "src/statelessFunctionalComponents/calculation/Properties.js~Properties",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/statelessFunctionalComponents/calculation/Properties.js~Properties#setTotalWeaponShotsDefender",
+    "access": "public",
+    "description": null,
+    "lineNumber": 97,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 305,
     "kind": "file",
     "name": "src/store.js",
     "content": "import { createStore, applyMiddleware, compose } from 'redux';\nimport thunk from 'redux-thunk';\nimport { logger } from 'redux-logger';\nimport promise from 'redux-promise-middleware';\nimport reducer from './reducers';\nimport { routerMiddleware, connectRouter } from 'connected-react-router'\nimport createBrowserHistory from 'history/createBrowserHistory';\n\nexport const history = createBrowserHistory();\n\nlet store;\n\nconst middleware = applyMiddleware(routerMiddleware(history), promise(), thunk, logger);\n\nif (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {\n    store = createStore(\n        connectRouter(history)(reducer),\n        compose (\n            middleware,\n            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()\n        )\n    );\n\n} else {\n    store = createStore(\n        connectRouter(history)(reducer),\n        compose (\n            middleware\n        )\n    );\n}\n\nexport default store;",
@@ -4817,7 +5784,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 249,
+    "__docId__": 306,
     "kind": "variable",
     "name": "history",
     "memberof": "src/store.js",
@@ -4837,7 +5804,7 @@
     }
   },
   {
-    "__docId__": 250,
+    "__docId__": 307,
     "kind": "variable",
     "name": "middleware",
     "memberof": "src/store.js",
@@ -4858,7 +5825,7 @@
     "ignore": true
   },
   {
-    "__docId__": 251,
+    "__docId__": 308,
     "kind": "file",
     "name": "src/translations/translations.js",
     "content": "export const translations = {\n    'de': {\n        'aboutThisWebside': 'Impressum',\n        'annihilationBarge': 'Annihilation Barge',\n        'attacker': 'Angreifer',\n        'calculate': 'Berechnen',\n        'confirmSelection': 'Auswahl bestätigen',\n        'defaultUnitSettings': 'Modell Einstellungen',\n        'defender': 'Verteidiger',\n        'canoptekScarabs': 'Canoptek Scrabs',\n        'canoptekSpyders': 'Canoptek Spyders',\n        'canoptekWraiths': 'Canoptek Wraiths',\n        'cryptek': 'Cryptek',\n        'cTanShardoftheDeceiver': 'C\\'tan Shard of the Deceiver',\n        'cTanShardoftheNightbringer': 'C\\'tan Shard of the Nightbringer',\n        'deathmarks': 'Deathmarks',\n        'destroyerLord': 'Destroyer Lord',\n        'destroyers': 'Destroyers',\n        'doomScythe': 'Doom Scythe',\n        'doomsdayArk': 'Doomsday Ark',\n        'flayedOnes': 'Flayed Ones',\n        'ghostArk': 'Ghost Ark',\n        'headline': 'Prof. Dice',\n        'home': 'Home',\n        'heavyDestroyers': 'Heavy Destroyers',\n        'immortals': 'Immortals',\n        'legalNotice': 'Datenschutz',\n        'lychguard': 'Lychguard',\n        'monolith': 'Monolith',\n        'necronWarriors': 'Necron Warriors',\n        'newCalc': 'Einheiten Auswahl',\n        'newCalculation': 'Neue Berechnung',\n        'necrons': 'Necrons',\n        'nightScythe': 'Night Scythe',\n        'obelisk': 'Obelisk',\n        'projects': 'Projekte',\n        'race': 'Volk',\n        'races': 'Völker',\n        'selectYourRace': 'Wählen Sie ein Volk...',\n        'selectYourUnit': 'Wählen Sie eine Einheit...',\n        'selectYourUnits': 'Wählen Sie Ihre Einheiten...',\n        'shortCutAttacks': 'A',\n        'shortCutAmourSave': 'SV',\n        'shortCutBalisticSkill': 'BF',\n        'shortCutFeelNoPain': 'FP',\n        'shortCutInistiative': 'I',\n        'shortCutLeadShip': 'MW',\n        'shortCutMovement': 'M',\n        'shortCutToughness': 'W',\n        'shortCutSavingThrow': 'RW',\n        'shortCutStrenght': 'S',\n        'shortCutWeaponSkill': 'WS',\n        'shortCutWounds': 'LP',\n        'spacemarines': 'Spacemarines',\n        'specialUnitSettings': 'Sonderregeln',\n        'stratagems': 'Stratageme',\n        'summary': 'Auswertung',\n        'tesseractVault': 'Tesseract Vault',\n        'tombBlades': 'Tomb Blades',\n        'transcendentCtan': 'Transcendent C\\'tan',\n        'triarchPraetorians': 'Triarch Praetorians',\n        'triarchStalker': 'Triarch Stalker',\n        'unit': 'Einheit',\n        'unitCount': 'Anzahl der Figuren',\n        'units': 'Einheiten',\n        'unitSettings': 'Vorbereitung',\n        'unitStats': 'Statistiken',\n        'versus': 'vs',\n        'weaponItemUnitSettings':'Waffen und Ausrüstung',\n    },\n    'en': {\n        'home': 'Prof. Dice',\n        'versus': 'vs',\n        'newCalc': 'Choose Penis'\n    }\n};",
@@ -4869,7 +5836,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 252,
+    "__docId__": 309,
     "kind": "variable",
     "name": "translations",
     "memberof": "src/translations/translations.js",
@@ -4898,7 +5865,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"profdice-frontend\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"@types/jquery\": \"^3.3.2\",\n    \"autoprefixer\": \"7.1.6\",\n    \"babel-core\": \"6.26.0\",\n    \"babel-eslint\": \"7.2.3\",\n    \"babel-jest\": \"20.0.3\",\n    \"babel-loader\": \"7.1.2\",\n    \"babel-preset-react-app\": \"^3.1.1\",\n    \"babel-runtime\": \"6.26.0\",\n    \"bluebird\": \"^3.5.1\",\n    \"case-sensitive-paths-webpack-plugin\": \"2.1.1\",\n    \"chalk\": \"1.1.3\",\n    \"connected-react-router\": \"^4.3.0\",\n    \"css-loader\": \"0.28.7\",\n    \"cypress\": \"^3.1.0\",\n    \"dotenv\": \"4.0.0\",\n    \"dotenv-expand\": \"4.2.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"4.10.0\",\n    \"eslint-config-react-app\": \"^2.1.0\",\n    \"eslint-loader\": \"1.9.0\",\n    \"eslint-plugin-flowtype\": \"2.39.1\",\n    \"eslint-plugin-import\": \"2.8.0\",\n    \"eslint-plugin-jsx-a11y\": \"5.1.1\",\n    \"eslint-plugin-react\": \"7.4.0\",\n    \"extract-text-webpack-plugin\": \"3.0.2\",\n    \"file-loader\": \"1.1.5\",\n    \"fs-extra\": \"3.0.1\",\n    \"history\": \"^4.7.2\",\n    \"html-webpack-plugin\": \"2.29.0\",\n    \"jest\": \"20.0.4\",\n    \"jquery\": \"^3.3.1\",\n    \"material-icons\": \"^0.2.3\",\n    \"materialize-css\": \"^0.100.2\",\n    \"node-sass\": \"^4.9.0\",\n    \"object-assign\": \"4.1.1\",\n    \"postcss-flexbugs-fixes\": \"3.2.0\",\n    \"postcss-loader\": \"2.0.8\",\n    \"promise\": \"8.0.1\",\n    \"prop-types\": \"^15.6.1\",\n    \"raf\": \"3.4.0\",\n    \"react\": \"^16.4.0\",\n    \"react-breadcrumbs-dynamic\": \"^1.1.1\",\n    \"react-data-attributes-mixin\": \"^1.0.0\",\n    \"react-dev-utils\": \"^5.0.1\",\n    \"react-dom\": \"^16.4.0\",\n    \"react-hot-loader\": \"^4.0.0\",\n    \"react-materialize\": \"^2.4.5\",\n    \"react-redux\": \"^5.0.7\",\n    \"react-router\": \"^4.3.1\",\n    \"react-router-dom\": \"^4.3.1\",\n    \"react-router-redux\": \"^5.0.0-alpha.9\",\n    \"react-select\": \"^1.2.1\",\n    \"redux\": \"^4.0.0\",\n    \"redux-i18n\": \"^1.5.13\",\n    \"redux-logger\": \"^3.0.6\",\n    \"redux-promise\": \"^0.6.0\",\n    \"redux-promise-middleware\": \"^5.1.1\",\n    \"redux-thunk\": \"^2.3.0\",\n    \"resolve\": \"1.6.0\",\n    \"sass-loader\": \"^7.0.3\",\n    \"style-loader\": \"0.19.0\",\n    \"sw-precache-webpack-plugin\": \"0.11.4\",\n    \"typeface-exo\": \"0.0.54\",\n    \"url-loader\": \"0.6.2\",\n    \"webpack\": \"3.8.1\",\n    \"webpack-dev-server\": \"2.9.4\",\n    \"webpack-manifest-plugin\": \"1.3.2\",\n    \"whatwg-fetch\": \"2.0.3\"\n  },\n  \"scripts\": {\n    \"start\": \"node scripts/start.js\",\n    \"build\": \"node scripts/build.js\",\n    \"test\": \"node scripts/test.js --env=jsdom\",\n    \"gulp\": \"gulp -- make:buildModules\",\n    \"doc\": \"./node_modules/.bin/esdoc\"\n  },\n  \"description\": \"This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).\",\n  \"main\": \"index.js\",\n  \"devDependencies\": {\n    \"enzyme\": \"^3.5.0\",\n    \"enzyme-adapter-react-16\": \"^1.3.1\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-jsx-plugin\": \"^1.0.0\",\n    \"esdoc-react-plugin\": \"^1.0.1\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/MariusVonHassel/profdice-frontend.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"bugs\": {\n    \"url\": \"https://github.com/MariusVonHassel/profdice-frontend/issues\"\n  },\n  \"homepage\": \"https://github.com/MariusVonHassel/profdice-frontend\",\n  \"jest\": {\n    \"collectCoverageFrom\": [\n      \"src/**/*.{js,jsx,mjs}\"\n    ],\n    \"setupFiles\": [\n      \"<rootDir>/config/polyfills.js\"\n    ],\n    \"testMatch\": [\n      \"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}\",\n      \"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}\"\n    ],\n    \"testEnvironment\": \"node\",\n    \"testURL\": \"http://localhost\",\n    \"transform\": {\n      \"^.+\\\\.(js|jsx|mjs)$\": \"<rootDir>/node_modules/babel-jest\",\n      \"^.+\\\\.css$\": \"<rootDir>/config/jest/cssTransform.js\",\n      \"^(?!.*\\\\.(js|jsx|mjs|css|json)$)\": \"<rootDir>/config/jest/fileTransform.js\"\n    },\n    \"transformIgnorePatterns\": [\n      \"[/\\\\\\\\]node_modules[/\\\\\\\\].+\\\\.(js|jsx|mjs)$\"\n    ],\n    \"moduleNameMapper\": {\n      \"^react-native$\": \"react-native-web\"\n    },\n    \"moduleFileExtensions\": [\n      \"web.js\",\n      \"js\",\n      \"json\",\n      \"web.jsx\",\n      \"jsx\",\n      \"node\",\n      \"mjs\"\n    ]\n  },\n  \"babel\": {\n    \"presets\": [\n      \"react-app\"\n    ]\n  },\n  \"eslintConfig\": {\n    \"extends\": \"react-app\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"profdice-frontend\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"@types/jquery\": \"^3.3.2\",\n    \"autoprefixer\": \"7.1.6\",\n    \"babel-core\": \"6.26.0\",\n    \"babel-eslint\": \"7.2.3\",\n    \"babel-jest\": \"20.0.3\",\n    \"babel-loader\": \"7.1.2\",\n    \"babel-preset-react-app\": \"^3.1.1\",\n    \"babel-runtime\": \"6.26.0\",\n    \"bluebird\": \"^3.5.1\",\n    \"case-sensitive-paths-webpack-plugin\": \"2.1.1\",\n    \"chalk\": \"1.1.3\",\n    \"connected-react-router\": \"^4.3.0\",\n    \"css-loader\": \"0.28.7\",\n    \"cypress\": \"^3.1.0\",\n    \"dotenv\": \"4.0.0\",\n    \"dotenv-expand\": \"4.2.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"4.10.0\",\n    \"eslint-config-react-app\": \"^2.1.0\",\n    \"eslint-loader\": \"1.9.0\",\n    \"eslint-plugin-flowtype\": \"2.39.1\",\n    \"eslint-plugin-import\": \"2.8.0\",\n    \"eslint-plugin-jsx-a11y\": \"5.1.1\",\n    \"eslint-plugin-react\": \"7.4.0\",\n    \"extract-text-webpack-plugin\": \"3.0.2\",\n    \"file-loader\": \"1.1.5\",\n    \"fs-extra\": \"3.0.1\",\n    \"history\": \"^4.7.2\",\n    \"html-webpack-plugin\": \"2.29.0\",\n    \"jest\": \"20.0.4\",\n    \"jquery\": \"^3.3.1\",\n    \"material-icons\": \"^0.2.3\",\n    \"materialize-css\": \"^0.100.2\",\n    \"node-sass\": \"^4.9.0\",\n    \"object-assign\": \"4.1.1\",\n    \"postcss-flexbugs-fixes\": \"3.2.0\",\n    \"postcss-loader\": \"2.0.8\",\n    \"promise\": \"8.0.1\",\n    \"prop-types\": \"^15.6.1\",\n    \"raf\": \"3.4.0\",\n    \"react\": \"^16.4.0\",\n    \"react-breadcrumbs-dynamic\": \"^1.1.1\",\n    \"react-data-attributes-mixin\": \"^1.0.0\",\n    \"react-dev-utils\": \"^5.0.1\",\n    \"react-dom\": \"^16.4.0\",\n    \"react-hot-loader\": \"^4.0.0\",\n    \"react-materialize\": \"^2.4.5\",\n    \"react-redux\": \"^5.0.7\",\n    \"react-router\": \"^4.3.1\",\n    \"react-router-dom\": \"^4.3.1\",\n    \"react-router-redux\": \"^5.0.0-alpha.9\",\n    \"react-select\": \"^1.2.1\",\n    \"redux\": \"^4.0.0\",\n    \"redux-i18n\": \"^1.5.13\",\n    \"redux-logger\": \"^3.0.6\",\n    \"redux-promise\": \"^0.6.0\",\n    \"redux-promise-middleware\": \"^5.1.1\",\n    \"redux-thunk\": \"^2.3.0\",\n    \"resolve\": \"1.6.0\",\n    \"sass-loader\": \"^7.0.3\",\n    \"style-loader\": \"0.19.0\",\n    \"sw-precache-webpack-plugin\": \"0.11.4\",\n    \"typeface-exo\": \"0.0.54\",\n    \"url-loader\": \"0.6.2\",\n    \"webpack\": \"3.8.1\",\n    \"webpack-dev-server\": \"2.9.4\",\n    \"webpack-manifest-plugin\": \"1.3.2\",\n    \"whatwg-fetch\": \"2.0.3\"\n  },\n  \"scripts\": {\n    \"start\": \"node scripts/start.js\",\n    \"build\": \"node scripts/build.js\",\n    \"test\": \"node scripts/test.js --env=jsdom\",\n    \"gulp\": \"gulp -- make:buildModules\",\n    \"doc\": \"./node_modules/.bin/esdoc\"\n  },\n  \"description\": \"This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).\",\n  \"main\": \"index.js\",\n  \"devDependencies\": {\n    \"enzyme\": \"^3.5.0\",\n    \"enzyme-adapter-react-16\": \"^1.3.1\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-jsx-plugin\": \"^1.0.0\",\n    \"esdoc-react-plugin\": \"^1.0.1\",\n    \"remote-redux-devtools\": \"^0.5.13\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/MariusVonHassel/profdice-frontend.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"bugs\": {\n    \"url\": \"https://github.com/MariusVonHassel/profdice-frontend/issues\"\n  },\n  \"homepage\": \"https://github.com/MariusVonHassel/profdice-frontend\",\n  \"jest\": {\n    \"collectCoverageFrom\": [\n      \"src/**/*.{js,jsx,mjs}\"\n    ],\n    \"setupFiles\": [\n      \"<rootDir>/config/polyfills.js\"\n    ],\n    \"testMatch\": [\n      \"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}\",\n      \"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}\"\n    ],\n    \"testEnvironment\": \"node\",\n    \"testURL\": \"http://localhost\",\n    \"transform\": {\n      \"^.+\\\\.(js|jsx|mjs)$\": \"<rootDir>/node_modules/babel-jest\",\n      \"^.+\\\\.css$\": \"<rootDir>/config/jest/cssTransform.js\",\n      \"^(?!.*\\\\.(js|jsx|mjs|css|json)$)\": \"<rootDir>/config/jest/fileTransform.js\"\n    },\n    \"transformIgnorePatterns\": [\n      \"[/\\\\\\\\]node_modules[/\\\\\\\\].+\\\\.(js|jsx|mjs)$\"\n    ],\n    \"moduleNameMapper\": {\n      \"^react-native$\": \"react-native-web\"\n    },\n    \"moduleFileExtensions\": [\n      \"web.js\",\n      \"js\",\n      \"json\",\n      \"web.jsx\",\n      \"jsx\",\n      \"node\",\n      \"mjs\"\n    ]\n  },\n  \"babel\": {\n    \"presets\": [\n      \"react-app\"\n    ]\n  },\n  \"eslintConfig\": {\n    \"extends\": \"react-app\"\n  }\n}\n",
     "longname": "/Users/mariusvonhassel/Documents/Projects/profdice/profdice-frontend/package.json",
     "name": "package.json",
     "static": true,

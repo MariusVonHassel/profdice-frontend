@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
-import { setPageType } from "../../actions/pageTypeActions";
+import { setPageType } from '../../actions/pageTypeActions';
 
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import PropTypes from "prop-types";
-import connect from "react-redux/es/connect/connect";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import connect from 'react-redux/es/connect/connect';
+import CalculationHandler from '../../renderlessComponents/CalculationHandler';
 
 class Summary extends Component {
 
     componentWillMount() {
-        this.props.onSetPageType('summary');
+        this.checkValidInput();
+    }
+
+    checkValidInput() {
+        //if (this.props.choosedAttackerData.length > 0 && this.props.choosedDefenderData.hasOwnProperty('id')) {
+        if (this.props.choosedAttackerData.length > 0) {
+            this.props.onSetPageType('summary');
+            return true;
+        } else {
+            this.props.onSetPageType('newCalc');
+            this.props.history.push('/new-calculation');
+            return false;
+        }
     }
 
     render() {
@@ -19,7 +31,7 @@ class Summary extends Component {
 
                 <Breadcrumb/>
 
-                summarry
+                {this.props.choosedAttackerData.length > 0 ? <CalculationHandler /> : ''}
 
             </div>
         );
@@ -41,6 +53,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => ({
     lang: state.i18nState.lang,
     pageType: state.pageTypeReducer.pageType,
+    choosedAttackerData: state.choosedDataReducer.choosedAttackerData,
+    choosedDefenderData: state.choosedDataReducer.choosedDefenderData
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Summary);

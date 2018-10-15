@@ -97,7 +97,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/DefenderStats.js~DefenderStats.html">DefenderStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/DefenderUnitApi.js~DefenderUnitApi.html">DefenderUnitApi</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderlessComponents/ForcesApi.js~ForcesApi.html">ForcesApi</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents">statelessFunctionalComponents</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prepareSelectValues">prepareSelectValues</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents">statelessFunctionalComponents</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-apiMethods">apiMethods</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveUnits">saveUnits</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#statelessfunctionalcomponents-calculation">statelessFunctionalComponents/calculation</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/statelessFunctionalComponents/calculation/Calculation.js~Calculation.html">Calculation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/statelessFunctionalComponents/calculation/CalculationCalls.js~CalculationCalls.html">CalculationCalls</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/statelessFunctionalComponents/calculation/Properties.js~Properties.html">Properties</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#translations">translations</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-translations">translations</a></span></span></li>
 </ul>
 </div>
@@ -108,7 +112,7 @@
 import { connect } from &apos;react-redux&apos;;
 import PropTypes from &apos;prop-types&apos;;
 import { setDefenderUnit, setDefenderUnitArray, setDefenderSaveUnits, fetchDefenderUnits } from &quot;../actions/defenderActions&quot;;
-import prepareSelectValues from &apos;../statelessFunctionalComponents/prepareSelectValues&apos;;
+import { apiMethods, saveUnits } from &apos;../statelessFunctionalComponents/apiMethods&apos;;
 
 export class DefenderUnitApi extends Component {
 
@@ -120,7 +124,7 @@ export class DefenderUnitApi extends Component {
         } else {
             this.fetchHandler(prevProps);
             if (this.props.fetchDefenderUnits[&apos;id&apos;] !== prevProps.fetchDefenderUnits[&apos;id&apos;]) {
-                this.saveUnits();
+                this.props.onSetDefenderSaveUnits(saveUnits(this.props.defenderSaveUnits, this.props.fetchDefenderUnits));
             }
             this.prepareUnitArray();
         }
@@ -136,21 +140,9 @@ export class DefenderUnitApi extends Component {
 
     }
 
-    saveUnits() {
-
-        if (!(this.props.defenderSaveUnits.find(key =&gt; key.id === this.props.fetchDefenderUnits[&apos;id&apos;]))) {
-
-            let newFetch = this.props.defenderSaveUnits;
-            newFetch.push(this.props.fetchDefenderUnits);
-
-            this.props.onSetDefenderSaveUnits(newFetch);
-        }
-
-    }
-
     prepareUnitArray() {
 
-        this.props.onSetDefenderUnitArray(prepareSelectValues(this.props.defenderSaveUnits, this.props.defenderRace, this.context));
+        this.props.onSetDefenderUnitArray(apiMethods(this.props.defenderSaveUnits, this.props.defenderRace, this.context));
 
     }
 
