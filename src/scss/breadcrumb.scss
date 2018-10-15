@@ -6,9 +6,10 @@
   height: 26px;
 
   .breadcrumb-item {
-    display: table-cell;
+
     width: 33.33%;
     color: $black;
+    display: table-cell;
 
     .breadcrumb-link {
       display: block;
