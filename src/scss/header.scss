@@ -1,5 +1,5 @@
 .header {
-  @extend %clearfix;
+  @extend .clearfix;
   border-bottom: 1px solid $border;
   background-color: $white;
   height: 40px;

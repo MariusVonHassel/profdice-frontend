@@ -11,7 +11,7 @@ import DropdownMenu from '../../components/Menu/DropdownMenu';
 import AttackerStats from '../../renderlessComponents/AttackerStats';
 import DefenderStats from '../../renderlessComponents/DefenderStats';
 
-class UnitSettings extends Component {
+class WeaponSelection extends Component {
 
     componentWillMount() {
 
@@ -70,11 +70,11 @@ class UnitSettings extends Component {
     }
 }
 
-UnitSettings.contextTypes = {
+WeaponSelection.contextTypes = {
     t: PropTypes.func.isRequired
 };
 
-UnitSettings.propTypes = {
+WeaponSelection.propTypes = {
     pageType: PropTypes.string.isRequired,
     attackerUnit: PropTypes.array.isRequired,
     defenderUnit: PropTypes.object.isRequired
@@ -101,4 +101,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UnitSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(WeaponSelection);

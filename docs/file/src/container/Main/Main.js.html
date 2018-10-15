@@ -85,7 +85,7 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-footer">container/Footer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/Footer/Footer.js~Footer.html">Footer</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-home">container/Home</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/Home/Home.js~Home.html">Home</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-legalnotice">container/LegalNotice</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/LegalNotice/LegalNotice.js~LegalNotice.html">LegalNotice</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-newcalc">container/NewCalc</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/NewCalc/NewCalc.js~NewCalc.html">NewCalc</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#container-newcalc">container/UnitSelection</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/container/NewCalc/NewCalc.js~NewCalc.html">UnitSelection</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#defaults">defaults</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-defaultValuesAttacker">defaultValuesAttacker</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-defaultValuesDefender">defaultValuesDefender</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#reducers">reducers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-attackerReducer">attackerReducer</a></span></span></li>
@@ -115,11 +115,11 @@ import PropTypes from &apos;prop-types&apos;;
 import { withRouter } from &apos;react-router&apos;;
 
 import Projects from &apos;../../components/Projects/Projects&apos;;
-import NewCalc from &apos;../../container/NewCalc/NewCalc&apos;;
-import UnitSettings from &apos;../../container/UnitSettings/UnitSettings&apos;;
+import UnitSelection from &apos;../../container/UnitSelection/UnitSelection&apos;;
+import WeaponSelection from &apos;../../container/WeaponSelection/WeaponSelection&apos;;
 import LegalNotice from &apos;../../container/LegalNotice/LegalNotice&apos;;
 import AboutThisWebsite from &apos;../AboutThisWebsite/AboutThisWebsite&apos;;
-import Summary from &apos;../../container/Summary/Summary&apos;;
+import Evaluation from &apos;../../container/Evaluation/Evaluation&apos;;
 import { setPageType } from &apos;../../actions/pageTypeActions&apos;;
 
 class Main extends Component {
@@ -135,9 +135,9 @@ class Main extends Component {
                     &lt;Switch&gt;
 
                         &lt;Route exact path=&apos;/&apos; component={Projects} /&gt;
-                        &lt;Route exact path=&apos;/new-calculation&apos; component={NewCalc} /&gt;
-                        &lt;Route exact path=&apos;/unit-settings&apos; component={UnitSettings} /&gt;
-                        &lt;Route exact path=&apos;/summary&apos; component={Summary} /&gt;
+                        &lt;Route exact path=&apos;/new-calculation&apos; component={UnitSelection} /&gt;
+                        &lt;Route exact path=&apos;/unit-settings&apos; component={WeaponSelection} /&gt;
+                        &lt;Route exact path=&apos;/summary&apos; component={Evaluation} /&gt;
                         &lt;Route exact path=&apos;/legal-notice&apos; component={LegalNotice} /&gt;
                         &lt;Route exact path=&apos;/about-this-website&apos; component={AboutThisWebsite} /&gt;
 

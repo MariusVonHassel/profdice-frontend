@@ -139,8 +139,8 @@ window.esdocSearchIndex = [
   ],
   [
     "profdice-frontend/src/container/newcalc/newcalc.js~newcalc",
-    "class/src/container/NewCalc/NewCalc.js~NewCalc.html",
-    "<span>NewCalc</span> <span class=\"search-result-import-path\">profdice-frontend/src/container/NewCalc/NewCalc.js</span>",
+    "class/src/container/UnitSelection/UnitSelection.js~UnitSelection.html",
+    "<span>UnitSelection</span> <span class=\"search-result-import-path\">profdice-frontend/src/container/UnitSelection/UnitSelection.js</span>",
     "class"
   ],
   [
@@ -949,32 +949,32 @@ window.esdocSearchIndex = [
   ],
   [
     "src/container/newcalc/newcalc.js",
-    "file/src/container/NewCalc/NewCalc.js.html",
-    "src/container/NewCalc/NewCalc.js",
+    "file/src/container/UnitSelection/UnitSelection.js.html",
+    "src/container/UnitSelection/UnitSelection.js",
     "file"
   ],
   [
     "src/container/newcalc/newcalc.js~newcalc#componentwillmount",
-    "class/src/container/NewCalc/NewCalc.js~NewCalc.html#instance-method-componentWillMount",
-    "src/container/NewCalc/NewCalc.js~NewCalc#componentWillMount",
+    "class/src/container/UnitSelection/UnitSelection.js~UnitSelection.html#instance-method-componentWillMount",
+    "src/container/UnitSelection/UnitSelection.js~UnitSelection#componentWillMount",
     "method"
   ],
   [
     "src/container/newcalc/newcalc.js~newcalc#render",
-    "class/src/container/NewCalc/NewCalc.js~NewCalc.html#instance-method-render",
-    "src/container/NewCalc/NewCalc.js~NewCalc#render",
+    "class/src/container/UnitSelection/UnitSelection.js~UnitSelection.html#instance-method-render",
+    "src/container/UnitSelection/UnitSelection.js~UnitSelection#render",
     "method"
   ],
   [
     "src/container/summary/summary.js",
-    "file/src/container/Summary/Summary.js.html",
-    "src/container/Summary/Summary.js",
+    "file/src/container/Evaluation/Evaluation.js.html",
+    "src/container/Evaluation/Evaluation.js",
     "file"
   ],
   [
     "src/container/unitsettings/unitsettings.js",
-    "file/src/container/UnitSettings/UnitSettings.js.html",
-    "src/container/UnitSettings/UnitSettings.js",
+    "file/src/container/WeaponSelection/WeaponSelection.js.html",
+    "src/container/WeaponSelection/WeaponSelection.js",
     "file"
   ],
   [

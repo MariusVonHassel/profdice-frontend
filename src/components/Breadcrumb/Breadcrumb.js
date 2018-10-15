@@ -7,29 +7,26 @@ import BreadcrumbItem from './BreadcrumbItem';
 
 export class Breadcrumb extends Component {
 
+    renderBreadcrumbItem(pageTypeItem, linkPath, title) {
+        return (
+            <BreadcrumbItem
+                pageTypeItem={pageTypeItem}
+                linkPath={linkPath}
+                title={title}
+            />
+        );
+    }
+
     render() {
 
-        return(
+        return (
 
             <ul className='breadcrumb'>
 
-                <BreadcrumbItem
-                    pageTypeItem='newCalc'
-                    linkPath='new-calculation'
-                    title='1.'
-                />
-
-                <BreadcrumbItem
-                    pageTypeItem='unitSettings'
-                    linkPath='unit-settings'
-                    title='2.'
-                />
-
-                <BreadcrumbItem
-                    pageTypeItem='summary'
-                    linkPath='summary'
-                    title='3.'
-                />
+                {this.renderBreadcrumbItem('unitSelection', 'unit-selection', '1.')}
+                {this.renderBreadcrumbItem('weaponSelection', 'weapon-selection', '2.')}
+                {this.renderBreadcrumbItem('modifier', 'modifier-selection', '3.')}
+                {this.renderBreadcrumbItem('evaluation', 'evaluation', '4.')}
 
             </ul>
 

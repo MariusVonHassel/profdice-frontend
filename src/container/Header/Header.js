@@ -32,8 +32,8 @@ class Header extends Component {
                             {this.context.t('projects')}
                         </Link>
 
-                        <Link to='/new-calculation' onClick={()=>{this.props.onSetPageType('newCalculation');}}>
-                           {this.context.t('newCalculation')}
+                        <Link to='/unit-selection' onClick={()=>{this.props.onSetPageType('unit-selection');}}>
+                           {this.context.t('unitSelection')}
                         </Link>
 
                         <Link to='/legal-notice' onClick={()=>{this.props.onSetPageType('legalNotice');}}>
@@ -56,12 +56,12 @@ class Header extends Component {
                     />
 
                     {(this.props.pageType==='home' || this.props.pageType==='projects') ?
-                        <Link to='/new-calculation'>
+                        <Link to='/unit-selection'>
                             <IconButton
                                 className='header-plus button button--plus'
                                 iconClass='button-icon'
                                 iconName='add'
-                                onClick={()=> {this.props.onSetPageType('newCalc')}}
+                                onClick={()=> {this.props.onSetPageType('unit-selection')}}
                             />
                         </Link>
                     : null}

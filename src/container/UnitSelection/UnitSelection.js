@@ -14,7 +14,7 @@ import ForcesApi from '../../renderlessComponents/ForcesApi';
 import AttackerUnitApi from "../../renderlessComponents/AttackerUnitApi";
 import DefenderUnitApi from "../../renderlessComponents/DefenderUnitApi";
 
-export class NewCalc extends Component {
+export class UnitSelection extends Component {
 
     componentWillMount() {
         this.props.onSetPageType('newCalc');
@@ -84,11 +84,11 @@ export class NewCalc extends Component {
 
                 <SubmitButton
                     className=' btn newCalc-submit'
-                    onClick={()=>{this.props.onSetPageType('unitSettings')}}
-                    path='/unit-settings'
+                    onClick={()=>{this.props.onSetPageType('weapon-selection')}}
+                    path='/weapon-selection'
                     disabledValue={!(this.props.attackerUnit.length > 0 && this.props.defenderUnit.hasOwnProperty('value'))}
                 >
-                {this.context.t('confirmSelection')}
+                    {this.context.t('confirmSelection')}
                 </SubmitButton>
 
             </div>
@@ -97,11 +97,11 @@ export class NewCalc extends Component {
     }
 }
 
-NewCalc.contextTypes = {
+UnitSelection.contextTypes = {
     t: PropTypes.func.isRequired
 };
 
-NewCalc.propTypes = {
+UnitSelection.propTypes = {
     forcesArray: PropTypes.array,
     attackerRace: PropTypes.array,
     attackerUnit: PropTypes.array,
@@ -153,4 +153,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCalc);
+export default connect(mapStateToProps, mapDispatchToProps)(UnitSelection);

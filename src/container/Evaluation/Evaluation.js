@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
 import CalculationHandler from '../../renderlessComponents/CalculationHandler';
 
-class Summary extends Component {
+class Evaluation extends Component {
 
     componentWillMount() {
         this.checkValidInput();
@@ -38,7 +38,7 @@ class Summary extends Component {
     }
 }
 
-Summary.propTypes = {
+Evaluation.propTypes = {
     pageType: PropTypes.string.isRequired
 };
 
@@ -57,4 +57,4 @@ const mapStateToProps = state => ({
     choosedDefenderData: state.choosedDataReducer.choosedDefenderData
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Summary);
+export default connect(mapStateToProps, mapDispatchToProps)(Evaluation);
