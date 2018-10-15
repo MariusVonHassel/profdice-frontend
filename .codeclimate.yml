@@ -31,9 +31,9 @@ checks:
     config:
       threshold: # language-specific defaults. an override will affect all languages.
   plugins:
-    [ESLint]:
+    ESLint:
       enabled: true
-    [SCSS Lint]:
+    SCSS Lint:
       enabled: true
 exclude_patterns:
   - "./docs"
