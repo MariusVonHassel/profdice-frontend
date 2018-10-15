@@ -38,3 +38,5 @@ checks:
 exclude_patterns:
   - "./docs"
   - "./config"
+  - "./scripts"
+  - "./cypress"
