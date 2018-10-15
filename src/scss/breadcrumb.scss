@@ -1,15 +1,14 @@
 .breadcrumb {
+  display: table;
   margin: 0;
   padding: 0 16px 0 0;
-  display: table;
   width: 100%;
   height: 26px;
 
   .breadcrumb-item {
-    color: $black;
-    width: 33.33%;
-
     display: table-cell;
+    width: 33.33%;
+    color: $black;
 
     .breadcrumb-link {
       display: block;

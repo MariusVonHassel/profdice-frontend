@@ -1,21 +1,21 @@
 .header {
-  @extend .clearfix;
-  height: 40px;
+  @extend %clearfix;
   border-bottom: 1px solid $border;
   background-color: $white;
+  height: 40px;
 
   .header-wrapper {
     margin: 0 auto;
+    padding-right: 8px;
     min-width: 320px;
     max-width: 768px;
-    padding-right: 8px;
 
     .header-menuWrapper {
+      display: inline-block !important;
+      cursor: pointer;
       width: 45px;
       height: 40px;
-      display: inline-block!important;
       vertical-align: top;
-      cursor: pointer;
 
       .header-menu {
         display: inline-block;
@@ -42,9 +42,9 @@
     }
 
     .header-headline {
-      @extend .fontstyle-headline;
-      margin: 0;
+      @extend %fontstyle-headline;
       display: inline-block;
+      margin: 0;
       text-align: center;
       color: $black;
     }

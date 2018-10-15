@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: rgba(255, 204, 0, 0.23);
+  background-color: rgba($backgroundColor, .23);
   padding: 0;
   font-family: sans-serif;
   box-sizing: border-box;
@@ -10,8 +10,11 @@ body {
   user-select: none;
 }
 
-[type='checkbox'].filled-in:checked+label:before, [type='checkbox'].filled-in:not(:checked)+label:before, [type='checkbox'].filled-in:checked+label:after, [type='checkbox'].filled-in:not(:checked)+label:after  {
-  top: 2px!important;
+[type='checkbox'].filled-in:checked+label::before,
+[type='checkbox'].filled-in:not(:checked)+label::before,
+[type='checkbox'].filled-in:checked+label::after,
+[type='checkbox'].filled-in:not(:checked)+label::after {
+  top: 2px !important;
 }
 
 .Select-clear {
@@ -19,5 +22,5 @@ body {
 }
 
 .Select-value-icon {
-  padding: 1px 5px!important;
+  padding: 1px 5px !important;
 }
