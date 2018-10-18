@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
 import CalculationHandler from '../../renderlessComponents/CalculationHandler';
 
-class Summary extends Component {
+class Evaluation extends Component {
 
     componentWillMount() {
         this.checkValidInput();
@@ -15,11 +15,11 @@ class Summary extends Component {
     checkValidInput() {
         //if (this.props.choosedAttackerData.length > 0 && this.props.choosedDefenderData.hasOwnProperty('id')) {
         if (this.props.choosedAttackerData.length > 0) {
-            this.props.onSetPageType('summary');
+            this.props.onSetPageType('evaluation');
             return true;
         } else {
-            this.props.onSetPageType('newCalc');
-            this.props.history.push('/new-calculation');
+            this.props.onSetPageType('unitSelection');
+            this.props.history.push('/unit-selection');
             return false;
         }
     }
@@ -38,7 +38,7 @@ class Summary extends Component {
     }
 }
 
-Summary.propTypes = {
+Evaluation.propTypes = {
     pageType: PropTypes.string.isRequired
 };
 
@@ -57,4 +57,4 @@ const mapStateToProps = state => ({
     choosedDefenderData: state.choosedDataReducer.choosedDefenderData
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Summary);
+export default connect(mapStateToProps, mapDispatchToProps)(Evaluation);

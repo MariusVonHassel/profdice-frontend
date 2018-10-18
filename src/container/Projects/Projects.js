@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import SingleProject from '../SingleProject/SingleProject';
+import SingleProject from '../../components/SingleProject/SingleProject';
 import { setPageType } from '../../actions/pageTypeActions';
 
 export class Projects extends Component {

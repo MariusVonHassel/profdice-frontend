@@ -105,8 +105,8 @@ linters:
 
   NameFormat:
     enabled: true
-    allow_leading_underscore: true
-    convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
+    allow_leading_underscore: false
+    convention:  camel_case # or 'camel_case', or 'snake_case', or a regex pattern
 
   NestingDepth:
     enabled: true
@@ -162,11 +162,11 @@ linters:
 
   SelectorDepth:
     enabled: true
-    max_depth: 3
+    max_depth: 8
 
   SelectorFormat:
-    enabled: true
-    convention: hyphenated_lowercase # or 'classic_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+    enabled: false
+    convention: classic_BEM # or 'classic_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
 
   Shorthand:
     enabled: true

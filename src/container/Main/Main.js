@@ -4,12 +4,14 @@ import { Switch, Route } from 'react-router';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
-import Projects from '../../components/Projects/Projects';
-import NewCalc from '../../container/NewCalc/NewCalc';
-import UnitSettings from '../../container/UnitSettings/UnitSettings';
-import LegalNotice from '../../container/LegalNotice/LegalNotice';
+import Home from '../Home/Home';
+import Projects from '../Projects/Projects';
+import UnitSelection from '../UnitSelection/UnitSelection';
+import WeaponSelection from '../WeaponSelection/WeaponSelection';
+import LegalNotice from '../LegalNotice/LegalNotice';
 import AboutThisWebsite from '../AboutThisWebsite/AboutThisWebsite';
-import Summary from '../../container/Summary/Summary';
+import ModifierSelection from '../ModifierSelection/ModifierSelection';
+import Evaluation from '../Evaluation/Evaluation';
 import { setPageType } from '../../actions/pageTypeActions';
 
 class Main extends Component {
@@ -24,10 +26,12 @@ class Main extends Component {
 
                     <Switch>
 
-                        <Route exact path='/' component={Projects} />
-                        <Route exact path='/new-calculation' component={NewCalc} />
-                        <Route exact path='/unit-settings' component={UnitSettings} />
-                        <Route exact path='/summary' component={Summary} />
+                        <Route exact path='/' component={Home} />
+                        <Route exact path='/projects' component={Projects} />
+                        <Route exact path='/unit-selection' component={UnitSelection} />
+                        <Route exact path='/weapon-selection' component={WeaponSelection} />
+                        <Route exact path='/modifier-selection' component={ModifierSelection} />
+                        <Route exact path='/evaluation' component={Evaluation} />
                         <Route exact path='/legal-notice' component={LegalNotice} />
                         <Route exact path='/about-this-website' component={AboutThisWebsite} />
 

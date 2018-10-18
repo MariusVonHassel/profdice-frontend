@@ -7,11 +7,12 @@ import { setPageType } from '../../actions/pageTypeActions';
 import { fetchAttackerStats } from '../../actions/attackerActions';
 import { fetchDefenderStats } from '../../actions/defenderActions';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import DropdownMenu from '../../components/Menu/DropdownMenu';
 import AttackerStats from '../../renderlessComponents/AttackerStats';
 import DefenderStats from '../../renderlessComponents/DefenderStats';
+import Flip from '../../container/Flip/Flip';
+import FlipHeader from "../../components/FlipHeader/FlipHeader";
 
-class UnitSettings extends Component {
+class WeaponSelection extends Component {
 
     componentWillMount() {
 
@@ -19,17 +20,16 @@ class UnitSettings extends Component {
     }
 
     componentDidUpdate() {
-        // console.log(this.props.);
 
     }
 
     checkValidInput() {
         if (this.props.attackerUnit.length > 0 && this.props.defenderUnit.hasOwnProperty('value')) {
-            this.props.onSetPageType('unitSettings');
+            this.props.onSetPageType('weaponSelection');
             return true;
         } else {
-            this.props.onSetPageType('newCalc');
-            this.props.history.push('/new-calculation');
+            this.props.onSetPageType('unitSelection');
+            this.props.history.push('/unit-selection');
             return false;
         }
     }
@@ -44,10 +44,46 @@ class UnitSettings extends Component {
 
     }
 
+    attacker() {
+
+        return (
+
+            <span>das ist das label nr 1</span>
+
+        );
+
+    }
+
+    defender() {
+
+        return (
+
+            <span>das ist dadqwd</span>
+
+        );
+
+    }
+
+    submitButton(destination, path, context, disabledValue) {
+
+        return (
+
+            <SubmitButton
+                className=' btn unitSelection-submit'
+                onClick={destination}
+                path={path}
+                disabledValue={disabledValue}
+            >
+                {context}
+            </SubmitButton>
+        );
+
+    }
+
     render() {
 
         return(
-            <div className='unitSettings'>
+            <div className='weaponSelection'>
 
                 <AttackerStats />
 
@@ -55,26 +91,28 @@ class UnitSettings extends Component {
 
                 <Breadcrumb />
 
-                <DropdownMenu />
-
-                <SubmitButton
-                    className=' btn unitSettings-submit'
-                    onClick={()=>{this.props.onSetPageType('summary')}}
-                    path='/summary'
-                    disabledValue={false}
+                <Flip
+                    header={<FlipHeader leftTitle={this.context.t('attacker')} rightTitle={this.context.t('defender')}/>}
+                    front={this.attacker()}
+                    frontSubmit={this.submitButton(()=>{
+                        document.querySelector('.flip-wrapper').classList.add('flipped');
+                        document.querySelector('.flipHeader-right').classList.add('flipHeader-right--active');
+                        document.querySelector('.flipHeader-left').classList.remove('flipHeader-left--active')}, '/weapon-selection', this.context.t('toDefender'), false)}
+                    back={this.defender()}
+                    backSubmit={this.submitButton(()=>{this.props.onSetPageType('modifierSelection')}, '/modifier-selection', this.context.t('toModifierSelection'), false)}
                 >
-                    {this.context.t('confirmSelection')}
-                </SubmitButton>
+                </Flip>
+
             </div>
         );
     }
 }
 
-UnitSettings.contextTypes = {
+WeaponSelection.contextTypes = {
     t: PropTypes.func.isRequired
 };
 
-UnitSettings.propTypes = {
+WeaponSelection.propTypes = {
     pageType: PropTypes.string.isRequired,
     attackerUnit: PropTypes.array.isRequired,
     defenderUnit: PropTypes.object.isRequired
@@ -101,4 +139,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UnitSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(WeaponSelection);
