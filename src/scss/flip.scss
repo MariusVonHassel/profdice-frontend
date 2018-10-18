@@ -1,0 +1,51 @@
+.flip {
+
+  .flip-wrapper {
+    perspective: 1000px;
+
+    &.flipped {
+
+      .flip-flipper {
+        transform: rotateY(180deg);
+
+        .flip-front {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .flip-back {
+          position: inherit;
+        }
+      }
+
+    }
+
+    .flip-flipper {
+      position: relative;
+      transition: .6s;
+      transform-style: preserve-3d;
+
+      .flip-front,
+      .flip-back {
+        width: 100%;
+        backface-visibility: hidden;
+      }
+
+      .flip-front {
+        transform: rotateY(0deg);
+        z-index: 2;
+      }
+
+      .flip-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotateY(180deg);
+      }
+
+    }
+
+  }
+
+}

@@ -6,23 +6,30 @@ export default class SubmitButton extends Component {
     render() {
 
         const {
-            className='',
-            children='',
-            onClick='',
-            path=''
+            className = '',
+            children = '',
+            disabledValue = true,
+            onClick = '',
+            path = ''
         } = this.props;
 
+        if (disabledValue) {
+            return (
+                <div className='clearfix'>
 
-        return(
+                    <button className={'button button--submit' + className} disabled={disabledValue}>{children}</button>
 
-            <Link to={path} className='clearfix'>
+                </div>
+            );
+        } else {
+            return(
+                <Link to={path} className='clearfix'>
 
-                <span className={'button button--submit' + className} onClick={onClick}>{children}</span>
+                    <button className={'button button--submit' + className} onClick={onClick} disabled={disabledValue}>{children}</button>
 
-            </Link>
-
-        );
-
+                </Link>
+            );
+        }
 
     }
 }

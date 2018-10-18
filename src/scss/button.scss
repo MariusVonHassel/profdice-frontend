@@ -17,8 +17,8 @@
     vertical-align: bottom;
 
     .button-icon {
-      vertical-align: bottom;
       transform: rotateZ(90deg);
+      vertical-align: bottom;
     }
 
   }
@@ -66,11 +66,11 @@
     width: 24px;
 
     .button-icon {
+      transform: rotateZ(-90deg);
+      width: 24px;
       height: 28px;
       line-height: 28px;
-      width: 24px;
       font-size: 28px;
-      transform: rotateZ(-90deg);
     }
 
   }

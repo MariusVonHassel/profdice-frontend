@@ -1,0 +1,29 @@
+.flipHeader {
+  border: 1px solid $black;
+
+  .flipHeader-left,
+  .flipHeader-right {
+    float: left;
+    cursor: pointer;
+    padding: 5px;
+    width: 50%;
+    text-align: center;
+  }
+
+  .flipHeader-left {
+
+    &.flipHeader-left--active {
+      background-color: $lightBlue;
+    }
+
+  }
+
+  .flipHeader-right {
+
+    &.flipHeader-right--active {
+      background-color: $lightRed;
+    }
+
+  }
+
+}

@@ -18,6 +18,7 @@ export const translations = {
         'destroyers': 'Destroyers',
         'doomScythe': 'Doom Scythe',
         'doomsdayArk': 'Doomsday Ark',
+        'evaluation': 'Auswertung',
         'flayedOnes': 'Flayed Ones',
         'ghostArk': 'Ghost Ark',
         'headline': 'Prof. Dice',
@@ -26,9 +27,10 @@ export const translations = {
         'immortals': 'Immortals',
         'legalNotice': 'Datenschutz',
         'lychguard': 'Lychguard',
+        'modifierSelection': 'Modifikatoren',
         'monolith': 'Monolith',
         'necronWarriors': 'Necron Warriors',
-        'newCalc': 'Einheiten Auswahl',
+        'newCalc': 'Einheitenauswahl',
         'newCalculation': 'Neue Berechnung',
         'necrons': 'Necrons',
         'nightScythe': 'Night Scythe',
@@ -56,6 +58,9 @@ export const translations = {
         'stratagems': 'Stratageme',
         'summary': 'Auswertung',
         'tesseractVault': 'Tesseract Vault',
+        'toModifierSelection': 'zu den Modifikatoren',
+        'toDefender': 'zum Verteidiger',
+        'toWeaponSelection': 'zur Waffenauswahl',
         'tombBlades': 'Tomb Blades',
         'transcendentCtan': 'Transcendent C\'tan',
         'triarchPraetorians': 'Triarch Praetorians',
@@ -64,13 +69,14 @@ export const translations = {
         'unitCount': 'Anzahl der Figuren',
         'units': 'Einheiten',
         'unitSettings': 'Vorbereitung',
+        'unitSelection': 'Einheiten',
         'unitStats': 'Statistiken',
         'versus': 'vs',
         'weaponItemUnitSettings':'Waffen und Ausrüstung',
+        'weaponSelection': 'Waffen',
     },
     'en': {
         'home': 'Prof. Dice',
-        'versus': 'vs',
-        'newCalc': 'Choose Penis'
+        'versus': 'vs'
     }
 };

@@ -1,4 +1,9 @@
 version: 2
+plugins:
+  eslint:
+    enabled: true
+  scss-lint:
+    enabled: true
 checks:
   argument-count:
     config:
@@ -30,3 +35,8 @@ checks:
   identical-code:
     config:
       threshold: # language-specific defaults. an override will affect all languages.
+exclude_patterns:
+  - "./docs"
+  - "./config"
+  - "./scripts"
+  - "./cypress"
