@@ -22,18 +22,19 @@
     }
 
     .flip-flipper {
-      transition: 0.6s;
-      transform-style: preserve-3d;
       position: relative;
+      transition: .6s;
+      transform-style: preserve-3d;
 
-      .flip-front, .flip-back {
-        backface-visibility: hidden;
+      .flip-front,
+      .flip-back {
         width: 100%;
+        backface-visibility: hidden;
       }
 
       .flip-front {
-        z-index: 2;
         transform: rotateY(0deg);
+        z-index: 2;
       }
 
       .flip-back {

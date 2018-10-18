@@ -1,14 +1,15 @@
 .flipHeader {
   border: 1px solid $black;
 
-  .flipHeader-left, .flipHeader-right {
-    cursor: pointer;
+  .flipHeader-left,
+  .flipHeader-right {
     float: left;
+    cursor: pointer;
     width: 50%;
     padding: 5px;
     text-align: center;
   }
-  
+
   .flipHeader-left {
 
     &.flipHeader-left--active {
@@ -16,7 +17,7 @@
     }
 
   }
-  
+
   .flipHeader-right {
 
     &.flipHeader-right--active {
