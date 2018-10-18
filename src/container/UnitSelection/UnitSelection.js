@@ -9,36 +9,25 @@ import { setDefenderRace, setDefenderUnit } from '../../actions/defenderActions'
 import { clearAttackerChoosedData } from '../../actions/choosedDataActions';
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import CalcContainer from '../../container/CalcContainer/CalcContainer';
-import SelectionMenuHeadline from '../../components/Menu/SelectionMenuHeadline';
 import ForcesApi from '../../renderlessComponents/ForcesApi';
-import AttackerUnitApi from "../../renderlessComponents/AttackerUnitApi";
-import DefenderUnitApi from "../../renderlessComponents/DefenderUnitApi";
+import AttackerUnitApi from '../../renderlessComponents/AttackerUnitApi';
+import DefenderUnitApi from '../../renderlessComponents/DefenderUnitApi';
+import Flip from '../Flip/Flip';
+import FlipHeader from '../../components/FlipHeader/FlipHeader';
 
 export class UnitSelection extends Component {
 
     componentWillMount() {
-        this.props.onSetPageType('newCalc');
+        this.props.onSetPageType('unitSelection');
         this.props.onClearAttackerStatsCollection();
         this.props.onClearAttackerChoosedData();
     }
 
-    render() {
+    attacker() {
 
         return (
 
-            <div className='newCalc'>
-
-                <ForcesApi />
-                <AttackerUnitApi />
-                <DefenderUnitApi />
-
-                <Breadcrumb />
-
-                <SelectionMenuHeadline
-                    iconName='colorize'
-                    headlineText={this.context.t('attacker')}
-                    buttonType='button--attacker'
-                />
+            <span>
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('races')}
@@ -58,11 +47,16 @@ export class UnitSelection extends Component {
                     options={(this.props.attackerUnitArray) ? this.props.attackerUnitArray : []}
                 />
 
-                <SelectionMenuHeadline
-                    iconName='security'
-                    headlineText={this.context.t('defender')}
-                    buttonType='button--defender'
-                />
+            </span>
+
+        );
+    }
+
+    defender() {
+
+        return (
+
+            <span>
 
                 <CalcContainer
                     selectDiscriptionHeadline={this.context.t('race')}
@@ -82,14 +76,51 @@ export class UnitSelection extends Component {
                     options={(this.props.defenderUnitArray) ? this.props.defenderUnitArray: []}
                 />
 
-                <SubmitButton
-                    className=' btn newCalc-submit'
-                    onClick={()=>{this.props.onSetPageType('weapon-selection')}}
-                    path='/weapon-selection'
-                    disabledValue={!(this.props.attackerUnit.length > 0 && this.props.defenderUnit.hasOwnProperty('value'))}
+            </span>
+        );
+    }
+
+    submitButton(destination, path, context, disabledValue) {
+
+        return (
+
+             <SubmitButton
+                className=' btn unitSelection-submit'
+                onClick={destination}
+                path={path}
+                disabledValue={disabledValue}
                 >
-                    {this.context.t('confirmSelection')}
-                </SubmitButton>
+                 {context}
+            </SubmitButton>
+        );
+
+    }
+
+
+
+    render() {
+
+        return (
+
+            <div className='unitSelection'>
+
+                <ForcesApi />
+                <AttackerUnitApi />
+                <DefenderUnitApi />
+
+                <Breadcrumb />
+
+                <Flip
+                    header={<FlipHeader leftTitle={this.context.t('attacker')} rightTitle={this.context.t('defender')}/>}
+                    front={this.attacker()}
+                    frontSubmit={this.submitButton(()=>{
+                        document.querySelector('.flip-wrapper').classList.add('flipped');
+                        document.querySelector('.flipHeader-right').classList.add('flipHeader-right--active');
+                        document.querySelector('.flipHeader-left').classList.remove('flipHeader-left--active')}, '/unit-selection', this.context.t('toDefender'), false)}
+                    back={this.defender()}
+                    backSubmit={this.submitButton(()=>{this.props.onSetPageType('weaponSelection')}, '/weapon-selection', this.context.t('toWeaponSelection'), !(this.props.attackerUnit.length > 0 && this.props.defenderUnit.hasOwnProperty('value')))}
+                >
+                </Flip>
 
             </div>
 

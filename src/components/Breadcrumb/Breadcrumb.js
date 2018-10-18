@@ -25,7 +25,7 @@ export class Breadcrumb extends Component {
 
                 {this.renderBreadcrumbItem('unitSelection', 'unit-selection', '1.')}
                 {this.renderBreadcrumbItem('weaponSelection', 'weapon-selection', '2.')}
-                {this.renderBreadcrumbItem('modifier', 'modifier-selection', '3.')}
+                {this.renderBreadcrumbItem('modifierSelection', 'modifier-selection', '3.')}
                 {this.renderBreadcrumbItem('evaluation', 'evaluation', '4.')}
 
             </ul>

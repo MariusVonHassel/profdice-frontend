@@ -15,11 +15,11 @@ class Evaluation extends Component {
     checkValidInput() {
         //if (this.props.choosedAttackerData.length > 0 && this.props.choosedDefenderData.hasOwnProperty('id')) {
         if (this.props.choosedAttackerData.length > 0) {
-            this.props.onSetPageType('summary');
+            this.props.onSetPageType('evaluation');
             return true;
         } else {
-            this.props.onSetPageType('newCalc');
-            this.props.history.push('/new-calculation');
+            this.props.onSetPageType('unitSelection');
+            this.props.history.push('/unit-selection');
             return false;
         }
     }

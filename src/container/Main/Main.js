@@ -10,7 +10,7 @@ import UnitSelection from '../UnitSelection/UnitSelection';
 import WeaponSelection from '../WeaponSelection/WeaponSelection';
 import LegalNotice from '../LegalNotice/LegalNotice';
 import AboutThisWebsite from '../AboutThisWebsite/AboutThisWebsite';
-import Modifier from '../Modifier/Modifier';
+import ModifierSelection from '../ModifierSelection/ModifierSelection';
 import Evaluation from '../Evaluation/Evaluation';
 import { setPageType } from '../../actions/pageTypeActions';
 
@@ -30,8 +30,8 @@ class Main extends Component {
                         <Route exact path='/projects' component={Projects} />
                         <Route exact path='/unit-selection' component={UnitSelection} />
                         <Route exact path='/weapon-selection' component={WeaponSelection} />
-                        <Route exact path='/modifier-selection' component={Modifier} />
-                        <Route exact path='/summary' component={Evaluation} />
+                        <Route exact path='/modifier-selection' component={ModifierSelection} />
+                        <Route exact path='/evaluation' component={Evaluation} />
                         <Route exact path='/legal-notice' component={LegalNotice} />
                         <Route exact path='/about-this-website' component={AboutThisWebsite} />
 
